@@ -1,0 +1,44 @@
+prod:
+  image: registry.cnode.fr/versatile:0.0.0
+  container_name: versatile
+  expose:
+   - "5000"
+  environment:
+    VIRTUAL_HOST: 'versatile.cnode.fr'
+    API_SERVER_PORT: 443
+    API_SERVER_HOSTNAME: "https://api.co-net.solher.fr"
+    API_TOKEN_HEADER_KEY: "auth-server-token"
+    SERVER_RENDERING: 1
+    REDUX_DEVTOOLS: 0
+    FRONTEND_SERVER_PORT: 5000
+    NODE_ENV: production
+
+staging:
+  image: registry.cnode.fr/versatile:develop
+  container_name: versatile-staging
+  expose:
+   - "5000"
+  environment:
+    VIRTUAL_HOST: 'versatile-develop.cnode.fr'
+    API_SERVER_PORT: 443
+    API_SERVER_HOSTNAME: "https://api.co-net.solher.fr"
+    API_TOKEN_HEADER_KEY: "auth-server-token"
+    SERVER_RENDERING: 1
+    REDUX_DEVTOOLS: 0
+    FRONTEND_SERVER_PORT: 5000
+    NODE_ENV: production
+
+local:
+  build: .
+  container_name: versatile-local
+  ports:
+    - "5000:5000"
+  environment:
+    VIRTUAL_HOST: 'versatile-develop.cnode.fr'
+    API_SERVER_PORT: 443
+    API_SERVER_HOSTNAME: "https://api.co-net.solher.fr"
+    API_TOKEN_HEADER_KEY: "auth-server-token"
+    SERVER_RENDERING: 1
+    REDUX_DEVTOOLS: 0
+    FRONTEND_SERVER_PORT: 5000
+    DEBUG: "versatile-*"

@@ -1,0 +1,6 @@
+build
+node_modules
+ncp-debug.log
+npm-debug.log
+coverage
+.DS_Store
