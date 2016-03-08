@@ -1,4 +1,4 @@
-FROM node:5.4
+FROM node:5.7
 MAINTAINER Thomas Hourlier <hourliert@gmail.com>
 EXPOSE 5000
 
