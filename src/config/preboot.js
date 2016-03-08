@@ -7,7 +7,7 @@ import { initializeApis } from 'actions/app';
 import { fetchCurrentSession } from 'actions/session';
 import { fetchCurrentUser } from 'actions/user';
 
-const logger = debug('versatile-preboot');
+const logger = debug('react-seed-preboot');
 
 export default async function preboot(token, store, completeFetch = true) {
   const { dispatch } = store;

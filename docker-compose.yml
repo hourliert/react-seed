@@ -1,28 +1,26 @@
 prod:
-  image: registry.cnode.fr/versatile:0.0.0
-  container_name: versatile
+  image: registry.cnode.fr/react-seed:0.0.0
+  container_name: react-seed
   expose:
    - "5000"
   environment:
-    VIRTUAL_HOST: 'versatile.cnode.fr'
+    VIRTUAL_HOST: 'react-seed.cnode.fr'
     API_SERVER_PORT: 443
-    API_SERVER_HOSTNAME: "https://api.co-net.solher.fr"
-    API_TOKEN_HEADER_KEY: "auth-server-token"
+    API_SERVER_HOSTNAME: "https://api.react-seed.fr"
     SERVER_RENDERING: 1
     REDUX_DEVTOOLS: 0
     FRONTEND_SERVER_PORT: 5000
     NODE_ENV: production
 
 staging:
-  image: registry.cnode.fr/versatile:develop
-  container_name: versatile-staging
+  image: registry.cnode.fr/react-seed:develop
+  container_name: react-seed-staging
   expose:
    - "5000"
   environment:
-    VIRTUAL_HOST: 'versatile-develop.cnode.fr'
+    VIRTUAL_HOST: 'react-seed-staging.cnode.fr'
     API_SERVER_PORT: 443
-    API_SERVER_HOSTNAME: "https://api.co-net.solher.fr"
-    API_TOKEN_HEADER_KEY: "auth-server-token"
+    API_SERVER_HOSTNAME: "https://api.react-seed.fr"
     SERVER_RENDERING: 1
     REDUX_DEVTOOLS: 0
     FRONTEND_SERVER_PORT: 5000
@@ -30,15 +28,13 @@ staging:
 
 local:
   build: .
-  container_name: versatile-local
+  container_name: react-seed-local
   ports:
     - "5000:5000"
   environment:
-    VIRTUAL_HOST: 'versatile-develop.cnode.fr'
     API_SERVER_PORT: 443
-    API_SERVER_HOSTNAME: "https://api.co-net.solher.fr"
-    API_TOKEN_HEADER_KEY: "auth-server-token"
+    API_SERVER_HOSTNAME: "https://api.react-seed.fr"
     SERVER_RENDERING: 1
     REDUX_DEVTOOLS: 0
     FRONTEND_SERVER_PORT: 5000
-    DEBUG: "versatile-*"
+    DEBUG: "react-seed-*"

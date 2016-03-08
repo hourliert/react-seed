@@ -25,12 +25,11 @@ export default class WrapperAdminIndex extends Component {
 
         <WelcomeCard
           container={<Card style={styles.welcomeCard} />}
-          title="Welcome on Versatile"
+          title="Welcome on React-seed"
           logo={logo192}
         >
           <div>
-            You can import new data, see the survey outcome,
-            visualize organisations and analyze them.
+            Enjoy.
           </div>
           <FlatButton label="Get Started" primary onTouchTap={onToggleLeftNav} />
         </WelcomeCard>

@@ -1,14 +1,14 @@
 {
-  "name": "versatile",
+  "name": "react-seed",
   "version": "0.0.0",
-  "description": "Versatile written with React",
+  "description": "React-seed written with React",
   "engines": {
     "node": ">=5",
     "npm": ">=3.3 <4"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://git.wid.la/wid/versatile-react.git"
+    "url": "git+https://github.com/hourliert/react-seed.git"
   },
   "keywords": [
     "react",
@@ -17,9 +17,9 @@
   "author": "Thomas Hourlier <hourliert@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://git.wid.la/wid/versatile-react/issues"
+    "url": "https://github.com/hourliert/react-seed/issues"
   },
-  "homepage": "https://git.wid.la/wid/versatile-react",
+  "homepage": "https://github.com/hourliert/react-seed",
   "scripts": {
     "pretest": "npm run lint",
     "lint": "gulp lint",

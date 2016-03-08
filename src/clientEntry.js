@@ -17,7 +17,7 @@ import { untrackedStates } from 'config/client';
 
 injectTapEventPlugin();
 
-const logger = debug('versatile-clientEntry');
+const logger = debug('react-seed-clientEntry');
 
 // get initial state/config
 const initialState = serverToClient(untrackedStates, window.__INITIAL_STATE__);

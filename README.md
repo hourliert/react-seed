@@ -1,5 +1,5 @@
-# Versatile
-Versatile written with React.
+# React-Seed
+React-seed written with React.
 
 ## Getting started
 ```

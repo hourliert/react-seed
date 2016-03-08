@@ -46,15 +46,15 @@ export default class WrapperAppPage extends Component {
     return (
       <div className="flex layout vertical">
         <Helmet
-          title="Versatile"
+          title="React-Seed"
           meta={[
-            { name: 'description', content: 'Versatile Web Application' },
+            { name: 'description', content: 'React-Seed Web Application' },
             { name: 'viewport', content: 'width=device-width, initial-scale=1' },
             { name: 'mobile-web-app-capable', content: 'yes' },
-            { name: 'application-name', content: 'Versatile' },
+            { name: 'application-name', content: 'React-Seed' },
             { name: 'apple-mobile-web-app-capable', content: 'yes' },
             { name: 'apple-mobile-web-app-status-bar-style', content: 'black' },
-            { name: 'apple-mobile-web-app-title', content: 'Versatile' },
+            { name: 'apple-mobile-web-app-title', content: 'React-Seed' },
 
             { name: 'theme-color', content: palette.primary1Color },
             { name: 'msapplication-TileColor', content: palette.primary1Color },
@@ -66,7 +66,7 @@ export default class WrapperAppPage extends Component {
           ]}
         />
         <AppBar
-          title={`Versatile - ${this.props.version}`}
+          title={`React-Seed - ${this.props.version}`}
           onLeftIconButtonTouchTap={toggleLeftNav}
           zDepth={appBarDepth}
         />

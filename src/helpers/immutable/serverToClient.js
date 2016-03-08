@@ -1,7 +1,7 @@
 import { fromJS } from 'immutable';
 import debug from 'debug';
 
-const logger = debug('versatile-immutableHelper');
+const logger = debug('react-seed-immutableHelper');
 
 export default function serverToClient(untrackedStates, serverState) {
   logger('serverToClient: Converting state');

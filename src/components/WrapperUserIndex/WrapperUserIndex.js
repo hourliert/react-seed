@@ -25,11 +25,11 @@ export default class WrapperUserIndex extends Component {
 
         <WelcomeCard
           container={<Card style={styles.welcomeCard} />}
-          title="Welcome on Versatile"
+          title="Welcome on React-Seed"
           logo={logo192}
         >
           <div>
-            You can take the survey and see your result.
+            Enjoy.
           </div>
           <FlatButton label="Get Started" primary onTouchTap={onToggleLeftNav} />
         </WelcomeCard>

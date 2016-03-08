@@ -6,7 +6,7 @@ import { Router } from 'react-router';
 
 import { runDeferrers } from 'decorators';
 
-const logger = debug('versatile-buildApp');
+const logger = debug('react-seed-buildApp');
 
 export default function buildApp({
   store,

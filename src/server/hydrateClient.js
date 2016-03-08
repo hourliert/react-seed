@@ -5,7 +5,7 @@ import configManager from 'helpers/configManager';
 import preboot from 'config/preboot';
 import { runPrefetchers } from 'decorators';
 
-const logger = debug('versatile-buildApp');
+const logger = debug('react-seed-buildApp');
 
 export async function waitForPreboot(
   store,

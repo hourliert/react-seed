@@ -17,13 +17,13 @@ function checkEnvVar(name) {
 
 if (env.CI_BUILD_REF_NAME === 'develop') {
   tag = 'develop';
-  projectName = 'co-net-develop';
+  projectName = 'react-seed-develop';
 
   if (!checkEnvVar('DEPLOY_DEV_URL')) process.exit(-1);
   url = env.DEPLOY_DEV_URL;
 } else if (!!semver.valid(env.CI_BUILD_TAG)) {
   tag = env.CI_BUILD_TAG;
-  projectName = 'co-net';
+  projectName = 'react-seed';
 
   if (!checkEnvVar('DEPLOY_URL')) process.exit(-1);
   url = env.DEPLOY_URL;
