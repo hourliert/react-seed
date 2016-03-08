@@ -1,4 +1,4 @@
-image: node:5.4
+image: node:5.7
 
 stages:
   - test
@@ -19,8 +19,6 @@ test:
   stage: test
   script:
     - npm install --loglevel http
-    # need to install jsdom to triger postinstall but WHY?
-    - npm install jsdom
     - npm test
   tags:
     - node

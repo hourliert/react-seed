@@ -2,6 +2,8 @@ FROM node:5.7
 MAINTAINER Thomas Hourlier <hourliert@gmail.com>
 EXPOSE 5000
 
+ENV NODE_ENV production
+
 RUN useradd -m -d /app -s /bin/bash react
 WORKDIR /app
 ADD . /app
