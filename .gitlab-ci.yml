@@ -27,7 +27,7 @@ bundle:
   stage: test
   script:
     - npm install --loglevel http
-    - npm run build -- --release --isomorphic
+    - npm run build -- -- --release --isomorphic
   tags:
     - node
 

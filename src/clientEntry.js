@@ -1,5 +1,3 @@
-import 'babel-polyfill';
-
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import { browserHistory, match } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';

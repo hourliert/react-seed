@@ -1,5 +1,3 @@
-import 'babel-polyfill';
-
 console.log(`Booting...`); //eslint-disable-line
 
 import { join } from 'path';

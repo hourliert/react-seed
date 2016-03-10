@@ -8,8 +8,6 @@ export * from './components';
 export * from './cookieManager';
 export * from './env';
 export * from './immutable';
-export * from './mindsets';
 export * from './state';
-export * from './test';
 
 export { configManager, IdMapper };

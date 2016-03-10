@@ -3,10 +3,5 @@
   "plugins": [
     "transform-decorators-legacy",
     "add-module-exports",
-    ["typecheck", {
-      "disable": {
-        "production": true
-      }
-    }]
   ]
 }
