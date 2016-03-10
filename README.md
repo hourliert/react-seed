@@ -1,4 +1,4 @@
-# React-Seed [![Build Status](https://travis-ci.org/hourliert/react-seed.svg?branch=master)](https://travis-ci.org/hourliert/react-seed)
+# React-Seed [![Build Status](https://travis-ci.org/hourliert/react-seed.svg?branch=develop)](https://travis-ci.org/hourliert/react-seed)
 React-seed written with React.
 
 ## Getting started
