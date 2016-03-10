@@ -1,4 +1,4 @@
-FROM node:5.7
+FROM node:5.8
 MAINTAINER Thomas Hourlier <hourliert@gmail.com>
 EXPOSE 5000
 
@@ -11,7 +11,7 @@ RUN chown -R react:react /app
 
 USER react
 
-RUN npm install --loglevel warn && npm run build -- --release --isomorphic
+RUN npm install --loglevel warn && npm run build -- -- --release --isomorphic
 
 RUN rm -rf ./src ./tasks
 

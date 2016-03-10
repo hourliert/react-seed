@@ -9,7 +9,7 @@ import morgan from 'morgan';
 import warning from 'warning';
 import debug from 'debug';
 
-import makeIsomorphicConfig from '../webpack.isomorphic.config';
+import makeIsomorphicConfig from 'config/isomorphic.config';
 import { FRONTEND_SERVER_PORT, SERVER_RENDERING } from 'config/frontEndServer';
 import * as apiServerConfig from 'config/apiServer';
 import * as frontEndServerConfig from 'config/frontEndServer';

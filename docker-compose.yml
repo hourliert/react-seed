@@ -24,11 +24,24 @@ staging:
     SERVER_RENDERING: 1
     REDUX_DEVTOOLS: 0
     FRONTEND_SERVER_PORT: 5000
-    NODE_ENV: production
+    DEBUG: "react-seed-*"
 
 local:
   build: .
   container_name: react-seed-local
+  ports:
+    - "5000:5000"
+  environment:
+    API_SERVER_PORT: 443
+    API_SERVER_HOSTNAME: "https://api.react-seed.fr"
+    SERVER_RENDERING: 1
+    REDUX_DEVTOOLS: 0
+    FRONTEND_SERVER_PORT: 5000
+    NODE_ENV: production
+
+local-develop:
+  build: .
+  container_name: react-seed-local-develop
   ports:
     - "5000:5000"
   environment:
