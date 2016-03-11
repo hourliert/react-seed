@@ -11,19 +11,8 @@ export default function getRoutes(requireAuthFunctions) {
     indexRoute,
 
     getChildRoutes(location, callback) {
-      require.ensure([], require => {
-        let routes = [];
-        try {
-          const AdminSettingsRoute = require('./adminSettingsRoute');
-
-          routes = [
-            AdminSettingsRoute,
-          ];
-        } catch (e) {
-          console.error(e); // eslint-disable-line
-        } finally {
-          callback(null, routes);
-        }
+      require.ensure([], () => {
+        callback(null, []);
       });
     },
   };

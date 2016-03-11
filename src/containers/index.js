@@ -1,27 +1,11 @@
-import AdminIndex from './AdminIndex';
-import AdminPage from './AdminPage';
-import AppPage from './AppPage';
-import DevTools from './DevTools';
-import InfoPage from './InfoPage';
-import LoginPage from './LoginPage';
-import LogoutPage from './LogoutPage';
-import NotFoundPage from './NotFoundPage';
-import makeRootApp from './RootApp';
-import SettingsPage from './SettingsPage';
-import UserIndex from './UserIndex';
-import UserPage from './UserPage';
-
-export {
-  AdminIndex,
-  AdminPage,
-  AppPage,
-  DevTools,
-  InfoPage,
-  LoginPage,
-  LogoutPage,
-  NotFoundPage,
-  makeRootApp,
-  SettingsPage,
-  UserIndex,
-  UserPage,
-};
+export { default as AdminIndex } from './AdminIndex';
+export { default as AdminPage } from './AdminPage';
+export { default as AppPage } from './AppPage';
+export { default as DevTools } from './DevTools';
+export { default as InfoPage } from './InfoPage';
+export { default as LoginPage } from './LoginPage';
+export { default as LogoutPage } from './LogoutPage';
+export { default as NotFoundPage } from './NotFoundPage';
+export { default as makeRootApp } from './RootApp';
+export { default as UserIndex } from './UserIndex';
+export { default as UserPage } from './UserPage';

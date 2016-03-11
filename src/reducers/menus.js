@@ -6,7 +6,6 @@ import {
   INFO,
   USER_HOME,
   ADMIN_HOME,
-  ADMIN_SETTINGS,
 } from 'constants/routes';
 import { accessLevels } from 'config/access';
 
@@ -31,12 +30,6 @@ export default handleActions({
     url: ADMIN_HOME,
     accessLevel: accessLevels.admin,
     withDivider: true,
-  },
-  {
-    icon: 'settings',
-    label: 'Settings',
-    url: ADMIN_SETTINGS,
-    accessLevel: accessLevels.admin,
   },
   {
     icon: 'info',

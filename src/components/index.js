@@ -1,53 +1,21 @@
-import AccessChecker from './AccessChecker';
-import CardsList from './CardsList';
-import CheckboxItem from './CheckboxItem';
-import ErrorManager from './ErrorManager';
-import GraphSettings from './GraphSettings';
-import LeftMenuDrawer from './LeftMenuDrawer';
-import LinkItem from './LinkItem';
-import LinksList from './LinksList';
-import LoginCard from './LoginCard';
-import LoginForm from './LoginForm';
-import SessionInfo from './SessionInfo';
-import ToggleItem from './ToggleItem';
-import UserInfo from './UserInfo';
-import WelcomeCard from './WelcomeCard';
-import WithLoading from './WithLoading';
+export { default as AccessChecker } from './AccessChecker';
+export { default as CardsList } from './CardsList';
+export { default as ErrorManager } from './ErrorManager';
+export { default as LeftMenuDrawer } from './LeftMenuDrawer';
+export { default as LinkItem } from './LinkItem';
+export { default as LinksList } from './LinksList';
+export { default as LoginCard } from './LoginCard';
+export { default as LoginForm } from './LoginForm';
+export { default as SessionInfo } from './SessionInfo';
+export { default as UserInfo } from './UserInfo';
+export { default as WelcomeCard } from './WelcomeCard';
+export { default as WithLoading } from './WithLoading';
 
-import WrapperAdminIndex from './WrapperAdminIndex';
-import WrapperAdminPage from './WrapperAdminPage';
-import WrapperAppPage from './WrapperAppPage';
-import WrapperInfoPage from './WrapperInfoPage';
-import WrapperLoginPage from './WrapperLoginPage';
-import WrapperLogoutPage from './WrapperLogoutPage';
-import WrapperSettingsPage from './WrapperSettingsPage';
-import WrapperUserIndex from './WrapperUserIndex';
-import WrapperUserPage from './WrapperUserPage';
-
-export {
-  AccessChecker,
-  CardsList,
-  CheckboxItem,
-  ErrorManager,
-  GraphSettings,
-  LeftMenuDrawer,
-  LinkItem,
-  LinksList,
-  LoginCard,
-  LoginForm,
-  SessionInfo,
-  ToggleItem,
-  UserInfo,
-  WelcomeCard,
-  WithLoading,
-
-  WrapperAdminIndex,
-  WrapperAdminPage,
-  WrapperAppPage,
-  WrapperInfoPage,
-  WrapperLoginPage,
-  WrapperLogoutPage,
-  WrapperSettingsPage,
-  WrapperUserIndex,
-  WrapperUserPage,
-};
+export { default as WrapperAdminIndex } from './WrapperAdminIndex';
+export { default as WrapperAdminPage } from './WrapperAdminPage';
+export { default as WrapperAppPage } from './WrapperAppPage';
+export { default as WrapperInfoPage } from './WrapperInfoPage';
+export { default as WrapperLoginPage } from './WrapperLoginPage';
+export { default as WrapperLogoutPage } from './WrapperLogoutPage';
+export { default as WrapperUserIndex } from './WrapperUserIndex';
+export { default as WrapperUserPage } from './WrapperUserPage';

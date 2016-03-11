@@ -1,4 +1,2 @@
-import Api from './Api';
-
+export { default as Api } from './Api';
 export * from './apis';
-export { Api };

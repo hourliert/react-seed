@@ -1,3 +1,1 @@
-import Html from './Html';
-
-export { Html };
+export { default as Html } from './Html';

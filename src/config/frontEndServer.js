@@ -1,5 +1,8 @@
 import { readFromEnvString, readFromEnvBoolean, readFromEnvNumber } from 'helpers/env';
 
+// list of reducers not handled by Immutable.js
+export const untrackedStates = ['routing', 'form', 'theme', 'menus'];
+
 // enable/disable these features at runtime via env
 export const REDUX_DEVTOOLS = readFromEnvBoolean('REDUX_DEVTOOLS', false);
 export const SERVER_RENDERING = readFromEnvBoolean('SERVER_RENDERING', true);
