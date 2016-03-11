@@ -1,4 +1,2 @@
-import buildApp from './buildApp';
-import waitForPreboot from './waitForPreboot';
-
-export { buildApp, waitForPreboot };
+export { default as buildApp } from './buildApp';
+export { default as waitForPreboot } from './waitForPreboot';

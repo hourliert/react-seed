@@ -1,7 +1,2 @@
-import abstractFetcher from './fetcher';
-import abstractRunFetchers from './runFetchers';
-
-export {
-  abstractFetcher,
-  abstractRunFetchers,
-};
+export { default as abstractFetcher } from './fetcher';
+export { default as abstractRunFetchers } from './runFetchers';

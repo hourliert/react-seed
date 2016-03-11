@@ -1,5 +1,5 @@
 prod:
-  image: registry.cnode.fr/react-seed:0.0.0
+  image: registry.cnode.fr/react-seed:0.1.0
   container_name: react-seed
   expose:
    - "5000"

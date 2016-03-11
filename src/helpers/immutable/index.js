@@ -1,3 +1,1 @@
-import serverToClient from './serverToClient';
-
-export { serverToClient };
+export { default as serverToClient } from './serverToClient';

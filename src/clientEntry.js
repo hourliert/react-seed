@@ -5,13 +5,12 @@ import { render } from 'react-dom';
 import cookies from 'js-cookie';
 import debug from 'debug';
 
-import { SERVER_RENDERING } from 'config/frontEndServer';
+import { SERVER_RENDERING, untrackedStates } from 'config/frontEndServer';
 import getAppRoutes from 'routes/appRoute';
 import { buildApp, waitForPreboot } from 'client';
 import configureStore from 'store';
 import configManager from 'helpers/configManager';
 import { serverToClient } from 'helpers/immutable';
-import { untrackedStates } from 'config/client';
 
 injectTapEventPlugin();
 
