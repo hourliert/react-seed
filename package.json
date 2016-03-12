@@ -1,6 +1,6 @@
 {
   "name": "appname",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "<%= appname %> written with React",
   "engines": {
     "node": ">=5",
@@ -79,7 +79,6 @@
     "istanbul": "^1.0.0-alpha.2",
     "jsdom": "^8.1.0",
     "jsdom-global": "^1.6.1",
-    "json-server": "^0.8.8",
     "mockery": "^1.4.0",
     "react-addons-test-utils": "^0.14.7",
     "redux-devtools": "^3.1.1",
