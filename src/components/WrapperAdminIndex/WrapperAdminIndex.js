@@ -25,7 +25,7 @@ export default class WrapperAdminIndex extends Component {
 
         <WelcomeCard
           container={<Card style={styles.welcomeCard} />}
-          title="Welcome on React-seed"
+          title="Welcome on <%= appname %>"
           logo={logo192}
         >
           <div>

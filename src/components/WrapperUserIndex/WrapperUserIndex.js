@@ -25,7 +25,7 @@ export default class WrapperUserIndex extends Component {
 
         <WelcomeCard
           container={<Card style={styles.welcomeCard} />}
-          title="Welcome on React-Seed"
+          title="Welcome on <%= appname %>"
           logo={logo192}
         >
           <div>

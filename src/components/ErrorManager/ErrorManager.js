@@ -93,7 +93,7 @@ export default class ErrorManager extends Component {
           <p>
             The following errors happened.
             If you think this is a bug, don't hesitate to create an issue on
-            <a href="https://github.com/hourliert/react-seed" target="_blank">the repo page</a>.
+            <a href="https://github.com/hourliert/<%= appname %>" target="_blank">the repo page</a>.
           </p>
           <ul style={styles.ul}>
             {Object.keys(errors).map(key => {

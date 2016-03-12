@@ -1,5 +1,5 @@
-# React-Seed [![Build Status](https://travis-ci.org/hourliert/react-seed.svg?branch=develop)](https://travis-ci.org/hourliert/react-seed)
-React-seed written with React.
+# <%= appname %> [![Build Status](https://travis-ci.org/hourliert/<%= appname %>.svg?branch=develop)](https://travis-ci.org/hourliert/<%= appname %>)
+<%= appname %> written with React.
 
 ## Getting started
 ```

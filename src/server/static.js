@@ -7,7 +7,7 @@ function renderFullPage(html, state, config) {
     <!DOCTYPE html>
     <html>
       <head>
-        <title>React-Seed</title>
+        <title><%= appname %></title>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
       </head>
       <body class="fullbleed layout vertical">
