@@ -1,5 +1,5 @@
 {
-  "name": "react-seed",
+  "name": "<%= appname %>",
   "version": "0.0.0",
   "dependencies": {
     "abab": {
