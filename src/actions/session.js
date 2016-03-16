@@ -12,7 +12,7 @@ import {
   AWAIT_SIGNIN,
   SIGNOUT,
   GET_CURRENT_SESSION,
-} from 'constants/sessionActions';
+} from 'constants/actions';
 import {
   SIGNIN as SIGNIN_ROUTE,
   ROOT,

@@ -4,7 +4,7 @@ import {
   MARK_ALL_ERRORS_AS_VIEWED,
   CLEAR_ERRORS,
   CLEAR_ERROR,
-} from 'constants/errorsActions';
+} from 'constants/actions';
 
 export const markAllErrorsAsViewed = createAction(MARK_ALL_ERRORS_AS_VIEWED);
 export const clearErrors = createAction(CLEAR_ERRORS);

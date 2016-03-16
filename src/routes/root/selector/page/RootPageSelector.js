@@ -6,7 +6,7 @@ import {
   menusSelector,
   leftNavOpenSelector,
   appBarDepthSelector,
-} from 'selectors/resourceSelectors';
+} from 'selectors';
 
 export default createStructuredSelector({
   currentAccessLevel: accessLevelSelector,

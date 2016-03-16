@@ -10,7 +10,7 @@ import {
   OPEN_LEFTNAV,
   CLOSE_LEFTNAV,
   SET_API,
-} from 'constants/appActions';
+} from 'constants/actions';
 
 describe('App Reducer', () => {
   it('should exists', () => {

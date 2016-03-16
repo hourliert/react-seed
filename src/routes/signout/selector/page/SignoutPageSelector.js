@@ -2,7 +2,7 @@ import { createStructuredSelector } from 'reselect';
 
 import {
   signoutLoadingSelector,
-} from 'selectors/resourceSelectors';
+} from 'selectors';
 
 export default createStructuredSelector({
   isLoading: signoutLoadingSelector,

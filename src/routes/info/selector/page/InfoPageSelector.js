@@ -4,7 +4,7 @@ import {
   userSelector,
   sessionSelector,
   initialRenderTimeSelector,
-} from 'selectors/resourceSelectors';
+} from 'selectors';
 
 export default createStructuredSelector({
   user: userSelector,

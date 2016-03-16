@@ -2,11 +2,9 @@ import { handleActions } from 'redux-actions';
 import { fromJS } from 'immutable';
 
 import {
-  GET_CURRENT_USER,
-} from 'constants/userActions';
-import {
   SIGNOUT,
-} from 'constants/sessionActions';
+  GET_CURRENT_USER,
+} from 'constants/actions';
 
 function getInitialState() {
   return fromJS({ isLoading: false, value: {} });

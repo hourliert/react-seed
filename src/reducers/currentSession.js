@@ -5,10 +5,8 @@ import {
   SIGNIN,
   SIGNOUT,
   GET_CURRENT_SESSION,
-} from 'constants/sessionActions';
-import {
   GET_CURRENT_USER,
-} from 'constants/userActions';
+} from 'constants/actions';
 import { userRoles } from 'config/access';
 
 function getInitialState() {

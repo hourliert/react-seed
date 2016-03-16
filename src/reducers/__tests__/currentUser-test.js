@@ -7,10 +7,8 @@ import Immutable from 'immutable';
 import currentUserReducer from '../currentUser';
 import {
   SIGNOUT,
-} from 'constants/sessionActions';
-import {
   GET_CURRENT_USER,
-} from 'constants/userActions';
+} from 'constants/actions';
 
 describe('User Reducer', () => {
   it('should exists', () => {

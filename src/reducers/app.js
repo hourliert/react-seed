@@ -7,7 +7,7 @@ import {
   CLOSE_LEFTNAV,
   SET_API,
   SET_APP_BAR_DEPTH,
-} from 'constants/appActions';
+} from 'constants/actions';
 
 function getInitialState() {
   return fromJS({

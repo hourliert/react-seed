@@ -9,7 +9,7 @@ import {
   SIGNIN,
   SIGNOUT,
   GET_CURRENT_SESSION,
-} from 'constants/sessionActions';
+} from 'constants/actions';
 import { userRoles } from 'config/access';
 
 describe('Session Reducer', () => {
