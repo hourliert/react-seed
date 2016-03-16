@@ -4,7 +4,7 @@ import {
   GET_CURRENT_USER,
   SET_SELF_ENTITY,
   MARK_USER_ERROR_AS_VIEWED,
-} from 'constants/userActions';
+} from 'constants/actions';
 import {
   setUserTheme,
   setAdminTheme,

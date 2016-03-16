@@ -8,7 +8,7 @@ import {
   CLOSE_LEFTNAV,
   SET_API,
   SET_APP_BAR_DEPTH,
-} from 'constants/appActions';
+} from 'constants/actions';
 
 export const openLeftNav = createAction(OPEN_LEFTNAV);
 export const closeLeftNav = createAction(CLOSE_LEFTNAV);

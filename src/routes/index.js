@@ -1,1 +1,3 @@
-export default from './appRoute';
+export * from './routes';
+
+export default from './root';

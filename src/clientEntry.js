@@ -6,7 +6,7 @@ import cookies from 'js-cookie';
 import debug from 'debug';
 
 import { SERVER_RENDERING, untrackedStates } from 'config/frontEndServer';
-import getAppRoutes from 'routes/appRoute';
+import getRootRoute from 'routes';
 import { buildApp, waitForPreboot } from 'client';
 import configureStore from 'store';
 import configManager from 'helpers/configManager';
@@ -27,7 +27,7 @@ configManager.setConfig({ token });
 
 // configure store and wait for session
 const store = configureStore(initialState, browserHistory);
-const routes = getAppRoutes(store, navigator.userAgent);
+const routes = getRootRoute(store, navigator.userAgent);
 const history = syncHistoryWithStore(browserHistory, store);
 
 waitForPreboot(store, !(__ONBUILD_SERVER_RENDERING__ && SERVER_RENDERING));
@@ -48,7 +48,7 @@ match({ routes, location }, () => {
   logger('main: Done');
 
   if (__ONBUILD_REDUX_DEVTOOLS__ && configManager.get('REDUX_DEVTOOLS')) {
-    const DevTools = require('./containers/DevTools');
+    const DevTools = require('helpers/components/DevTools');
     logger('main: Rendering Devtools');
     render(
       buildApp({ store, routes, history, DevTools }),

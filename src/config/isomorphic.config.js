@@ -7,7 +7,6 @@ export const alias = {
   components: 'components',
   config: 'config',
   constants: 'constants',
-  containers: 'containers',
   decorators: 'decorators',
   helpers: 'helpers',
   images: 'images',

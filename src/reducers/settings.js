@@ -3,7 +3,7 @@ import { fromJS } from 'immutable';
 
 import {
   TOGGLE_SETTING,
-} from 'constants/settingsActions';
+} from 'constants/actions';
 
 function getInitialState() {
   return fromJS({
