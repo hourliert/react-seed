@@ -1,5 +1,5 @@
 prod:
-  image: registry.cnode.fr/<%= appname %>:0.1.1
+  image: registry.cnode.fr/<%= appname %>:0.2.0
   container_name: <%= appname %>
   expose:
    - "5000"
