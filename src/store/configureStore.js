@@ -34,7 +34,7 @@ export default function configureStore(initialState, history) {
   ];
 
   if (__ONBUILD_REDUX_DEVTOOLS__ && !global.server && configManager.get('REDUX_DEVTOOLS')) {
-    const DevTools = require('../containers/DevTools');
+    const DevTools = require('helpers/components/DevTools');
     storeEnhancers.push(DevTools.instrument());
   }
 

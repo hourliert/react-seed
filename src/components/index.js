@@ -10,12 +10,3 @@ export { default as SessionInfo } from './SessionInfo';
 export { default as UserInfo } from './UserInfo';
 export { default as WelcomeCard } from './WelcomeCard';
 export { default as WithLoading } from './WithLoading';
-
-export { default as WrapperAdminIndex } from './WrapperAdminIndex';
-export { default as WrapperAdminPage } from './WrapperAdminPage';
-export { default as WrapperAppPage } from './WrapperAppPage';
-export { default as WrapperInfoPage } from './WrapperInfoPage';
-export { default as WrapperLoginPage } from './WrapperLoginPage';
-export { default as WrapperLogoutPage } from './WrapperLogoutPage';
-export { default as WrapperUserIndex } from './WrapperUserIndex';
-export { default as WrapperUserPage } from './WrapperUserPage';

@@ -5,7 +5,7 @@ import warning from 'warning';
 import debug from 'debug';
 
 import configureStore from 'store';
-import getAppRoutes from 'routes/appRoute';
+import getRootRoute from 'routes';
 import buidApp from './buildApp';
 import { getInitialState, waitForPreboot } from './hydrateClient';
 
@@ -30,7 +30,7 @@ export default function serverRendering() {
 
       const history = createMemoryHistory();
       const store = configureStore(initialState, history);
-      const routes = getAppRoutes(store, userAgent);
+      const routes = getRootRoute(store, userAgent);
 
       try {
         // fetch the user session to define its role

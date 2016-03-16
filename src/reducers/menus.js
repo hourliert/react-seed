@@ -4,8 +4,8 @@ import {
   SIGNIN,
   SIGNOUT,
   INFO,
-  USER_HOME,
-  ADMIN_HOME,
+  USER,
+  ADMIN,
 } from 'constants/routes';
 import { accessLevels } from 'config/access';
 
@@ -20,14 +20,14 @@ export default handleActions({
   {
     icon: 'home',
     label: 'User Home',
-    url: USER_HOME,
+    url: USER,
     accessLevel: accessLevels.user,
     withDivider: true,
   },
   {
     icon: 'home',
     label: 'Admin Home',
-    url: ADMIN_HOME,
+    url: ADMIN,
     accessLevel: accessLevels.admin,
     withDivider: true,
   },

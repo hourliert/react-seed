@@ -15,7 +15,7 @@ import {
 } from 'constants/sessionActions';
 import {
   SIGNIN as SIGNIN_ROUTE,
-  HOME,
+  ROOT,
 } from 'constants/routes';
 import { initializeApis } from 'actions/app';
 import { fetchCurrentUser } from 'actions/user';
@@ -41,7 +41,7 @@ export const _signinCreator = createAction(
         dispatch(fetchCurrentUser()),
       ]);
 
-      dispatch(push(HOME));
+      dispatch(push(ROOT));
     },
 
     onReject() {

@@ -21,14 +21,15 @@
   },
   "homepage": "<%= repourl %>",
   "scripts": {
-    "start": "DEBUG_COLORS=true DEBUG='<%= appname %>=*' builder run serve",
+    "start": "builder concurrent frontend api",
+    "frontend": "DEBUG_COLORS=true DEBUG='<%= appname %>-*' builder run serve",
+    "api": "nodemon api/server.js 8000",
     "build": "builder run build",
     "tdd": "builder run test:all:watch",
     "pretest": "builder run lint",
     "test": "builder run test:all:coverage",
     "lint": "builder run lint",
-    "release": "builder run release",
-    "api": "node api/server.js 8000"
+    "release": "builder run release"
   },
   "dependencies": {
     "builder-react-fullstack": "~0.1.3",
@@ -80,6 +81,7 @@
     "jsdom": "^8.1.0",
     "jsdom-global": "^1.6.1",
     "mockery": "^1.4.0",
+    "nodemon": "^1.9.1",
     "react-addons-test-utils": "^0.14.7",
     "redux-devtools": "^3.1.1",
     "redux-devtools-dock-monitor": "^1.0.1",
