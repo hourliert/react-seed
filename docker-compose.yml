@@ -1,6 +1,6 @@
 prod:
-  image: registry.cnode.fr/<%= appname %>:0.2.0
-  container_name: <%= appname %>
+  image: registry.cnode.fr/ReactSeed:0.2.0
+  container_name: ReactSeed
   expose:
    - "5000"
   environment:
@@ -10,19 +10,19 @@ prod:
     NODE_ENV: production
 
 staging:
-  image: registry.cnode.fr/<%= appname %>:develop
-  container_name: <%= appname %>-staging
+  image: registry.cnode.fr/ReactSeed:develop
+  container_name: ReactSeed-staging
   expose:
    - "5000"
   environment:
     SERVER_RENDERING: 1
     REDUX_DEVTOOLS: 0
     FRONTEND_SERVER_PORT: 5000
-    DEBUG: "<%= appname %>-*"
+    DEBUG: "ReactSeed-*"
 
 local:
   build: .
-  container_name: <%= appname %>-local
+  container_name: ReactSeed-local
   ports:
     - "5000:5000"
   environment:
@@ -33,11 +33,11 @@ local:
 
 local-develop:
   build: .
-  container_name: <%= appname %>-local-develop
+  container_name: ReactSeed-local-develop
   ports:
     - "5000:5000"
   environment:
     SERVER_RENDERING: 1
     REDUX_DEVTOOLS: 0
     FRONTEND_SERVER_PORT: 5000
-    DEBUG: "<%= appname %>-*"
+    DEBUG: "ReactSeed-*"

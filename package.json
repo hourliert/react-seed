@@ -1,28 +1,29 @@
 {
-  "name": "appname",
+  "name": "react-seed",
   "version": "0.2.0",
-  "description": "<%= appname %> written with React",
+  "description": "<%= appName %> written with React",
   "engines": {
     "node": ">=5",
     "npm": ">=3.3 <4"
   },
   "repository": {
     "type": "git",
-    "url": "git+<%= repourl %>"
+    "url": "git+<%= repoUrl %>"
   },
   "keywords": [
     "react",
-    "seed"
+    "seed",
+    "<%= appName %>"
   ],
-  "author": "Thomas Hourlier <hourliert@gmail.com>",
+  "author": "<%= author %>",
   "license": "MIT",
   "bugs": {
-    "url": "<%= repourl %>/issues"
+    "url": "<%= repoUrl %>/issues"
   },
-  "homepage": "<%= repourl %>",
+  "homepage": "<%= repoUrl %>",
   "scripts": {
     "start": "builder concurrent frontend api",
-    "frontend": "DEBUG_COLORS=true DEBUG='<%= appname %>-*' builder run serve",
+    "frontend": "DEBUG_COLORS=true DEBUG='<%= appName %>-*' builder run serve",
     "api": "nodemon api/server.js 8000",
     "build": "builder run build",
     "tdd": "builder run test:all:watch",

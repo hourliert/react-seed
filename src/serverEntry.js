@@ -20,7 +20,7 @@ configManager.setConfig({
   ...frontEndServerConfig,
 });
 
-const logger = debug('<%= appname %>-serverEntry');
+const logger = debug('ReactSeed-serverEntry');
 
 async function initIsomorphicAssets(context) {
   global.webpackIsomorphicTools = new WebpackIsomorphicTools(
