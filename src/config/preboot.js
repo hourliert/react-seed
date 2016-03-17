@@ -7,7 +7,7 @@ import { initializeApis } from 'actions/app';
 import { fetchCurrentSession } from 'actions/session';
 import { fetchCurrentUser } from 'actions/user';
 
-const logger = debug('<%= appname %>-preboot');
+const logger = debug('ReactSeed-preboot');
 
 export default async function preboot(token, store, completeFetch = true) {
   const { dispatch } = store;

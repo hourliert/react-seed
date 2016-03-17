@@ -6,7 +6,7 @@ import { Router } from 'react-router';
 
 import { runDeferrers } from 'decorators';
 
-const logger = debug('<%= appname %>-buildApp');
+const logger = debug('ReactSeed-buildApp');
 
 export default function buildApp({
   store,

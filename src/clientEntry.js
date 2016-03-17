@@ -14,7 +14,7 @@ import { serverToClient } from 'helpers/immutable';
 
 injectTapEventPlugin();
 
-const logger = debug('<%= appname %>-clientEntry');
+const logger = debug('ReactSeed-clientEntry');
 
 // get initial state/config
 const initialState = serverToClient(untrackedStates, window.__INITIAL_STATE__);

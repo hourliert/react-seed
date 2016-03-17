@@ -11,7 +11,7 @@ import { getInitialState, waitForPreboot } from './hydrateClient';
 
 import configManager from 'helpers/configManager';
 
-const logger = debug('<%= appname %>-serverRendering');
+const logger = debug('ReactSeed-serverRendering');
 
 export default function serverRendering() {
   return async function middleware(req, res, next) {

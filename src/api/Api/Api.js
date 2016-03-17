@@ -4,7 +4,7 @@ import debug from 'debug';
 import { HttpError, FetchError } from 'helpers/api/Errors';
 import configManager from 'helpers/configManager';
 
-const logger = debug('<%= appname %>-Api');
+const logger = debug('ReactSeed-Api');
 
 export default class Api {
   constructor({
