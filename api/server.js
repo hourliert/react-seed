@@ -14,6 +14,7 @@ const corsOptions = {
 };
 
 var lastSession = {}; // eslint-disable-line
+var counter = 0; // eslint-disable-line
 
 app.use(morgan('dev'));
 app.use(cors(corsOptions));
@@ -30,6 +31,7 @@ app.post('/signin', (req, res) => {
 
 app.post('/me/signout', (req, res) => {
   res.json(lastSession);
+  lastSession = {};
 });
 
 app.get('/me/session', (req, res) => {
@@ -42,6 +44,12 @@ app.get('/me', (req, res) => {
     lastName: 'Hourlier',
     email: 'thomas.hourlier@cnode.fr',
     isAdmin: true,
+  });
+});
+
+app.get('/counter', (req, res) => {
+  res.json({
+    counter: counter++,
   });
 });
 

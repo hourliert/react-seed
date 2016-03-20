@@ -39,16 +39,4 @@ const reducers = Object.values(ACTIONS).reduce((res, ACTION) => {
 
 export default handleActions({
   ...reducers,
-
-  [ACTIONS.SET_LOADING_STEPS](state, action) {
-    const { payload: { ACTION, max } } = action;
-
-    return state.setIn(['value', ACTION, 'max'], max);
-  },
-
-  [ACTIONS.UPDATE_LOADING_VALUE](state, action) {
-    const { payload: { ACTION, value } } = action;
-
-    return state.setIn(['value', ACTION, 'value'], value);
-  },
 }, getInitialState());

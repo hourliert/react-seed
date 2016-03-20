@@ -1,4 +1,3 @@
-import SessionApi from './SessionApi';
-import UserApi from './UserApi';
-
-export { SessionApi, UserApi };
+export { default as SessionApi } from './SessionApi';
+export { default as UserApi } from './UserApi';
+export { default as CounterApi } from './CounterApi';

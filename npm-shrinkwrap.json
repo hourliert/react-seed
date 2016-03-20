@@ -1,6 +1,6 @@
 {
   "name": "react-seed",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "dependencies": {
     "abab": {
       "version": "1.0.3",
@@ -4569,6 +4569,11 @@
       "version": "1.0.0",
       "from": "redent@>=1.0.0 <2.0.0",
       "resolved": "https://registry.npmjs.org/redent/-/redent-1.0.0.tgz"
+    },
+    "redial": {
+      "version": "0.4.1",
+      "from": "redial@latest",
+      "resolved": "https://registry.npmjs.org/redial/-/redial-0.4.1.tgz"
     },
     "reduce-reducers": {
       "version": "0.1.2",

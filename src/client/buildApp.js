@@ -1,42 +1,20 @@
-import React, { PropTypes } from 'react';
-import debug from 'debug';
-import warning from 'warning';
+import React from 'react';
+import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import { Router } from 'react-router';
+import { match, Router } from 'react-router';
+import debug from 'debug';
 
-import { runDeferrers } from 'decorators';
+import configManager from 'helpers/configManager';
 
-const logger = debug('ReactSeed-buildApp');
+const logger = debug('ReactSeed-clientEntry');
 
-export default function buildApp({
-  store,
-  routes,
-  history,
-  DevTools,
-}) {
-  // on router update, we fetch all the displayed component defer data
-  async function onUpdate() {
-    const { components } = this.state;
-
-    logger('onUpdate: Running deferrers');
-    try {
-      await runDeferrers(components, {
-        dispatch: store.dispatch,
-      });
-    } catch (e) {
-      warning(false, e.message);
-    } finally {
-      logger('onUpdate: Done');
-    }
-  }
-
+function buildApp({ store, routes, history, DevTools }) { // eslint-disable-line
   return (
     <Provider store={store} key="provider">
       <div className="flex layout vertical">
         <Router
           routes={routes}
           history={history}
-          onUpdate={onUpdate}
         />
         {DevTools ? <DevTools /> : null}
       </div>
@@ -44,9 +22,30 @@ export default function buildApp({
   );
 }
 
-buildApp.propTypes = {
-  store: PropTypes.object,
-  routes: PropTypes.object,
-  history: PropTypes.object,
-  DevTools: PropTypes.object,
-};
+export default function initialRender({
+  store,
+  routes,
+  history,
+  rootElement,
+}) {
+  const { pathname, search, hash } = window.location;
+  const location = `${pathname}${search}${hash}`;
+
+  match({ routes, location }, () => {
+    // render
+    logger('main: Rendering');
+    render(
+      buildApp({ store, routes, history }),
+    rootElement);
+    logger('main: Done');
+
+    if (__ONBUILD_REDUX_DEVTOOLS__ && configManager.get('REDUX_DEVTOOLS')) {
+      const DevTools = require('helpers/components/DevTools');
+      logger('main: Rendering Devtools');
+      render(
+        buildApp({ store, routes, history, DevTools }),
+      rootElement);
+      logger('main: Done');
+    }
+  });
+}

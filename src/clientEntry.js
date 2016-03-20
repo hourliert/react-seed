@@ -1,20 +1,16 @@
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import { browserHistory, match } from 'react-router';
+import { browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
-import { render } from 'react-dom';
 import cookies from 'js-cookie';
-import debug from 'debug';
 
 import { SERVER_RENDERING, untrackedStates } from 'config/frontEndServer';
 import getRootRoute from 'routes';
-import { buildApp, waitForPreboot } from 'client';
+import { initialRender, waitForPreboot, setupRedial } from 'client';
 import configureStore from 'store';
 import configManager from 'helpers/configManager';
 import { serverToClient } from 'helpers/immutable';
 
 injectTapEventPlugin();
-
-const logger = debug('ReactSeed-clientEntry');
 
 // get initial state/config
 const initialState = serverToClient(untrackedStates, window.__INITIAL_STATE__);
@@ -35,27 +31,21 @@ waitForPreboot(store, !(__ONBUILD_SERVER_RENDERING__ && SERVER_RENDERING));
 // get dom entry point
 const rootElement = document.getElementById('root');
 
-// get initial location
-const { pathname, search, hash } = window.location;
-const location = `${pathname}${search}${hash}`;
-
-match({ routes, location }, () => {
-  // render
-  logger('main: Rendering');
-  render(
-    buildApp({ store, routes, history }),
-  rootElement);
-  logger('main: Done');
-
-  if (__ONBUILD_REDUX_DEVTOOLS__ && configManager.get('REDUX_DEVTOOLS')) {
-    const DevTools = require('helpers/components/DevTools');
-    logger('main: Rendering Devtools');
-    render(
-      buildApp({ store, routes, history, DevTools }),
-    rootElement);
-    logger('main: Done');
-  }
+initialRender({
+  store,
+  history,
+  routes,
+  rootElement,
 });
+
+setupRedial({
+  store,
+  history,
+  routes,
+});
+
+delete window.__INITIAL_STATE__;
+delete window.__INITIAL_CONFIG__;
 
 if (__ONBUILD_REACT_PERF__ && configManager.get('REACT_PERF')) {
   window.Perf = require('react-addons-perf');
