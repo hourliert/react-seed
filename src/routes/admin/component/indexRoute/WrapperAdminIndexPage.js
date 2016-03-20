@@ -14,10 +14,11 @@ import logo192 from 'images/logo/logo-192x192.png';
 export default class WrapperAdminIndexPage extends Component {
   static propTypes = {
     onToggleLeftNav: PropTypes.func,
+    counter: PropTypes.number,
   };
 
   render() {
-    const { onToggleLeftNav } = this.props;
+    const { onToggleLeftNav, counter } = this.props;
 
     return (
       <CardsList flex>
@@ -30,6 +31,7 @@ export default class WrapperAdminIndexPage extends Component {
         >
           <div>
             Enjoy.
+            The counter value is {counter}
           </div>
           <FlatButton label="Get Started" primary onTouchTap={onToggleLeftNav} />
         </WelcomeCard>

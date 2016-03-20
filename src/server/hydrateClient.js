@@ -1,9 +1,9 @@
 import debug from 'debug';
 import warning from 'warning';
+import { trigger } from 'redial';
 
 import configManager from 'helpers/configManager';
 import preboot from 'config/preboot';
-import { runPrefetchers } from 'decorators';
 
 const logger = debug('ReactSeed-buildApp');
 
@@ -34,7 +34,7 @@ export async function getInitialState(
   logger('getInitialState: Running prefetchers');
 
   try {
-    await runPrefetchers(components, {
+    await trigger('fetch', components, {
       dispatch,
     });
   } catch (e) {

@@ -24,7 +24,7 @@
   "scripts": {
     "start": "builder concurrent frontend api",
     "frontend": "DEBUG_COLORS=true DEBUG='<%= appName %>-*' builder run serve",
-    "api": "nodemon api/server.js 8000",
+    "api": "nodemon --watch api api/server.js 8000",
     "build": "builder run build",
     "tdd": "builder run test:all:watch",
     "pretest": "builder run lint",
@@ -59,6 +59,7 @@
     "react-router": "^2.0.0",
     "react-router-redux": "^4.0.0",
     "react-tap-event-plugin": "^0.2.1",
+    "redial": "^0.4.1",
     "redux": "^3.3.1",
     "redux-actions": "^0.9.0",
     "redux-form": "^4.0.5",

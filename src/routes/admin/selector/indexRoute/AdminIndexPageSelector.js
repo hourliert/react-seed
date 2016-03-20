@@ -1,5 +1,7 @@
 import { createStructuredSelector } from 'reselect';
 
-export default createStructuredSelector({
+import { counterValueSelector } from 'selectors';
 
+export default createStructuredSelector({
+  counter: counterValueSelector,
 });
