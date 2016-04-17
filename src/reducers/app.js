@@ -1,4 +1,4 @@
-import { handleActions } from 'redux-actions';
+import { reducerFactory } from 'retax';
 import { fromJS } from 'immutable';
 
 import {
@@ -7,6 +7,7 @@ import {
   CLOSE_LEFTNAV,
   SET_API,
   SET_APP_BAR_DEPTH,
+  SET_INITIAL_RENDER_TIME,
 } from 'constants/actions';
 
 function getInitialState() {
@@ -17,25 +18,35 @@ function getInitialState() {
   });
 }
 
-export default handleActions({
-  [TOGGLE_LEFTNAV](state) {
-    return state.set('leftNavOpen', !state.get('leftNavOpen'));
-  },
+export default reducerFactory(
+  getInitialState(),
+  {
+    [SET_INITIAL_RENDER_TIME](state) {
+      return state.update('initialRenderTime', time => {
+        if (time) return time;
+        return +new Date();
+      });
+    },
 
-  [CLOSE_LEFTNAV](state) {
-    return state.set('leftNavOpen', false);
-  },
+    [TOGGLE_LEFTNAV](state) {
+      return state.set('leftNavOpen', !state.get('leftNavOpen'));
+    },
 
-  [OPEN_LEFTNAV](state) {
-    return state.set('leftNavOpen', true);
-  },
+    [CLOSE_LEFTNAV](state) {
+      return state.set('leftNavOpen', false);
+    },
 
-  [SET_API](state, action) {
-    const { apiName, Api } = action.payload;
-    return state.set(apiName, Api);
-  },
+    [OPEN_LEFTNAV](state) {
+      return state.set('leftNavOpen', true);
+    },
 
-  [SET_APP_BAR_DEPTH](state, action) {
-    return state.set('appBarDepth', action.payload);
-  },
-}, getInitialState());
+    [SET_API](state, action) {
+      const { apiName, Api } = action.payload;
+      return state.set(apiName, Api);
+    },
+
+    [SET_APP_BAR_DEPTH](state, action) {
+      return state.set('appBarDepth', action.payload);
+    },
+  }
+);

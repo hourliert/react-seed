@@ -30,7 +30,7 @@ describe('WrapperRootPage', () => {
         require('helpers/test/reactHelmetMock')
       );
       mockery.registerMock(
-        'decorators/pureRender',
+        'pure-render-decorator',
         require('helpers/test/decoratorsMock').pureRender
       );
       mockery.registerMock(
@@ -46,7 +46,7 @@ describe('WrapperRootPage', () => {
     afterEach(() => {
       mockery.deregisterMock('material-ui');
       mockery.deregisterMock('react-helmet');
-      mockery.deregisterMock('decorators/pureRender');
+      mockery.deregisterMock('pure-render-decorator');
       mockery.deregisterMock('components/LeftMenuDrawer');
       mockery.deregisterMock('components/ErrorManager');
       mockery.disable();

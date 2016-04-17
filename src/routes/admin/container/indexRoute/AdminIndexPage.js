@@ -1,32 +1,44 @@
 import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { annotator } from 'retax';
 import { provideHooks } from 'redial';
 
-import { pureRender } from 'decorators';
+import pureRender from 'pure-render-decorator';
 import WrapperAdminIndexPage from 'routes/admin/component/indexRoute';
 import AdminIndexPageSelector from 'routes/admin/selector/indexRoute';
-import * as AppActions from 'actions/app';
-import { fetchCounter } from 'actions/counter';
+import AppActionsCreator from 'actions/app';
+import CounterActionsCreator from 'actions/counter';
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch, props) {
+  const { appActions, counterActions } = props;
+
   return bindActionCreators({
-    ...AppActions,
+    ...appActions.export(),
+    ...counterActions.export(),
   }, dispatch);
 }
 
-function fetch({ dispatch }) {
-  return dispatch(fetchCounter());
+function fetch({ dispatch, counterActionsCreator }) {
+  return dispatch(counterActionsCreator.fetchCounter());
 }
 
 @pureRender
 @provideHooks({
   fetch,
+  defer: fetch,
+})
+@annotator.RetaxComponent({
+  actionsCreators: {
+    appActions: AppActionsCreator,
+    counterActions: CounterActionsCreator,
+  },
 })
 @connect(AdminIndexPageSelector, mapDispatchToProps)
 export default class AdminIndexPage extends Component {
   static propTypes = {
     toggleLeftNav: PropTypes.func,
+    fetchCounter: PropTypes.func,
     counter: PropTypes.number,
   };
 

@@ -1,22 +1,23 @@
-import Api from '../Api';
+import { annotator, AbstractApi } from 'retax';
 
-import configManager from 'helpers/configManager';
-
-export default class SessionApi extends Api {
-  constructor(...args) {
-    super(...args);
-    this.usersRoute = configManager.get('API_SERVER_USERS_ROUTE');
-  }
-
+@annotator.Api({ // eslint-disable-line
+  routes: {
+    session: '',
+  },
+})
+export default class SessionApi extends AbstractApi {
   login({ email, password }) {
-    return this.post(`${this.usersRoute}/signin`, { email, password });
+    return this.post({
+      url: `${this.routes.session}/signin`,
+      body: { email, password },
+    });
   }
 
   logout() {
-    return this.post(`${this.usersRoute}/me/signout`);
+    return this.post({ url: `${this.routes.session}/me/signout` });
   }
 
   getCurrent() {
-    return this.get(`${this.usersRoute}/me/session`);
+    return this.get({ url: `${this.routes.session}/me/session` });
   }
 }

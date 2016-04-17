@@ -1,4 +1,4 @@
-import { handleActions } from 'redux-actions';
+import { reducerFactory } from 'retax';
 
 import { userTheme, adminTheme } from 'themes';
 import {
@@ -6,12 +6,15 @@ import {
   SET_USER_THEME,
 } from 'constants/actions';
 
-export default handleActions({
-  [SET_ADMIN_THEME]() {
-    return adminTheme;
-  },
+export default reducerFactory(
+  userTheme,
+  {
+    [SET_ADMIN_THEME]() {
+      return adminTheme;
+    },
 
-  [SET_USER_THEME]() {
-    return userTheme;
-  },
-}, userTheme);
+    [SET_USER_THEME]() {
+      return userTheme;
+    },
+  }
+);

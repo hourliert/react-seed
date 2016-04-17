@@ -1,27 +1,37 @@
-import { createAction } from 'redux-actions';
+import { actionsCreatorFactory, annotator, AbstractActionsCreator } from 'retax';
 
+import UserApi from 'api/UserApi';
 import {
   GET_CURRENT_USER,
   SET_SELF_ENTITY,
-  MARK_USER_ERROR_AS_VIEWED,
 } from 'constants/actions';
-import {
-  setUserTheme,
-  setAdminTheme,
-} from 'actions/theme';
-import { apiThunkCreator } from 'helpers/actions/apiThunkCreator';
+import ThemeActionsCreator from 'actions/theme';
 
-export const markUserErrorAsViewed = createAction(MARK_USER_ERROR_AS_VIEWED);
+@annotator.ActionsCreator({ // eslint-disable-line
+  apis: {
+    userApi: UserApi,
+  },
+  actionsCreators: {
+    theme: ThemeActionsCreator,
+  },
+})
+export default class UserActionsCreator extends AbstractActionsCreator {
 
-export const _fetchCurrentUserCreator = createAction(
-  GET_CURRENT_USER.value,
-  ({ api }) => ({
-    asyncAwait: api.getCurrent(),
-    onResolve(resp, { dispatch }) {
-      dispatch(resp.isAdmin ? setAdminTheme() : setUserTheme());
-    },
-  })
-);
+  @annotator.action()
+  fetchCurrentUser = actionsCreatorFactory(
+    GET_CURRENT_USER.value,
+    () => ({
+      asyncAwait: this.apis.userApi.getCurrent(),
+      onResolve: ::this.fetchCurrentUserResolve,
+    })
+  );
 
-export const fetchCurrentUser = apiThunkCreator('UserApi', _fetchCurrentUserCreator);
-export const setSelfEntity = createAction(SET_SELF_ENTITY);
+  fetchCurrentUserResolve(resp, { dispatch }) {
+    const { setAdminTheme, setUserTheme } = this.actionsCreators.theme;
+
+    dispatch(resp.isAdmin ? setAdminTheme() : setUserTheme());
+  }
+
+  @annotator.action()
+  setSelfEntity = actionsCreatorFactory(SET_SELF_ENTITY);
+}

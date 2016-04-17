@@ -8,17 +8,11 @@ import favicon from 'serve-favicon';
 import morgan from 'morgan';
 import warning from 'warning';
 import debug from 'debug';
+import { retaxMiddleware } from 'retax';
 
-import makeIsomorphicConfig from 'config/isomorphic.config';
+import getRetaxConfig from './retax.config';
+import { makeIsomorphicConfig } from 'builder-react-fullstack';
 import { FRONTEND_SERVER_PORT, SERVER_RENDERING } from 'config/frontEndServer';
-import * as apiServerConfig from 'config/apiServer';
-import * as frontEndServerConfig from 'config/frontEndServer';
-import configManager from 'helpers/configManager';
-
-configManager.setConfig({
-  ...apiServerConfig,
-  ...frontEndServerConfig,
-});
 
 const logger = debug('ReactSeed-serverEntry');
 
@@ -48,13 +42,11 @@ app.use(favicon(join(__dirname, '/public/favicon.ico')));
 app.use(cookieParser());
 app.use('/public', Express.static(join(__dirname, './public')));
 
-if (__ONBUILD_SERVER_RENDERING__ && SERVER_RENDERING) {
-  // attach the react server renderer to the express app
-  app.use(/^(?!\/public\/.*).*$/, require('./server/rendering')());
-} else {
-  // attach a simple middleware to handle static serving
-  app.use(/^(?!\/public\/.*).*$/, require('./server/static')());
-}
+app.use(retaxMiddleware({
+  serverRendering: SERVER_RENDERING,
+  isomorphicTools: global.webpackIsomorphicTools,
+  retaxConfig: getRetaxConfig(true),
+}));
 
 console.log(`Starting front-end server`); //eslint-disable-line
 app.listen(port, (error) => {

@@ -19,7 +19,14 @@ describe('counter Action Creators', () => {
   });
 
   it('should exists', () => {
-    const counter = require('../counter');
-    expect(counter).to.be.ok();
+    const CounterActionsCreator = require('../counter');
+    expect(CounterActionsCreator).to.be.ok();
+  });
+
+  it('should create an action that fetch the counter', () => {
+    const CounterActionsCreator = require('../counter');
+
+    const ac = new CounterActionsCreator();
+    expect(ac).to.be.ok();
   });
 });

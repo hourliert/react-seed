@@ -15,7 +15,7 @@ describe('Make RootApp', () => {
       useCleanCache: true,
     });
     mockery.registerMock(
-      'decorators/pureRender',
+      'pure-render-decorator',
       require('helpers/test/decoratorsMock').pureRender
     );
     mockery.registerMock(
@@ -33,7 +33,7 @@ describe('Make RootApp', () => {
   });
 
   afterEach(() => {
-    mockery.deregisterMock('decorators/pureRender');
+    mockery.deregisterMock('pure-render-decorator');
     mockery.deregisterMock('react-redux');
     mockery.deregisterMock('radium');
     mockery.deregisterMock('material-ui/lib/styles');

@@ -1,7 +1,7 @@
 import React, { PropTypes, Component } from 'react';
-import CircularProgress from 'material-ui/lib/circular-progress';
+import CircularProgress from 'material-ui/CircularProgress';
 
-import { pureRender } from 'decorators';
+import pureRender from 'pure-render-decorator';
 import CardsList from 'components/CardsList';
 
 @pureRender

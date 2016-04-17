@@ -1,8 +1,8 @@
 import React, { PropTypes, Component } from 'react';
-import AppBar from 'material-ui/lib/app-bar';
+import AppBar from 'material-ui/AppBar';
 import Helmet from 'react-helmet';
 
-import { pureRender } from 'decorators';
+import pureRender from 'pure-render-decorator';
 import LeftMenuDrawer from 'components/LeftMenuDrawer';
 import ErrorManager from 'components/ErrorManager';
 

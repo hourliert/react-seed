@@ -1,4 +1,4 @@
-import { handleActions } from 'redux-actions';
+import { reducerFactory } from 'retax';
 import { fromJS } from 'immutable';
 
 import * as ACTIONS from 'constants/actions';
@@ -27,17 +27,20 @@ const reducers = Object.values(ACTIONS).reduce((res, ACTION) => {
   };
 }, {});
 
-export default handleActions({
-  ...reducers,
+export default reducerFactory(
+  getInitialState(),
+  {
+    ...reducers,
 
-  [ACTIONS.CLEAR_ERROR](state, action) {
-    return state.removeIn(['value', action.payload]);
-  },
+    [ACTIONS.CLEAR_ERROR](state, action) {
+      return state.removeIn(['value', action.payload]);
+    },
 
-  [ACTIONS.CLEAR_ERRORS]: getInitialState,
-  [ACTIONS.MARK_ALL_ERRORS_AS_VIEWED](state) {
-    return state.update('value', v => (
-      v.map(e => e.set('viewed', true))
-    ));
-  },
-}, getInitialState());
+    [ACTIONS.CLEAR_ERRORS]: getInitialState,
+    [ACTIONS.MARK_ALL_ERRORS_AS_VIEWED](state) {
+      return state.update('value', v => (
+        v.map(e => e.set('viewed', true))
+      ));
+    },
+  }
+);

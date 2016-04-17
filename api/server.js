@@ -13,7 +13,7 @@ const corsOptions = {
   },
 };
 
-var lastSession = {}; // eslint-disable-line
+var lastSession = undefined; // eslint-disable-line
 var counter = 0; // eslint-disable-line
 
 app.use(morgan('dev'));
@@ -30,26 +30,34 @@ app.post('/signin', (req, res) => {
 });
 
 app.post('/me/signout', (req, res) => {
-  res.json(lastSession);
-  lastSession = {};
+  res.json(lastSession || {});
+  lastSession = undefined;
 });
 
 app.get('/me/session', (req, res) => {
-  res.json(lastSession);
+  if (lastSession) {
+    res.json(lastSession);
+  } else {
+    res.sendStatus(401);
+  }
 });
 
 app.get('/me', (req, res) => {
-  res.json({
-    firstName: 'Thomas',
-    lastName: 'Hourlier',
-    email: 'thomas.hourlier@cnode.fr',
-    isAdmin: true,
-  });
+  if (lastSession) {
+    res.json({
+      firstName: 'Thomas',
+      lastName: 'Hourlier',
+      email: 'thomas.hourlier@cnode.fr',
+      isAdmin: true,
+    });
+  } else {
+    res.sendStatus(401);
+  }
 });
 
 app.get('/counter', (req, res) => {
   res.json({
-    counter: counter++,
+    counter: 42,
   });
 });
 

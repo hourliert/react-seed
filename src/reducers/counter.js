@@ -1,4 +1,4 @@
-import { handleActions } from 'redux-actions';
+import { reducerFactory } from 'retax';
 import { fromJS } from 'immutable';
 
 import {
@@ -11,8 +11,11 @@ function getInitialState() {
   });
 }
 
-export default handleActions({
-  [GET_COUNTER.SUCCESS](state, action) {
-    return state.set('value', action.payload.counter);
-  },
-}, getInitialState());
+export default reducerFactory(
+  getInitialState(),
+  {
+    [GET_COUNTER.SUCCESS](state, action) {
+      return state.set('value', action.payload.counter);
+    },
+  }
+);

@@ -13,3 +13,4 @@ export * from './reduxFormMock';
 export * from './storesStubs';
 export * from './victoryMock';
 export * from './graphModelMock';
+export * from './retaxMock';

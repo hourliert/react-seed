@@ -1,36 +1,28 @@
-import { createAction } from 'redux-actions';
-import warning from 'warning';
+import { actionsCreatorFactory, annotator, AbstractActionsCreator } from 'retax';
 
-import * as Apis from 'api/apis';
 import {
   TOGGLE_LEFTNAV,
   OPEN_LEFTNAV,
   CLOSE_LEFTNAV,
-  SET_API,
   SET_APP_BAR_DEPTH,
+  SET_INITIAL_RENDER_TIME,
 } from 'constants/actions';
 
-export const openLeftNav = createAction(OPEN_LEFTNAV);
-export const closeLeftNav = createAction(CLOSE_LEFTNAV);
-export const toggleLeftNav = createAction(TOGGLE_LEFTNAV);
-export const setApi = createAction(SET_API);
-export const setAppBarDepth = createAction(SET_APP_BAR_DEPTH);
+@annotator.ActionsCreator() // eslint-disable-line
+export default class AppActionsCreator extends AbstractActionsCreator {
 
-export function initializeApis(apiConfig) {
-  return (dispatch) => {
-    const { baseUrl, token } = apiConfig;
-    const apiNames = Object.keys(Apis);
+  @annotator.action()
+  openLeftNav = actionsCreatorFactory(OPEN_LEFTNAV);
 
-    apiNames.forEach(apiName => {
-      try {
-        const Api = Apis[apiName];
-        dispatch(setApi({
-          apiName,
-          Api: new Api({ baseUrl, token }),
-        }));
-      } catch (e) {
-        warning(false, e.message);
-      }
-    });
-  };
+  @annotator.action()
+  closeLeftNav = actionsCreatorFactory(CLOSE_LEFTNAV);
+
+  @annotator.action()
+  toggleLeftNav = actionsCreatorFactory(TOGGLE_LEFTNAV);
+
+  @annotator.action()
+  setAppBarDepth = actionsCreatorFactory(SET_APP_BAR_DEPTH);
+
+  @annotator.action()
+  setInitialRenderTime = actionsCreatorFactory(SET_INITIAL_RENDER_TIME);
 }

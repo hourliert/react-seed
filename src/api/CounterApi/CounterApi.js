@@ -1,14 +1,12 @@
-import Api from '../Api';
+import { annotator, AbstractApi } from 'retax';
 
-import configManager from 'helpers/configManager';
-
-export default class CounterApi extends Api {
-  constructor(...args) {
-    super(...args);
-    this.usersRoute = configManager.get('API_SERVER_USERS_ROUTE');
-  }
-
+@annotator.Api({ // eslint-disable-line
+  routes: {
+    counter: '/counter',
+  },
+})
+export default class CounterApi extends AbstractApi {
   getCounter() {
-    return this.get(`${this.usersRoute}/counter`);
+    return this.get({ url: `${this.routes.counter}` });
   }
 }

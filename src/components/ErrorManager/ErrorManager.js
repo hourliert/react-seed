@@ -1,14 +1,10 @@
 import React, { Component, PropTypes } from 'react';
-import Snackbar from 'material-ui/lib/snackbar';
-import Dialog from 'material-ui/lib/dialog';
-import FlatButton from 'material-ui/lib/flat-button';
-import Card from 'material-ui/lib/card/card';
-import CardHeader from 'material-ui/lib/card/card-header';
-import CardText from 'material-ui/lib/card/card-text';
+import Snackbar from 'material-ui/Snackbar';
+import Dialog from 'material-ui/Dialog';
+import FlatButton from 'material-ui/FlatButton';
+import { Card, CardHeader, CardText } from 'material-ui/Card';
 
-import dateformat from 'dateformat';
-
-import pureRender from 'decorators/pureRender';
+import pureRender from 'pure-render-decorator';
 import styles from './styles';
 
 @pureRender
@@ -27,6 +23,8 @@ export default class ErrorManager extends Component {
 
   constructor(...args) {
     super(...args);
+    this._handleDetailsTouchTap = ::this._handleDetailsTouchTap;
+    this._handleDialogClose = ::this._handleDialogClose;
     this.state = {
       dialogOpen: false,
     };
@@ -50,7 +48,7 @@ export default class ErrorManager extends Component {
       case 0:
         return '';
       case 1:
-        return errors[0].error.shortError;
+        return 'One Error';
       default:
         return 'Multiple Errors';
     }
@@ -73,7 +71,7 @@ export default class ErrorManager extends Component {
           autoHideDuration={timer}
           onRequestClose={markErrorsAsViewed}
           action="details"
-          onActionTouchTap={::this._handleDetailsTouchTap}
+          onActionTouchTap={this._handleDetailsTouchTap}
         />
 
         <Dialog
@@ -82,13 +80,13 @@ export default class ErrorManager extends Component {
             <FlatButton
               label="Ok"
               primary
-              onTouchTap={::this._handleDialogClose}
+              onTouchTap={this._handleDialogClose}
             />
           }
           autoScrollBodyContent
           modal={false}
           open={dialogOpen}
-          onRequestClose={::this._handleDialogClose}
+          onRequestClose={this._handleDialogClose}
         >
           <p>
             The following errors happened.
@@ -102,7 +100,7 @@ export default class ErrorManager extends Component {
               return (
                 <Card key={key} style={styles.card}>
                   <CardHeader
-                    title={`${dateformat(error.date, 'shortTime')} - ${error.longError}`}
+                    title={error.message}
                     actAsExpander
                     showExpandableButton
                   />
@@ -110,18 +108,7 @@ export default class ErrorManager extends Component {
                     <strong>Action causing the error:</strong> {key}
                   </CardText>
                   <CardText expandable>
-                    <strong>Http Status:</strong> {error.message} at {error.url}
-                  </CardText>
-                  <CardText expandable>
-                    <strong>Raw Server Error:</strong> {JSON.stringify(error.serverError)}
-                  </CardText>
-                  <CardText expandable>
-                    <strong>Stack:</strong>:
-                    <ul>
-                      {
-                        error.stack.map((l, i) => <li key={i}>{l}</li>)
-                      }
-                    </ul>
+                    <strong>Raw Server Error:</strong> {error.statusText}
                   </CardText>
                 </Card>
               );
