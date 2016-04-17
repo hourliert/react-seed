@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 
-import { pureRender } from 'decorators';
+import pureRender from 'pure-render-decorator';
 import styles from './styles';
 
 @pureRender

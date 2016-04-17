@@ -1,12 +1,11 @@
 import React, { Component, PropTypes } from 'react';
-import Avatar from 'material-ui/lib/avatar';
-import CardHeader from 'material-ui/lib/card/card-header';
-import CardTitle from 'material-ui/lib/card/card-title';
-import CardText from 'material-ui/lib/card/card-text';
+import Avatar from 'material-ui/Avatar';
+import { CardHeader, CardTitle, CardText } from 'material-ui/Card';
 import dateformat from 'dateformat';
 import warning from 'warning';
 
-import { card, pureRender } from 'decorators';
+import { card } from 'decorators';
+import pureRender from 'pure-render-decorator';
 import styles from './styles';
 
 @pureRender
@@ -24,6 +23,7 @@ export default class SessionInfo extends Component {
 
   constructor(...args) {
     super(...args);
+    this._computeRemainingTime = ::this._computeRemainingTime;
     this.state = {
       remainingTime: undefined,
     };
@@ -36,7 +36,7 @@ export default class SessionInfo extends Component {
 
   componentDidMount() {
     this._computeRemainingTime();
-    this.tickInterval = window.setInterval(::this._computeRemainingTime, 1000);
+    this.tickInterval = window.setInterval(this._computeRemainingTime, 1000);
   }
 
   componentWillUnmount() {

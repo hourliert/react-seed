@@ -36,7 +36,7 @@ describe('LoginCard', () => {
     });
 
     afterEach(() => {
-      mockery.deregisterMock('decorators/pureRender');
+      mockery.deregisterMock('pure-render-decorator');
       mockery.deregisterMock('material-ui');
       mockery.deregisterMock('components/WithLoading');
       mockery.deregisterMock('components/LoginForm');

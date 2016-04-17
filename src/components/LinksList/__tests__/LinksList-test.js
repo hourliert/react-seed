@@ -48,7 +48,7 @@ describe('LinksList', () => {
         useCleanCache: true,
       });
       mockery.registerMock(
-        'decorators/pureRender',
+        'pure-render-decorator',
         require('helpers/test/decoratorsMock').pureRender
       );
       mockery.registerMock(
@@ -64,7 +64,7 @@ describe('LinksList', () => {
     });
 
     afterEach(() => {
-      mockery.deregisterMock('decorators/pureRender');
+      mockery.deregisterMock('pure-render-decorator');
       mockery.deregisterMock('material-ui');
       mockery.deregisterMock('components/AccessChecker');
       mockery.deregisterMock('components/LinkItem');

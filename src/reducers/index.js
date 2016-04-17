@@ -1,14 +1,10 @@
-import { combineReducers } from 'redux';
-import { routerReducer } from 'react-router-redux';
-import { reducer as formReducer } from 'redux-form';
-
-import * as reducers from './reducers';
-
-const rootReducer = combineReducers({
-  ...reducers,
-
-  form: formReducer,
-  routing: routerReducer,
-});
-
-export default rootReducer;
+export { default as errors } from './errors';
+export { default as loading } from './loading';
+export { default as app } from './app';
+export { default as currentUser } from './currentUser';
+export { default as currentSession } from './currentSession';
+export { default as menus } from './menus';
+export { default as theme } from './theme';
+export { default as settings } from './settings';
+export { default as counter } from './counter';
+export { reducer as form } from 'redux-form';

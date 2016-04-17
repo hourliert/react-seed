@@ -1,4 +1,4 @@
-import { handleActions } from 'redux-actions';
+import { reducerFactory } from 'retax';
 import { fromJS } from 'immutable';
 
 import {
@@ -21,26 +21,29 @@ function upgradeRole(state) {
   ));
 }
 
-export default handleActions({
-  [SIGNIN.SUCCESS](state, action) {
-    return upgradeRole(state.mergeIn(['value'], action.payload));
-  },
+export default reducerFactory(
+  getInitialState(),
+  {
+    [SIGNIN.SUCCESS](state, action) {
+      return upgradeRole(state.mergeIn(['value'], action.payload));
+    },
 
-  [SIGNIN.ERROR]: getInitialState,
+    [SIGNIN.ERROR]: getInitialState,
 
-  [SIGNOUT.SUCCESS]: getInitialState,
-  [SIGNOUT.ERROR]: getInitialState,
+    [SIGNOUT.SUCCESS]: getInitialState,
+    [SIGNOUT.ERROR]: getInitialState,
 
-  [GET_CURRENT_SESSION.SUCCESS](state, action) {
-    return upgradeRole(state.mergeIn(['value'], action.payload));
-  },
+    [GET_CURRENT_SESSION.SUCCESS](state, action) {
+      return upgradeRole(state.mergeIn(['value'], action.payload));
+    },
 
-  [GET_CURRENT_SESSION.ERROR]: getInitialState,
+    [GET_CURRENT_SESSION.ERROR]: getInitialState,
 
-  [GET_CURRENT_USER.SUCCESS](state, action) {
-    return state.mergeIn(['value'], {
-      accessLevel: action.payload.isAdmin ?
-      userRoles.admin : userRoles.user,
-    });
-  },
-}, getInitialState());
+    [GET_CURRENT_USER.SUCCESS](state, action) {
+      return state.mergeIn(['value'], {
+        accessLevel: action.payload.isAdmin ?
+        userRoles.admin : userRoles.user,
+      });
+    },
+  }
+);

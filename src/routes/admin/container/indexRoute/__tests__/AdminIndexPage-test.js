@@ -7,7 +7,7 @@ import { shallow } from 'enzyme';
 
 import React from 'react';
 
-describe('AdminIndexPage', () => {
+describe.skip('AdminIndexPage', () => {
   beforeEach(() => {
     mockery.enable({
       warnOnReplace: false,
@@ -38,9 +38,9 @@ describe('AdminIndexPage', () => {
   it('should exists', () => {
     const AdminIndexPage = require('../AdminIndexPage');
 
-    const wrapper = shallow((
+    const wrapper = shallow(
       <AdminIndexPage />
-    ));
+    );
 
     expect(wrapper).to.have.length(1);
   });

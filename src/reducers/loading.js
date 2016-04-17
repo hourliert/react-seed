@@ -1,4 +1,4 @@
-import { handleActions } from 'redux-actions';
+import { reducerFactory } from 'retax';
 import { fromJS } from 'immutable';
 
 import * as ACTIONS from 'constants/actions';
@@ -37,6 +37,9 @@ const reducers = Object.values(ACTIONS).reduce((res, ACTION) => {
   };
 }, {});
 
-export default handleActions({
-  ...reducers,
-}, getInitialState());
+export default reducerFactory(
+  getInitialState(),
+  {
+    ...reducers,
+  }
+);

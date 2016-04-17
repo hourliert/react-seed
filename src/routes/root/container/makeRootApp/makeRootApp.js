@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from 'react';
-import { getMuiTheme } from 'material-ui/lib/styles';
+import { getMuiTheme } from 'material-ui/styles';
 import { connect } from 'react-redux';
 import Radium, { StyleRoot, Style } from 'radium';
 
-import { pureRender } from 'decorators';
+import pureRender from 'pure-render-decorator';
 import makeRootAppSelector from 'routes/root/selector/makeRootApp';
 
 import styles from './styles';

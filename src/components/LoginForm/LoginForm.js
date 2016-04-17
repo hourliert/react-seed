@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from 'react';
-import FlatButton from 'material-ui/lib/flat-button';
-import TextField from 'material-ui/lib/text-field';
+import FlatButton from 'material-ui/FlatButton';
+import TextField from 'material-ui/TextField';
 import { reduxForm } from 'redux-form';
 
-import pureRender from 'decorators/pureRender';
+import pureRender from 'pure-render-decorator';
 import validate from './validationRules';
 import styles from './styles';
 
@@ -40,6 +40,7 @@ export default class LoginForm extends Component {
         onReset={resetForm}
       >
         <TextField
+          id="loginform-input-1"
           type="text"
           hintText="Username"
           errorText={email.error}
@@ -47,6 +48,7 @@ export default class LoginForm extends Component {
         />
 
         <TextField
+          id="loginform-input-2"
           type="password"
           hintText="Password"
           errorText={password.error}

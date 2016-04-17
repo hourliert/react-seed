@@ -1,6 +1,6 @@
-import Colors from 'material-ui/lib/styles/colors';
-import Spacing from 'material-ui/lib/styles/spacing';
-import ColorManipulator from 'material-ui/lib/utils/color-manipulator';
+import * as Colors from 'material-ui/styles/colors';
+import Spacing from 'material-ui/styles/spacing';
+import { fade } from 'material-ui/utils/colorManipulator';
 
 export default {
   spacing: Spacing,
@@ -16,9 +16,9 @@ export default {
     alternateTextColor: Colors.white,
     canvasColor: Colors.white,
     borderColor: Colors.grey300,
-    disabledColor: ColorManipulator.fade(Colors.darkBlack, 0.3),
+    disabledColor: fade(Colors.darkBlack, 0.3),
     pickerHeaderColor: Colors.blueGrey500,
-    clockCircleColor: ColorManipulator.fade(Colors.darkBlack, 0.07),
+    clockCircleColor: fade(Colors.darkBlack, 0.07),
     shadowColor: Colors.fullBlack,
   },
 };

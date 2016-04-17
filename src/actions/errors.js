@@ -1,4 +1,4 @@
-import { createAction } from 'redux-actions';
+import { actionsCreatorFactory, annotator, AbstractActionsCreator } from 'retax';
 
 import {
   MARK_ALL_ERRORS_AS_VIEWED,
@@ -6,6 +6,15 @@ import {
   CLEAR_ERROR,
 } from 'constants/actions';
 
-export const markAllErrorsAsViewed = createAction(MARK_ALL_ERRORS_AS_VIEWED);
-export const clearErrors = createAction(CLEAR_ERRORS);
-export const clearError = createAction(CLEAR_ERROR);
+@annotator.ActionsCreator() // eslint-disable-line
+export default class ErrorsActionsCreator extends AbstractActionsCreator {
+
+  @annotator.action()
+  markAllErrorsAsViewed = actionsCreatorFactory(MARK_ALL_ERRORS_AS_VIEWED);
+
+  @annotator.action()
+  clearErrors = actionsCreatorFactory(CLEAR_ERRORS);
+
+  @annotator.action()
+  clearError = actionsCreatorFactory(CLEAR_ERROR);
+}

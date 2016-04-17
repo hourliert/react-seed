@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react';
-import CircularProgress from 'material-ui/lib/circular-progress';
+import CircularProgress from 'material-ui/CircularProgress';
 import classNames from 'classnames';
 
-import { pureRender } from 'decorators';
+import pureRender from 'pure-render-decorator';
 
 @pureRender
 export default class WithLoading extends Component {

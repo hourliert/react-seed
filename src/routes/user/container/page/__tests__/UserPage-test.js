@@ -7,7 +7,7 @@ import { shallow } from 'enzyme';
 
 import React from 'react';
 
-describe('UserPage', () => {
+describe.skip('UserPage', () => {
   beforeEach(() => {
     mockery.enable({
       warnOnReplace: false,

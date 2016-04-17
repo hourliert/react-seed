@@ -1,19 +1,12 @@
 import React, { Component, PropTypes } from 'react';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { pureRender } from 'decorators';
+import pureRender from 'pure-render-decorator';
 import WrapperAdminPage from 'routes/admin/component/page';
 import AdminPageSelector from 'routes/admin/selector/page';
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({
-
-  }, dispatch);
-}
-
 @pureRender
-@connect(AdminPageSelector, mapDispatchToProps)
+@connect(AdminPageSelector)
 export default class AdminPage extends Component {
   static propTypes = {
     children: PropTypes.node,

@@ -1,4 +1,4 @@
-import { handleActions } from 'redux-actions';
+import { reducerFactory } from 'retax';
 import { fromJS } from 'immutable';
 
 import {
@@ -18,10 +18,13 @@ function getInitialState() {
   });
 }
 
-export default handleActions({
-  [TOGGLE_SETTING](state, action) {
-    const { payload } = action;
+export default reducerFactory(
+  getInitialState(),
+  {
+    [TOGGLE_SETTING](state, action) {
+      const { payload } = action;
 
-    return state.updateIn(['value', payload.id, 'value'], v => !v);
-  },
-}, getInitialState());
+      return state.updateIn(['value', payload.id, 'value'], v => !v);
+    },
+  }
+);

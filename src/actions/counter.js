@@ -1,13 +1,20 @@
-import { apiThunkCreator } from 'helpers/actions';
-import { createAction } from 'redux-actions';
+import { actionsCreatorFactory, annotator, AbstractActionsCreator } from 'retax';
 
+import CounterApi from 'api/CounterApi';
 import {
   GET_COUNTER,
-} from 'constants/actions/counter';
+} from 'constants/actions';
 
-const _fetchCounter = createAction(
-  GET_COUNTER.value,
-  ({ api }) => ({ asyncAwait: api.getCounter() })
-);
+@annotator.ActionsCreator({ // eslint-disable-line
+  apis: {
+    counterApi: CounterApi,
+  },
+})
+export default class CounterActionsCreator extends AbstractActionsCreator {
 
-export const fetchCounter = apiThunkCreator('CounterApi', _fetchCounter);
+  @annotator.action()
+  fetchCounter = actionsCreatorFactory(
+    GET_COUNTER.value,
+    () => ({ asyncAwait: this.apis.counterApi.getCounter() })
+  );
+}

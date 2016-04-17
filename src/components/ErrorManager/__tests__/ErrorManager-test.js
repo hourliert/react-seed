@@ -20,7 +20,7 @@ describe('Error Manager', () => {
         useCleanCache: true,
       });
       mockery.registerMock(
-        'decorators/pureRender',
+        'pure-render-decorator',
         require('helpers/test/decoratorsMock').pureRender
       );
       mockery.registerMock('material-ui', require('helpers/test/materialUiMock'));
@@ -28,7 +28,7 @@ describe('Error Manager', () => {
 
     afterEach(() => {
       mockery.deregisterMock('material-ui');
-      mockery.deregisterMock('decorators/pureRender');
+      mockery.deregisterMock('pure-render-decorator');
       mockery.disable();
     });
 
@@ -55,13 +55,13 @@ describe('Error Manager', () => {
           errors={{
             ACTION: {
               error: {
-                message: 'My error',
+                message: 'One Error',
                 description: 'My description',
                 stack: ['High'],
                 url: 'google.com',
                 date: now,
-                shortError: 'My error',
-                longError: 'My error',
+                shortError: 'One Error',
+                longError: 'One Error',
               },
               viewed: false,
             },
@@ -74,12 +74,12 @@ describe('Error Manager', () => {
       expect(wrapper.find('Snackbar')).to.have.length(1);
       expect(wrapper.find('Dialog')).to.have.length(1);
 
-      expect(wrapper.find('Snackbar').prop('message')).to.equal('My error');
+      expect(wrapper.find('Snackbar').prop('message')).to.equal('One Error');
       expect(wrapper.find('Snackbar').prop('open')).to.equal(true);
 
       expect(wrapper.find('CardHeader')).to.have.length(1);
-      expect(wrapper.find('CardHeader').prop('title')).to.contain('My error');
-      expect(wrapper.find('CardText')).to.have.length(4);
+      expect(wrapper.find('CardHeader').prop('title')).to.contain('One Error');
+      expect(wrapper.find('CardText')).to.have.length(2);
     });
   });
 });

@@ -1,10 +1,9 @@
 import React, { Component, PropTypes } from 'react';
-import Avatar from 'material-ui/lib/avatar';
-import CardHeader from 'material-ui/lib/card/card-header';
-import CardTitle from 'material-ui/lib/card/card-title';
-import CardText from 'material-ui/lib/card/card-text';
+import Avatar from 'material-ui/Avatar';
+import { CardHeader, CardTitle, CardText } from 'material-ui/Card';
 
-import { card, pureRender } from 'decorators';
+import { card } from 'decorators';
+import pureRender from 'pure-render-decorator';
 
 @pureRender
 @card

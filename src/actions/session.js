@@ -1,15 +1,15 @@
-import { createAction } from 'redux-actions';
 import { push } from 'react-router-redux';
-import { apiThunkCreator, wrapWithPromise } from 'helpers/actions';
 import {
-  setAuthCredentials,
-  removeAuthCredentials,
-} from 'helpers/cookieManager';
-import { createApiConfig } from 'helpers/api';
+  annotator,
+  AbstractActionsCreator,
+  setAuthToken, removeAuthToken,
+  actionsCreatorFactory,
+} from 'retax';
+
+import SessionApi from 'api/SessionApi';
 
 import {
   SIGNIN,
-  AWAIT_SIGNIN,
   SIGNOUT,
   GET_CURRENT_SESSION,
 } from 'constants/actions';
@@ -17,59 +17,70 @@ import {
   SIGNIN as SIGNIN_ROUTE,
   ROOT,
 } from 'constants/routes';
-import { initializeApis } from 'actions/app';
-import { fetchCurrentUser } from 'actions/user';
-import { setUserTheme } from 'actions/theme';
+import UserActionsCreator from 'actions/user';
+import ThemeActionsCreator from 'actions/theme';
 
-export const _fetchCurrentSessionCreator = createAction(
-  GET_CURRENT_SESSION.value,
-  ({ api }) => ({ asyncAwait: api.getCurrent() })
-);
+@annotator.ActionsCreator({ // eslint-disable-line
+  apis: {
+    session: SessionApi,
+  },
+  actionsCreators: {
+    user: UserActionsCreator,
+    theme: ThemeActionsCreator,
+  },
+})
+export default class SessionActionsCreator extends AbstractActionsCreator {
 
-export const _signinCreator = createAction(
-  SIGNIN.value,
-  ({ api, ...args }) => ({
-    asyncAwait: api.login(args),
-    async onResolve(resp, { dispatch }) {
-      const { token } = resp;
-      const apiConfig = createApiConfig({ token });
+  @annotator.action()
+  fetchCurrentSession = actionsCreatorFactory(
+    GET_CURRENT_SESSION.value,
+    () => ({ asyncAwait: this.apis.session.getCurrent() })
+  );
 
-      setAuthCredentials(token);
-      dispatch(initializeApis(apiConfig));
+  @annotator.action()
+  signin = actionsCreatorFactory(
+    SIGNIN.value,
+    (args) => ({
+      asyncAwait: this.apis.session.login(args),
+      onResolve: ::this.signinResolve,
+      onReject: ::this.signinReject,
+    })
+  );
 
-      await Promise.all([
-        dispatch(fetchCurrentUser()),
-      ]);
+  async signinResolve(resp, { dispatch }) {
+    const { token } = resp;
 
-      dispatch(push(ROOT));
-    },
+    dispatch(setAuthToken(token));
 
-    onReject() {
-      removeAuthCredentials();
-    },
-  })
-);
+    await Promise.all([
+      dispatch(this.actionsCreators.user.fetchCurrentUser()),
+    ]);
 
-export const _signoutCreator = createAction(
-  SIGNOUT.value,
-  ({ api }) => ({
-    asyncAwait: api.logout(),
-    onResolve(resp, { dispatch }) {
-      removeAuthCredentials();
-      dispatch(push(SIGNIN_ROUTE));
-      dispatch(setUserTheme());
-    },
+    dispatch(push(ROOT));
+  }
 
-    onReject(resp, { dispatch }) {
-      removeAuthCredentials();
-      dispatch(setUserTheme());
-    },
-  })
-);
+  signinReject(resp, { dispatch }) {
+    dispatch(removeAuthToken());
+  }
 
-export const fetchCurrentSession = apiThunkCreator('SessionApi', _fetchCurrentSessionCreator);
+  @annotator.action()
+  signout = actionsCreatorFactory(
+    SIGNOUT.value,
+    () => ({
+      asyncAwait: this.apis.session.logout(),
+      onResolve: ::this.signoutResolve,
+      onReject: ::this.signoutReject,
+    })
+  );
 
-export const signin = apiThunkCreator('SessionApi', _signinCreator);
-export const awaitSignin = wrapWithPromise(AWAIT_SIGNIN, signin);
+  signoutResolve(resp, { dispatch }) {
+    dispatch(removeAuthToken());
+    dispatch(push(SIGNIN_ROUTE));
+    dispatch(this.actionsCreators.theme.setUserTheme());
+  }
 
-export const signout = apiThunkCreator('SessionApi', _signoutCreator);
+  signoutReject(resp, { dispatch }) {
+    dispatch(removeAuthToken());
+    dispatch(this.actionsCreators.theme.setUserTheme());
+  }
+}

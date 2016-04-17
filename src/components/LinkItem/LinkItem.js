@@ -1,10 +1,10 @@
 import React, { Component, PropTypes } from 'react';
-import FontIcon from 'material-ui/lib/font-icon';
-import MenuItem from 'material-ui/lib/menus/menu-item';
-import Divider from 'material-ui/lib/divider';
+import FontIcon from 'material-ui/FontIcon';
+import MenuItem from 'material-ui/MenuItem';
+import Divider from 'material-ui/Divider';
 import { Link } from 'react-router';
 
-import pureRender from 'decorators/pureRender';
+import pureRender from 'pure-render-decorator';
 
 @pureRender
 export default class LinkItem extends Component {
@@ -16,6 +16,13 @@ export default class LinkItem extends Component {
   static defaultProps = {
     item: {},
   };
+
+  constructor(...args) {
+    super(...args);
+
+    this._onLinkClick = ::this._onLinkClick;
+    this._onItemTouched = ::this._onItemTouched;
+  }
 
   _onLinkClick(e) {
     e.preventDefault();
@@ -36,9 +43,9 @@ export default class LinkItem extends Component {
         <MenuItem
           linkButton
           containerElement={
-            <Link to={item.url} onClick={::this._onLinkClick} />
+            <Link to={item.url} onClick={this._onLinkClick} />
           }
-          onTouchTap={::this._onItemTouched}
+          onTouchTap={this._onItemTouched}
           disabled={item.disabled}
           leftIcon={
             <FontIcon className="material-icons">{item.icon}</FontIcon>

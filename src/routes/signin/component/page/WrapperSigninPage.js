@@ -1,7 +1,7 @@
 import React, { PropTypes, Component } from 'react';
-import Paper from 'material-ui/lib/paper';
+import Paper from 'material-ui/Paper';
 
-import { pureRender } from 'decorators';
+import pureRender from 'pure-render-decorator';
 import CardsList from 'components/CardsList';
 import LoginCard from 'components/LoginCard';
 

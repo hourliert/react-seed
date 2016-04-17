@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
-import { pureRender } from 'decorators';
+import pureRender from 'pure-render-decorator';
 import WrapperInfoPage from 'routes/info/component/page';
 import InfoPageSelector from 'routes/info/selector/page';
 
