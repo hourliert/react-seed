@@ -2,24 +2,33 @@ import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
+import { annotator } from 'retax';
 
-import { pureRender } from 'decorators';
+import pureRender from 'pure-render-decorator';
 import WrapperRootPage from 'routes/root/component/page';
 import RootPageSelector from 'routes/root/selector/page';
-import * as AppActions from 'actions/app';
-import * as ErrorActions from 'actions/errors';
+import AppActionsCreator from 'actions/app';
+import ErrorsActionsCreator from 'actions/errors';
 
 import { CURRENT_VERSION } from 'config/frontEndServer';
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch, props) {
+  const { appActions, errorsActions } = props;
+
   return bindActionCreators({
-    ...AppActions,
-    ...ErrorActions,
+    ...appActions.export(),
+    ...errorsActions.export(),
     goToLink: push,
   }, dispatch);
 }
 
 @pureRender
+@annotator.RetaxComponent({
+  actionsCreators: {
+    appActions: AppActionsCreator,
+    errorsActions: ErrorsActionsCreator,
+  },
+})
 @connect(RootPageSelector, mapDispatchToProps)
 export default class RootPage extends Component {
   static propTypes = {

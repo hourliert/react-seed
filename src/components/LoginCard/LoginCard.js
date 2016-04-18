@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 
-import { card, pureRender } from 'decorators';
+import { card } from 'decorators';
+import pureRender from 'pure-render-decorator';
 import WithLoading from 'components/WithLoading';
 import LoginForm from 'components/LoginForm';
 

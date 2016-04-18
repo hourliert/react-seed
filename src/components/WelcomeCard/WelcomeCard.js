@@ -1,10 +1,8 @@
 import React, { Component, PropTypes } from 'react';
-import CardTitle from 'material-ui/lib/card/card-title';
-import CardActions from 'material-ui/lib/card/card-actions';
-import CardText from 'material-ui/lib/card/card-text';
-import CardMedia from 'material-ui/lib/card/card-media';
+import { CardTitle, CardActions, CardText, CardMedia } from 'material-ui/Card';
 
-import { card, pureRender } from 'decorators';
+import { card } from 'decorators';
+import pureRender from 'pure-render-decorator';
 import styles from './styles';
 
 @pureRender

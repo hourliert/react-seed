@@ -15,10 +15,10 @@ function isThunk(resolved) {
   return typeof resolved === 'function';
 }
 
-export default function asyncAwaitMiddleware({
+export default function asyncAwaitMiddlewareFactory({
   promiseTypeSuffixes = defaultTypes,
 } = {}) {
-  return (store) => {
+  return function asyncAwaitMiddleware(store) {
     const { dispatch } = store;
     return next => async function actionner(action) {
       if (!isAsyncAwait(action.payload)) {

@@ -12,7 +12,7 @@ import React from 'react';
 
 const noop = () => {};
 
-describe('SignoutPage', () => {
+describe.skip('SignoutPage', () => {
   beforeEach(() => {
     mockery.enable({
       warnOnReplace: false,

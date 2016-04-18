@@ -1,4 +1,4 @@
-import { handleActions } from 'redux-actions';
+import { reducerFactory } from 'retax';
 import { fromJS } from 'immutable';
 
 import {
@@ -10,13 +10,16 @@ function getInitialState() {
   return fromJS({ isLoading: false, value: {} });
 }
 
-export default handleActions({
-  [GET_CURRENT_USER.SUCCESS](state, action) {
-    return state.mergeIn(['value'], action.payload);
-  },
+export default reducerFactory(
+  getInitialState(),
+  {
+    [GET_CURRENT_USER.SUCCESS](state, action) {
+      return state.mergeIn(['value'], action.payload);
+    },
 
-  [GET_CURRENT_USER.ERROR]: getInitialState,
+    [GET_CURRENT_USER.ERROR]: getInitialState,
 
-  [SIGNOUT.SUCCESS]: getInitialState,
-  [SIGNOUT.ERROR]: getInitialState,
-}, getInitialState());
+    [SIGNOUT.SUCCESS]: getInitialState,
+    [SIGNOUT.ERROR]: getInitialState,
+  }
+);

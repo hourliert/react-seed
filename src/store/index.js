@@ -1,1 +1,1 @@
-export default from './configureStore';
+export default from './getMiddlewares';

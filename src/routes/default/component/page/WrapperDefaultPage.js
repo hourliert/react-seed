@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { pureRender } from 'decorators';
+import pureRender from 'pure-render-decorator';
 
 @pureRender
 export default class WrapperDefaultPage extends Component {

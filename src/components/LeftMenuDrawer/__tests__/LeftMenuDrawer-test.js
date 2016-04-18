@@ -19,7 +19,7 @@ describe('LeftMenuDrawer', () => {
       useCleanCache: true,
     });
     mockery.registerMock(
-      'decorators/pureRender',
+      'pure-render-decorator',
       require('helpers/test/decoratorsMock').pureRender
     );
     mockery.registerMock(
@@ -33,7 +33,7 @@ describe('LeftMenuDrawer', () => {
   });
 
   afterEach(() => {
-    mockery.deregisterMock('decorators/pureRender');
+    mockery.deregisterMock('pure-render-decorator');
     mockery.deregisterMock('material-ui');
     mockery.deregisterMock('components/LinksList');
     mockery.disable();

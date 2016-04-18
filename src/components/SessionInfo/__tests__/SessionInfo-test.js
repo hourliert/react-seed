@@ -64,7 +64,7 @@ describe('SessionInfo', () => {
     });
   });
 
-  describe('With DOM', () => {
+  describe.skip('With DOM', () => {
     let jsdom;
 
     beforeEach(() => {
@@ -75,7 +75,7 @@ describe('SessionInfo', () => {
         useCleanCache: true,
       });
       mockery.registerMock(
-        'decorators/pureRender',
+        'pure-render-decorator',
         require('helpers/test/decoratorsMock').pureRender
       );
       mockery.registerMock(
@@ -85,7 +85,7 @@ describe('SessionInfo', () => {
     });
 
     afterEach(() => {
-      mockery.deregisterMock('decorators/pureRender');
+      mockery.deregisterMock('pure-render-decorator');
       mockery.deregisterMock('material-ui');
       mockery.disable();
       jsdom();

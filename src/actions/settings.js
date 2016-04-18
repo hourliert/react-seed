@@ -1,7 +1,12 @@
-import { createAction } from 'redux-actions';
+import { actionsCreatorFactory, annotator, AbstractActionsCreator } from 'retax';
 
 import {
   TOGGLE_SETTING,
 } from 'constants/actions';
 
-export const toggleSetting = createAction(TOGGLE_SETTING);
+@annotator.ActionsCreator() // eslint-disable-line
+export default class SettingsActionsCreator extends AbstractActionsCreator {
+
+  @annotator.action()
+  toggleSetting = actionsCreatorFactory(TOGGLE_SETTING);
+}

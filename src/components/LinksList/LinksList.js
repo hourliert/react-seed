@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 
-import pureRender from 'decorators/pureRender';
+import pureRender from 'pure-render-decorator';
 import AccessChecker from 'components/AccessChecker';
 import LinkItem from 'components/LinkItem';
 

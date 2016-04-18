@@ -1,21 +1,19 @@
 import { isError } from 'flux-standard-action';
 import { push } from 'react-router-redux';
-import { signout } from 'actions/session';
+import { removeAuthToken } from 'retax';
 
 import {
   SIGNIN,
 } from 'constants/routes';
 
-export default function authMiddleware({ dispatch, getState }) {
+export default function authMiddleware({ dispatch }) {
   return next => action => {
-    const { routing } = getState();
     const shouldRedirect = isError(action) &&
-    (action.payload.code === 401) &&
-    routing.location.pathname !== SIGNIN;
+      (action.payload.status === 401);
 
     if (shouldRedirect) {
       next(action);
-      dispatch(signout());
+      dispatch(removeAuthToken());
       return dispatch(push(SIGNIN));
     }
 

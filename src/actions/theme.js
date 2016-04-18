@@ -1,9 +1,16 @@
-import { createAction } from 'redux-actions';
+import { actionsCreatorFactory, annotator, AbstractActionsCreator } from 'retax';
 
 import {
   SET_USER_THEME,
   SET_ADMIN_THEME,
 } from 'constants/actions';
 
-export const setUserTheme = createAction(SET_USER_THEME);
-export const setAdminTheme = createAction(SET_ADMIN_THEME);
+@annotator.ActionsCreator() // eslint-disable-line
+export default class ThemeActionsCreator extends AbstractActionsCreator {
+
+  @annotator.action()
+  setUserTheme = actionsCreatorFactory(SET_USER_THEME);
+
+  @annotator.action()
+  setAdminTheme = actionsCreatorFactory(SET_ADMIN_THEME);
+}

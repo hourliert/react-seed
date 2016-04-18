@@ -1,9 +1,9 @@
 import React, { PropTypes, Component } from 'react';
 import Helmet from 'react-helmet';
-import Card from 'material-ui/lib/card/card';
-import FlatButton from 'material-ui/lib/flat-button';
+import { Card } from 'material-ui/Card';
+import FlatButton from 'material-ui/FlatButton';
 
-import { pureRender } from 'decorators';
+import pureRender from 'pure-render-decorator';
 import CardsList from 'components/CardsList';
 import WelcomeCard from 'components/WelcomeCard';
 
@@ -14,10 +14,11 @@ import logo192 from 'images/logo/logo-192x192.png';
 export default class WrapperAdminIndexPage extends Component {
   static propTypes = {
     onToggleLeftNav: PropTypes.func,
+    counter: PropTypes.number,
   };
 
   render() {
-    const { onToggleLeftNav } = this.props;
+    const { onToggleLeftNav, counter } = this.props;
 
     return (
       <CardsList flex>
@@ -30,6 +31,7 @@ export default class WrapperAdminIndexPage extends Component {
         >
           <div>
             Enjoy.
+            The counter value is {counter}
           </div>
           <FlatButton label="Get Started" primary onTouchTap={onToggleLeftNav} />
         </WelcomeCard>

@@ -1,6 +1,4 @@
 import chai, { expect } from 'chai';
-import mockery from 'mockery';
-import sinon from 'sinon';
 import dirtyChai from 'dirty-chai';
 import sinonChai from 'sinon-chai';
 chai.use(dirtyChai);
@@ -11,34 +9,8 @@ import fetch from 'isomorphic-fetch';
 fetchMock.useNonGlobalFetch(fetch);
 
 describe('User Api', () => {
-  beforeEach(() => {
-    mockery.enable({
-      warnOnReplace: false,
-      warnOnUnregistered: false,
-      useCleanCache: true,
-    });
-
-    mockery.registerMock(
-      'helpers/configManager',
-      require('helpers/test/helpersMock').configManager
-    );
-  });
-
-  afterEach(() => {
-    mockery.deregisterMock('helpers/configManager');
-    mockery.disable();
-  });
-
   it('should get the current user', () => {
     const UserApi = require('../UserApi');
-    const api = new UserApi({
-      baseUrl: 'http://api.server',
-    });
-
-    api.get = sinon.spy();
-
-    expect(api.get).to.have.not.been.called();
-    api.getCurrent();
-    expect(api.get).to.have.been.calledWith('API_SERVER_USERS_ROUTE/me');
+    expect(UserApi).to.be.ok();
   });
 });

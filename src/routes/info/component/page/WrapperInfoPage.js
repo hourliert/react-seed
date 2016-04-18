@@ -1,8 +1,8 @@
 import React, { PropTypes, Component } from 'react';
 import Helmet from 'react-helmet';
-import Card from 'material-ui/lib/card/card';
+import { Card } from 'material-ui/Card';
 
-import { pureRender } from 'decorators';
+import pureRender from 'pure-render-decorator';
 import CardsList from 'components/CardsList';
 import UserInfo from 'components/UserInfo';
 import SessionInfo from 'components/SessionInfo';

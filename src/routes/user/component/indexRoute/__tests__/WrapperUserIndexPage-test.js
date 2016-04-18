@@ -18,10 +18,20 @@ describe('WrapperUserIndexPage', () => {
       'decorators',
       require('helpers/test/decoratorsMock')
     );
+    mockery.registerMock(
+      'components/CardsList',
+      require('helpers/test/componentsMock').CardsList
+    );
+    mockery.registerMock(
+      'components/WelcomeCard',
+      require('helpers/test/componentsMock').WelcomeCard
+    );
   });
 
   afterEach(() => {
     mockery.deregisterMock('decorators');
+    mockery.deregisterMock('components/CardsList');
+    mockery.deregisterMock('components/WelcomeCard');
     mockery.disable();
   });
 
@@ -42,6 +52,8 @@ describe('WrapperUserIndexPage', () => {
       <WrapperUserIndexPage />
     ));
 
+    expect(wrapper.find('CardsList')).to.have.length(1);
+    expect(wrapper.find('WelcomeCard')).to.have.length(1);
     expect(wrapper.find('div')).to.have.length(1);
   });
 });

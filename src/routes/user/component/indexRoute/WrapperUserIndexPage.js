@@ -1,9 +1,9 @@
 import React, { PropTypes, Component } from 'react';
 import Helmet from 'react-helmet';
-import Card from 'material-ui/lib/card/card';
-import FlatButton from 'material-ui/lib/flat-button';
+import { Card } from 'material-ui/Card';
+import FlatButton from 'material-ui/FlatButton';
 
-import { pureRender } from 'decorators';
+import pureRender from 'pure-render-decorator';
 import CardsList from 'components/CardsList';
 import WelcomeCard from 'components/WelcomeCard';
 
