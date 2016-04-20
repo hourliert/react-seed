@@ -1,4 +1,4 @@
-# ReactSeed [![Build Status](https://travis-ci.org/hourliert/react-seed.svg?branch=develop)](https://travis-ci.org/hourliert/react-seed)
+# ReactSeed [![Build Status](https://travis-ci.org/hourliert/react-seed.svg?branch=master)](https://travis-ci.org/hourliert/react-seed)
 
 This project is a generic react seed. This project is production ready.
 All the build process is handled by [builder-react-fullstack](https://github.com/hourliert/builder-react-fullstack).
@@ -8,7 +8,7 @@ All the build process is handled by [builder-react-fullstack](https://github.com
 ### Libraries:
 * [retax](https://github.com/hourliert/retax)
 * [React](https://facebook.github.io/react/) >15.0.0
-* [Redux](http://redux.js.org/) 
+* [Redux](http://redux.js.org/)
 * [react-router](https://github.com/reactjs/react-router)
 * [react-router-redux](https://github.com/reactjs/react-router-redux)
 * [ImmutableJS](https://facebook.github.io/immutable-js/)
@@ -44,7 +44,7 @@ All the build process is handled by [builder-react-fullstack](https://github.com
 
 ```
 npm install
-npm start 
+npm start
 ```
 
 This will run the fake api backend and the frontend server.
@@ -68,7 +68,7 @@ In development, the app includes **react-hot-reload** allowing edit in real time
 * `./src/selectors`: Reselect base selectors
 * `./src/store`: Middlewares and store enhancers
 * `./src/themes`: Theme configuration
-* `./src/**/__tests__/`: Test code 
+* `./src/**/__tests__/`: Test code
 * `./src/retax.config.js`: [retax](https://github.com/hourliert/retax) configuration file
 * `./src/clientEntry.js`: Client entry
 * `./src/serverEntry.js`: (Front-end) Server entry
