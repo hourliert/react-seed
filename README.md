@@ -1,4 +1,6 @@
-# RetaxSeed [![Build Status](https://travis-ci.org/retaxJS/retax-seed.svg?branch=master)](https://travis-ci.org/retaxJS/retax-seed)
+# RetaxSeed
+[![Build Status][travis-badge]][travis-link]
+[![codecov.io][codecov-badge]][codecov-link]
 
 This project is a generic react seed using retax. This project is production ready.
 All the build process is handled by [builder-react-fullstack](https://github.com/hourliert/builder-react-fullstack).
@@ -90,3 +92,8 @@ In development, the app includes **react-hot-reload** allowing edit in real time
 ## Roadmap
 * Migrate the seed to **typescript** when typescript@2.0.0 is out
 * Migrate the test framework to **jest**. This will reduce the number of dependencies.
+
+[travis-badge]: https://travis-ci.org/retaxJS/retax-seed.svg?branch=master
+[travis-link]: https://travis-ci.org/retaxJS/retax-seed
+[codecov-badge]: https://codecov.io/github/retaxJS/retax-seed/coverage.svg?branch=master
+[codecov-link]: https://codecov.io/github/retaxJS/retax-seed?branch=master
