@@ -1,6 +1,6 @@
-# ReactSeed [![Build Status](https://travis-ci.org/hourliert/react-seed.svg?branch=master)](https://travis-ci.org/hourliert/react-seed)
+# RetaxSeed [![Build Status](https://travis-ci.org/retaxJS/retax-seed.svg?branch=master)](https://travis-ci.org/retaxJS/retax-seed)
 
-This project is a generic react seed. This project is production ready.
+This project is a generic react seed using retax. This project is production ready.
 All the build process is handled by [builder-react-fullstack](https://github.com/hourliert/builder-react-fullstack).
 
 ## What does this seed include?

@@ -35,12 +35,12 @@ const data = {
   registryLogin: env.REGISTRY_LOGIN,
   registryPassword: env.REGISTRY_PASSWORD,
   registryEmail: env.REGISTRY_EMAIL,
-  imageName: 'ReactSeed',
+  imageName: 'RetaxSeed',
   imageVersion: tag,
   webhookToken: env.BUILDER_TOKEN,
 };
 
-console.log(`Sending webhook to ${env.BUILDER_URL}/build-image. Building: ReactSeed:${tag}`); //eslint-disable-line
+console.log(`Sending webhook to ${env.BUILDER_URL}/build-image. Building: RetaxSeed:${tag}`); //eslint-disable-line
 const client = request.createClient(env.BUILDER_URL);
 client.post('/build-image', data, {
   timeout: 1800000,

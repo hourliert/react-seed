@@ -1,6 +1,6 @@
 prod:
-  image: registry.cnode.fr/ReactSeed:1.0.1
-  container_name: ReactSeed
+  image: registry.cnode.fr/RetaxSeed:1.0.1
+  container_name: RetaxSeed
   expose:
    - "5000"
   environment:
@@ -10,19 +10,19 @@ prod:
     NODE_ENV: production
 
 staging:
-  image: registry.cnode.fr/ReactSeed:develop
-  container_name: ReactSeed-staging
+  image: registry.cnode.fr/RetaxSeed:develop
+  container_name: RetaxSeed-staging
   expose:
    - "5000"
   environment:
     SERVER_RENDERING: 1
     REDUX_DEVTOOLS: 0
     FRONTEND_SERVER_PORT: 5000
-    DEBUG: "ReactSeed-*"
+    DEBUG: "RetaxSeed-*"
 
 local:
   build: .
-  container_name: ReactSeed-local
+  container_name: RetaxSeed-local
   ports:
     - "5000:5000"
   environment:
@@ -33,11 +33,11 @@ local:
 
 local-develop:
   build: .
-  container_name: ReactSeed-local-develop
+  container_name: RetaxSeed-local-develop
   ports:
     - "5000:5000"
   environment:
     SERVER_RENDERING: 1
     REDUX_DEVTOOLS: 0
     FRONTEND_SERVER_PORT: 5000
-    DEBUG: "ReactSeed-*"
+    DEBUG: "RetaxSeed-*"

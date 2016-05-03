@@ -15,7 +15,7 @@ import getRetaxConfig from './retax.config';
 import { makeIsomorphicConfig } from 'builder-react-fullstack';
 import { FRONTEND_SERVER_PORT, SERVER_RENDERING } from 'config/frontEndServer';
 
-const logger = debug('ReactSeed-serverEntry');
+const logger = debug('RetaxSeed-serverEntry');
 
 async function initIsomorphicAssets(context) {
   global.webpackIsomorphicTools = new WebpackIsomorphicTools(

@@ -50,7 +50,7 @@ export default class LeftMenuDrawer extends Component {
         docked={false}
         onRequestChange={this._onRequestChange}
       >
-        <AppBar title="ReactSeed" showMenuIconButton={false} />
+        <AppBar title="RetaxSeed" showMenuIconButton={false} />
         <LinksList
           links={menuItems}
           onLinkTouch={this._onLinkTouch}

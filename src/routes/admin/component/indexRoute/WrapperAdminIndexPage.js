@@ -26,7 +26,7 @@ export default class WrapperAdminIndexPage extends Component {
 
         <WelcomeCard
           container={<Card style={styles.welcomeCard} />}
-          title="Welcome on ReactSeed"
+          title="Welcome on RetaxSeed"
           logo={logo192}
         >
           <div>

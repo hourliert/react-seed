@@ -1,5 +1,5 @@
 {
-  "name": "react-seed",
+  "name": "retax-seed",
   "version": "1.0.1",
   "description": "<%= appName %> written with React",
   "engines": {
@@ -13,6 +13,7 @@
   "keywords": [
     "react",
     "seed",
+    "retax",
     "<%= appName %>"
   ],
   "author": "<%= author %>",

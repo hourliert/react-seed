@@ -46,15 +46,15 @@ export default class WrapperRootPage extends Component {
     return (
       <div className="flex layout vertical">
         <Helmet
-          title="ReactSeed"
+          title="RetaxSeed"
           meta={[
-            { name: 'description', content: 'ReactSeed Web Application' },
+            { name: 'description', content: 'RetaxSeed Web Application' },
             { name: 'viewport', content: 'width=device-width, initial-scale=1' },
             { name: 'mobile-web-app-capable', content: 'yes' },
-            { name: 'application-name', content: 'ReactSeed' },
+            { name: 'application-name', content: 'RetaxSeed' },
             { name: 'apple-mobile-web-app-capable', content: 'yes' },
             { name: 'apple-mobile-web-app-status-bar-style', content: 'black' },
-            { name: 'apple-mobile-web-app-title', content: 'ReactSeed' },
+            { name: 'apple-mobile-web-app-title', content: 'RetaxSeed' },
 
             { name: 'theme-color', content: palette.primary1Color },
             { name: 'msapplication-TileColor', content: palette.primary1Color },
@@ -66,7 +66,7 @@ export default class WrapperRootPage extends Component {
           ]}
         />
         <AppBar
-          title={`ReactSeed - ${this.props.version}`}
+          title={`RetaxSeed - ${this.props.version}`}
           onLeftIconButtonTouchTap={toggleLeftNav}
           zDepth={appBarDepth}
         />
