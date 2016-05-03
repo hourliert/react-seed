@@ -11,6 +11,8 @@ import warning from 'warning';
 import debug from 'debug';
 import { retaxMiddleware } from 'retax';
 
+import { genStaticIndex, genDynamicIndex } from 'helpers/htmlIndex';
+
 import getRetaxConfig from './retax.config';
 import { makeIsomorphicConfig } from 'builder-react-fullstack';
 import { FRONTEND_SERVER_PORT, SERVER_RENDERING } from 'config/frontEndServer';
@@ -45,7 +47,8 @@ app.use('/public', Express.static(join(__dirname, './public')));
 
 app.use(retaxMiddleware({
   serverRendering: SERVER_RENDERING,
-  isomorphicTools: global.webpackIsomorphicTools,
+  staticIndex: genStaticIndex(global.webpackIsomorphicTools.assets()),
+  dynamicIndex: genDynamicIndex(global.webpackIsomorphicTools.assets()),
   retaxConfig: getRetaxConfig(true),
 }));
 
