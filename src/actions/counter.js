@@ -1,4 +1,5 @@
-import { actionsCreatorFactory, annotator, AbstractActionsCreator } from 'retax';
+import { actionsCreatorFactory } from 'retax';
+import { annotator, AbstractActionsCreator } from 'retax-components';
 
 import CounterApi from 'api/CounterApi';
 import {

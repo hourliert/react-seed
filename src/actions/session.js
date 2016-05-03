@@ -1,10 +1,9 @@
 import { push } from 'react-router-redux';
 import {
-  annotator,
-  AbstractActionsCreator,
   setAuthToken, removeAuthToken,
   actionsCreatorFactory,
 } from 'retax';
+import { AbstractActionsCreator, annotator } from 'retax-components';
 
 import SessionApi from 'api/SessionApi';
 

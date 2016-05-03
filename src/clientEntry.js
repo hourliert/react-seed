@@ -1,3 +1,5 @@
+import 'reflect-metadata';
+
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import { retax } from 'retax';
 

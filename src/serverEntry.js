@@ -1,4 +1,5 @@
 console.log(`Booting...`); //eslint-disable-line
+import 'reflect-metadata';
 
 import { join } from 'path';
 import Express from 'express';

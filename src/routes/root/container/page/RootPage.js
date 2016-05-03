@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
-import { annotator } from 'retax';
+import { annotator } from 'retax-components';
 
 import pureRender from 'pure-render-decorator';
 import WrapperRootPage from 'routes/root/component/page';

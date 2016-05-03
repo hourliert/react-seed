@@ -1,4 +1,4 @@
-import { annotator, AbstractApi } from 'retax';
+import { annotator, AbstractApi } from 'retax-components';
 
 @annotator.Api({ // eslint-disable-line
   routes: {

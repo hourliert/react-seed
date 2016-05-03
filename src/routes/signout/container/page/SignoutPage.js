@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { annotator } from 'retax';
+import { annotator } from 'retax-components';
 
 import pureRender from 'pure-render-decorator';
 import WrapperSignoutPage from 'routes/signout/component/page';

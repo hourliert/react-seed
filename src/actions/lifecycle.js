@@ -1,5 +1,5 @@
 import { trigger } from 'redial';
-import { annotator, AbstractLifecycleManager } from 'retax';
+import { annotator, AbstractLifecycleManager } from 'retax-components';
 
 import UserActionsCreator from 'actions/user';
 import AppActionsCreator from 'actions/app';
