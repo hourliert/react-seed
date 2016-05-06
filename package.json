@@ -80,7 +80,7 @@
     "enzyme": "^2.0.0",
     "fetch-mock": "^4.0.0",
     "istanbul": "^1.0.0-alpha.2",
-    "jsdom": "^8.4.0",
+    "jsdom": "^9.0.0",
     "jsdom-global": "^1.6.1",
     "mockery": "^1.4.0",
     "nodemon": "^1.9.1",
