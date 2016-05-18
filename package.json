@@ -34,7 +34,7 @@
     "release": "builder run release"
   },
   "dependencies": {
-    "builder-react-fullstack": "^0.2.8",
+    "builder-react-fullstack": "^0.3.0",
     "classnames": "^2.2.3",
     "cookie-parser": "^1.4.1",
     "dateformat": "^1.0.12",
