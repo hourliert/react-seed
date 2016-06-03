@@ -68,7 +68,7 @@
     "retax": "^1.1.0",
     "retax-components": "^0.1.1",
     "serve-favicon": "^2.3.0",
-    "warning": "^2.1.0",
+    "warning": "^3.0.0",
     "webpack-isomorphic-tools": "^2.2.26"
   },
   "devDependencies": {
