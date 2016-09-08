@@ -73,7 +73,7 @@
   },
   "devDependencies": {
     "builder": "^2.8.0",
-    "builder-react-fullstack-dev": "^0.3.1",
+    "builder-react-fullstack-dev": "^1.0.0",
     "chai": "^3.4.1",
     "cors": "^2.7.1",
     "dirty-chai": "^1.2.2",
