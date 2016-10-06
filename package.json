@@ -41,7 +41,7 @@
     "debug": "^2.2.0",
     "express": "^4.13.3",
     "flux-standard-action": "^0.6.0",
-    "getenv": "^0.6.0",
+    "getenv": "^0.7.0",
     "hoist-non-react-statics": "^1.0.3",
     "immutable": "^3.8.0",
     "keymirror": "^0.1.1",
