@@ -82,7 +82,7 @@
     "istanbul": "^1.0.0-alpha.2",
     "jsdom": "^9.0.0",
     "jsdom-global": "^2.0.0",
-    "mockery": "^1.4.0",
+    "mockery": "^2.0.0",
     "nodemon": "^1.9.1",
     "react-addons-test-utils": "^15.0.0",
     "redux-devtools": "^3.1.1",
