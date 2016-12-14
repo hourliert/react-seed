@@ -38,7 +38,7 @@
     "classnames": "^2.2.3",
     "cookie-parser": "^1.4.1",
     "dateformat": "^1.0.12",
-    "debug": "^2.2.0",
+    "debug": "^2.4.0",
     "express": "^4.13.3",
     "flux-standard-action": "^0.6.0",
     "getenv": "^0.6.0",
