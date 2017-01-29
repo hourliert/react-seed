@@ -78,7 +78,7 @@
     "cors": "^2.7.1",
     "dirty-chai": "^1.2.2",
     "enzyme": "^2.0.0",
-    "fetch-mock": "^4.0.0",
+    "fetch-mock": "^5.9.3",
     "istanbul": "^1.0.0-alpha.2",
     "jsdom": "^9.0.0",
     "jsdom-global": "^2.0.0",
