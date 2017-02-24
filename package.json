@@ -40,7 +40,7 @@
     "dateformat": "^1.0.12",
     "debug": "^2.2.0",
     "express": "^4.13.3",
-    "flux-standard-action": "^0.6.0",
+    "flux-standard-action": "^1.2.0",
     "getenv": "^0.6.0",
     "hoist-non-react-statics": "^1.0.3",
     "immutable": "^3.8.0",
