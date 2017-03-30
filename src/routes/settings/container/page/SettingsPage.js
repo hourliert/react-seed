@@ -16,13 +16,23 @@ function mapDispatchToProps(dispatch) {
 @connect(SettingsPageSelector, mapDispatchToProps)
 export default class SettingsPage extends Component {
   static propTypes = {
-
+    user: PropTypes.object,
+    session: PropTypes.object,
+    initialRenderTime: PropTypes.number,
   };
 
   render() {
+    const {
+      user,
+      session,
+      initialRenderTime,
+    } = this.props;
+
     return (
       <WrapperSettingsPage
-
+        user={user}
+        session={session}
+        initialRenderTime={initialRenderTime}
       />
     );
   }

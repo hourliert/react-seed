@@ -1,5 +1,13 @@
 import { createStructuredSelector } from 'reselect';
 
-export default createStructuredSelector({
+import {
+  userSelector,
+  sessionSelector,
+  initialRenderTimeSelector,
+} from 'selectors';
 
+export default createStructuredSelector({
+  user: userSelector,
+  session: sessionSelector,
+  initialRenderTime: initialRenderTimeSelector,
 });

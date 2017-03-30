@@ -1,7 +1,7 @@
 export default {
   menuItemSelected: {
     fontSize: '16px',
-    lineHeight: '56px',
+    lineHeight: '50px',
     paddingLeft: '15px',
     paddingRight: '15px',
     cursor: 'pointer',
@@ -11,14 +11,14 @@ export default {
   menuItem: {
     color: 'rgba(0, 0, 0, 0.5)',
     fontSize: '16px',
-    lineHeight: '56px',
+    lineHeight: '50px',
     paddingLeft: '15px',
     paddingRight: '15px',
     cursor: 'pointer',
   },
   container: {
     background: '#ececec',
-    width: '100%',
+    width: 'calc(100% - 50px)',
     minHeight: 'calc(100vh - 162px)',
     padding: 25,
   },

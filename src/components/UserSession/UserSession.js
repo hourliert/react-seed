@@ -1,20 +1,16 @@
 import React, { Component, PropTypes } from 'react';
-import Avatar from 'material-ui/Avatar';
-import { CardHeader, CardTitle, CardText } from 'material-ui/Card';
 import dateformat from 'dateformat';
 import warning from 'warning';
+import Paper from 'material-ui/Paper';
 
-import { card } from 'decorators';
 import pureRender from 'pure-render-decorator';
 import styles from './styles';
 
 @pureRender
-@card
-export default class SessionInfo extends Component {
+export default class UserSession extends Component {
   static propTypes = {
     info: PropTypes.object.isRequired,
     renderTime: PropTypes.number.isRequired,
-    style: PropTypes.object,
   };
 
   static defaultProps = {
@@ -83,32 +79,29 @@ export default class SessionInfo extends Component {
     const realRemainingTime = this._formatRemainingTime(remainingTime);
 
     return (
-      <div>
-        <CardHeader
-          title="Session Info"
-          subtitle="Display basic session information"
-          avatar={<Avatar style={{ color: 'blue' }}>S</Avatar>}
-        />
-        {
-          token ? (
-            <div>
-              <CardTitle
-                title={`Remaining: ${realRemainingTime}`}
-                subtitle={`Token: ${token}`}
-                style={styles.cardTitle}
-              />
-              <CardText>
-                <p>{`Valid To: ${realValidTo} UTC`}</p>
-                <p>{`Created: ${realCreated} UTC`}</p>
-              </CardText>
-            </div>
-          ) : (
-            <CardText>
-              Need a GET session method to display this.
-            </CardText>
-          )
-        }
-      </div>
+      <Paper
+        style={styles.container}
+      >
+        <h3>Info about your Session</h3>
+        <div style={{ paddingTop: 8 }}>
+          <p>
+            <label style={styles.title}>Token: </label>
+            <div style={styles.body}>{token}</div>
+          </p><br />
+          <p>
+            <label style={styles.title}>Created at: </label>
+            <div style={styles.body}>{realCreated}</div>
+          </p><br />
+          <p>
+            <label style={styles.title}>Valid to: </label>
+            <div style={styles.body}>{realValidTo}</div>
+          </p><br />
+          <p>
+            <label style={styles.title}>Remaining Time: </label>
+            <div style={styles.body}>{realRemainingTime}</div>
+          </p>
+        </div>
+      </Paper>
     );
   }
 }

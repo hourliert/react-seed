@@ -15,9 +15,9 @@ export default class WrapperDefaultPage extends Component {
         style={{ width: '100%', height: '100%' }}
       >
         <div style={{ textAlign: 'center', color: '#333333' }}>
-          <img src={Image404} width="300" />
+          <img src={Image404} width="250" />
           <h1>Sorry, this page flew to the deep space!</h1>
-          <p>If you don't want to be hurt by a Vortex, go back on earth</p>
+          <p>If you don't want to be aspirate by a black hole, go back on earth</p>
           <FlatButton
             labelColor="white"
             label={ 'Go Home' }
@@ -26,7 +26,6 @@ export default class WrapperDefaultPage extends Component {
             hoverColor="#1976d2"
             onTouchTap={() => { browserHistory.push('/');}}
           />
-
         </div>
       </div>
     );

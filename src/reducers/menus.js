@@ -3,7 +3,6 @@ import { reducerFactory } from 'retax';
 import {
   SIGNIN,
   SIGNOUT,
-  INFO,
   USER,
   ADMIN,
   SETTINGS,
@@ -30,13 +29,6 @@ export default reducerFactory(
       label: 'Admin Home',
       url: ADMIN,
       accessLevel: accessLevels.admin,
-      withDivider: true,
-    },
-    {
-      icon: 'info',
-      label: 'Info',
-      url: INFO,
-      accessLevel: accessLevels.authentified,
       withDivider: true,
     },
     {

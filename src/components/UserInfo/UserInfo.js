@@ -1,48 +1,35 @@
-import React, { Component, PropTypes } from 'react';
-import Avatar from 'material-ui/Avatar';
-import { CardHeader, CardTitle, CardText } from 'material-ui/Card';
-
-import { card } from 'decorators';
+import React, { Component } from 'react';
 import pureRender from 'pure-render-decorator';
 
+// custom components
+import PasswordReset from 'components/PasswordReset';
+
 @pureRender
-@card
 export default class UserInfo extends Component {
   static propTypes = {
-    info: PropTypes.object.isRequired,
-    style: PropTypes.object,
+
   };
-
-  static defaultProps = {
-    info: {},
-  };
-
-  _computeFullName() {
-    const { firstName, lastName, email } = this.props.info;
-
-    if (!firstName && !lastName) return email;
-    return `${firstName} ${lastName}`;
-  }
 
   render() {
-    const { isAdmin, email, entityId } = this.props.info;
+    const regexRules = [
+      {
+        regex: '(?=.{8,})',
+        description: 'At least 8 characters',
+      },
+      {
+        regex: '(?=.*[0-9])',
+        description: 'At least 1 numerical character',
+      },
+      {
+        regex: '(?=.*[a-z])|(?=.*[A-Z])',
+        description: 'At least 1 alphabetical character',
+      },
+    ];
 
     return (
-      <div>
-        <CardHeader
-          title="User Info"
-          subtitle="Display basic user information"
-          avatar={<Avatar style={{ color: 'red' }}>U</Avatar>}
-        />
-        <CardTitle
-          title={`Name: ${this._computeFullName()}`}
-          subtitle={`Role: ${isAdmin ? 'Admin' : 'User'}`}
-        />
-        <CardText>
-          <p>Entity ID: {entityId}</p>
-          <p>Email: {email}</p>
-        </CardText>
-      </div>
+      <PasswordReset
+        regexRules={regexRules}
+      />
     );
   }
 }
