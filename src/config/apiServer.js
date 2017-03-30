@@ -1,10 +1,10 @@
 import { readFromEnvNumber, readFromEnvString } from 'helpers/env';
 
 // api constants
-export const API_SERVER_PORT = readFromEnvNumber('API_SERVER_PORT', 8000);
+export const API_SERVER_PORT = readFromEnvNumber('API_SERVER_PORT', 443);
 export const API_SERVER_HOSTNAME = readFromEnvString(
   'API_SERVER_HOSTNAME',
-  'http://localhost'
+  'https://versatile-api.staging.wid.la'
 );
 
 export const API_SERVER_USERS_ROUTE = readFromEnvString(

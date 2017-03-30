@@ -5,9 +5,12 @@ import Helmet from 'react-helmet';
 import pureRender from 'pure-render-decorator';
 import LeftMenuDrawer from 'components/LeftMenuDrawer';
 import ErrorManager from 'components/ErrorManager';
+import { WindowResizeListener } from 'react-window-resize-listener';
 
 import favicon from 'images/favicon/favicon.ico';
 import logo192 from 'images/logo/logo-192x192.png';
+
+import styles from './styles';
 
 @pureRender
 export default class WrapperRootPage extends Component {
@@ -29,18 +32,53 @@ export default class WrapperRootPage extends Component {
 
   static contextTypes = {
     muiTheme: PropTypes.object.isRequired,
+    router: React.PropTypes.object,
   };
 
   static defaultProps = {
     version: '',
   };
 
+  state = {
+    screenWidth: 'md',
+    isSignin: this.context.router.isActive('/signin'),
+  }
+
+  getScreenCategory() {
+    const screenWidth = window.innerWidth;
+
+    if (screenWidth < 768) {
+      this.setState({ screenWidth: 'xs' });
+    } else if ((screenWidth >= 768) && (screenWidth < 992)) {
+      this.setState({ screenWidth: 'sm' });
+    } else if ((screenWidth >= 992) && (screenWidth < 1200)) {
+      this.setState({ screenWidth: 'md' });
+    } else if (screenWidth >= 1200) {
+      this.setState({ screenWidth: 'lg' });
+    }
+  }
+
   render() {
-    const { children } = this.props;
-    const { errors, markErrorsAsViewed, clearErrors } = this.props;
-    const { leftNavOpen, closeLeftNav, toggleLeftNav, goToLink } = this.props;
-    const { menus } = this.props;
-    const { appBarDepth } = this.props;
+    const {
+      children,
+      errors,
+      markErrorsAsViewed,
+      clearErrors,
+      leftNavOpen,
+      closeLeftNav,
+      toggleLeftNav,
+      goToLink,
+      menus,
+      appBarDepth,
+    } = this.props;
+
+    const {
+      screenWidth,
+      isSignin,
+    } = this.state;
+
+    const isMobile = ((screenWidth === 'sm') || (screenWidth === 'xs'));
+
     const { muiTheme: { rawTheme: { palette } } } = this.context;
 
     return (
@@ -71,10 +109,11 @@ export default class WrapperRootPage extends Component {
           zDepth={appBarDepth}
         />
         <LeftMenuDrawer
-          open={leftNavOpen}
+          open={(leftNavOpen) || (!isMobile)}
           onClose={closeLeftNav}
           onLinkTouch={goToLink}
           menuItems={menus}
+          isMobile={isMobile}
         />
 
         <ErrorManager
@@ -83,9 +122,13 @@ export default class WrapperRootPage extends Component {
           clearErrors={clearErrors}
         />
 
-        <div className="flex layout vertical">
+      <div
+        className="flex layout vertical"
+        style={(isMobile || isSignin) ? styles.mobileContainer : styles.desktopContainer}
+      >
           {children}
         </div>
+        <WindowResizeListener onResize={::this.getScreenCategory} />
       </div>
     );
   }
