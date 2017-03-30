@@ -63,6 +63,8 @@ export default class ErrorManager extends Component {
       cur || errors[e].viewed !== true
     ), false);
 
+    console.log(errors);
+
     return (
       <div>
         <Snackbar
@@ -90,8 +92,7 @@ export default class ErrorManager extends Component {
         >
           <p>
             The following errors happened.
-            If you think this is a bug, don't hesitate to create an issue on
-            <a href="<%= repourl %>/issues" target="_blank">the repo page</a>.
+            If you think this is a bug, please contact support@whitearrow.com
           </p>
           <ul style={styles.ul}>
             {Object.keys(errors).map(key => {
@@ -100,16 +101,8 @@ export default class ErrorManager extends Component {
               return (
                 <Card key={key} style={styles.card}>
                   <CardHeader
-                    title={error.message}
-                    actAsExpander
-                    showExpandableButton
+                    title={error.responseText}
                   />
-                  <CardText expandable>
-                    <strong>Action causing the error:</strong> {key}
-                  </CardText>
-                  <CardText expandable>
-                    <strong>Raw Server Error:</strong> {error.statusText}
-                  </CardText>
                 </Card>
               );
             })}
