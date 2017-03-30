@@ -6,6 +6,7 @@ import {
   INFO,
   USER,
   ADMIN,
+  SETTINGS,
 } from 'constants/routes';
 import { accessLevels } from 'config/access';
 
@@ -36,6 +37,13 @@ export default reducerFactory(
       label: 'Info',
       url: INFO,
       accessLevel: accessLevels.authentified,
+      withDivider: true,
+    },
+    {
+      icon: 'settings',
+      label: 'Settings',
+      url: SETTINGS,
+      accessLevel: accessLevels.user,
       withDivider: true,
     },
     {

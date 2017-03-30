@@ -33,6 +33,7 @@ export default function getRoute({ getState }, userAgent) {
           const getSigninRoute = require('routes/signin');
           const getSignoutRoute = require('routes/signout');
           const getInfoRoute = require('routes/info');
+          const getSettingsRoute = require('routes/settings');
           const getDefaultRoute = require('routes/default');
 
           routes = [
@@ -41,6 +42,7 @@ export default function getRoute({ getState }, userAgent) {
             getInfoRoute(requireAuthFunctions),
             getUserRoutes(requireAuthFunctions),
             getAdminRoutes(requireAuthFunctions),
+            getSettingsRoute(requireAuthFunctions),
             getDefaultRoute(requireAuthFunctions),
           ];
         } catch (e) {

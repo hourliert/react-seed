@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import Snackbar from 'material-ui/Snackbar';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
-import { Card, CardHeader, CardText } from 'material-ui/Card';
+import { Card, CardHeader } from 'material-ui/Card';
 
 import pureRender from 'pure-render-decorator';
 import styles from './styles';
