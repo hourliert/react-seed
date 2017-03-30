@@ -104,7 +104,7 @@ export default class WrapperRootPage extends Component {
           ]}
         />
         <AppBar
-          title={`RetaxSeed - ${this.props.version}`}
+          title={'RetaxSeed'}
           onLeftIconButtonTouchTap={toggleLeftNav}
           zDepth={appBarDepth}
         />
