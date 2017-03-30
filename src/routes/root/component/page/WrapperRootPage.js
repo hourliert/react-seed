@@ -109,7 +109,7 @@ export default class WrapperRootPage extends Component {
           zDepth={appBarDepth}
         />
         <LeftMenuDrawer
-          open={(leftNavOpen) || (!isMobile)}
+          open={((leftNavOpen) || (!isMobile)) && !isSignin}
           onClose={closeLeftNav}
           onLinkTouch={goToLink}
           menuItems={menus}
