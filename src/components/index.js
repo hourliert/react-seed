@@ -10,4 +10,4 @@ export { default as SessionInfo } from './SessionInfo';
 export { default as UserInfo } from './UserInfo';
 export { default as WelcomeCard } from './WelcomeCard';
 export { default as WithLoading } from './WithLoading';
-export { default as UserSession } from './UserSession';export { default as PasswordReset } from './PasswordReset';
+export { default as UserSession } from './UserSession';export { default as PasswordReset } from './PasswordReset';export { default as PersonalInfo } from './PersonalInfo';export { default as LoadingButton } from './LoadingButton';

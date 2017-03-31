@@ -21,5 +21,6 @@ export default {
     width: 'calc(100% - 50px)',
     minHeight: 'calc(100vh - 162px)',
     padding: 25,
+    overflow: 'scroll',
   },
 };

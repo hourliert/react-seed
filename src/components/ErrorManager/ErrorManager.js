@@ -92,7 +92,7 @@ export default class ErrorManager extends Component {
         >
           <p>
             The following errors happened.
-            If you think this is a bug, please contact support@whitearrow.com
+            If you think this is a bug, please contact us.
           </p>
           <ul style={styles.ul}>
             {Object.keys(errors).map(key => {

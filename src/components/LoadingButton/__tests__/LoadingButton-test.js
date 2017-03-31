@@ -6,22 +6,22 @@ import { shallow } from 'enzyme';
 
 import React from 'react';
 
-describe('UserInfo', () => {
+describe('LoadingButton', () => {
   it('should exists', () => {
-    const UserInfo = require('../UserInfo');
+    const LoadingButton = require('../LoadingButton');
 
     const wrapper = shallow((
-      <UserInfo />
+      <LoadingButton />
     ));
 
     expect(wrapper).to.have.length(1);
   });
 
   it('should render inner components', () => {
-    const UserInfo = require('../UserInfo');
+    const LoadingButton = require('../LoadingButton');
 
     const wrapper = shallow((
-      <UserInfo />
+      <LoadingButton />
     ));
 
     expect(wrapper.find('div')).to.have.length(1);

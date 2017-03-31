@@ -39,8 +39,6 @@ export default class LoginForm extends Component {
 
     const { muiTheme: { rawTheme: { palette } } } = this.context;
 
-    console.log(palette);
-
     return (
       <div style={{ textAlign: 'center' }}>
         <img

@@ -3,6 +3,7 @@ import pureRender from 'pure-render-decorator';
 
 // custom components
 import PasswordReset from 'components/PasswordReset';
+import PersonalInfo from 'components/PersonalInfo';
 
 @pureRender
 export default class UserInfo extends Component {
@@ -27,9 +28,12 @@ export default class UserInfo extends Component {
     ];
 
     return (
-      <PasswordReset
-        regexRules={regexRules}
-      />
+      <div>
+        <PersonalInfo />
+        <PasswordReset
+          regexRules={regexRules}
+        />
+      </div>
     );
   }
 }

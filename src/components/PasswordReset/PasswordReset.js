@@ -2,13 +2,15 @@ import React, { Component, PropTypes } from 'react';
 import pureRender from 'pure-render-decorator';
 
 // material-ui
-import Dialog from 'material-ui/Dialog';
-import FlatButton from 'material-ui/FlatButton';
 import Checkbox from 'material-ui/Checkbox';
 import TextField from 'material-ui/TextField';
 import Paper from 'material-ui/Paper';
 import Check from 'material-ui/svg-icons/navigation/check';
 import Close from 'material-ui/svg-icons/navigation/close';
+import CircularProgress from 'material-ui/CircularProgress';
+
+// custom components
+import LoadingButton from 'components/LoadingButton';
 
 // styles
 import styles from './styles';
@@ -17,10 +19,18 @@ import styles from './styles';
 export default class PasswordReset extends Component {
   static propTypes = {
     regexRules: PropTypes.array,
+    user: PropTypes.object,
     updatePassword: PropTypes.func,
   };
 
+  static contextTypes = {
+    muiTheme: PropTypes.object.isRequired,
+    router: React.PropTypes.object,
+  };
+
   state = {
+    buttonStatus: undefined,
+    hasChanged: false,
     showPassword: false,
     open: false,
     resp: undefined,
@@ -32,15 +42,8 @@ export default class PasswordReset extends Component {
 
   save(element, value) {
     this.state[element] = value;
+    this.state.hasChanged = true;
     this.rulesValidator();
-  }
-
-  closeDialog() {
-    this.setState({ open: false });
-  }
-
-  openDialog() {
-    this.setState({ open: true });
   }
 
   testRegex(regexString, string) {
@@ -50,6 +53,7 @@ export default class PasswordReset extends Component {
 
   rulesValidator() {
     const { regexRules } = this.props;
+    const { muiTheme: { rawTheme: { palette } } } = this.context;
     let JSX = [];
 
     let resetIsValid = (this.state.password === this.state.passwordRetype);
@@ -126,66 +130,40 @@ export default class PasswordReset extends Component {
     }
 
     JSX = (
-      <Paper
-        style={styles.rule}
-      >
-        {JSX}
-      </Paper>);
+        <Paper
+          style={styles.rule}
+        >
+          {JSX}
+        </Paper>
+    );
 
     this.state.resetIsValid = resetIsValid;
     this.state.rulesValidator = JSX;
+    this.state.hasChanged = true;
 
     this.forceUpdate();
   }
 
   async updatePassword() {
-    // Call your API here
-    // this.setState({ resp });
+    const { password } = this.state;
+
+    const { updatePassword } = this.props;
+    const body = {
+      password,
+    };
+
+    this.setState({ buttonStatus: 'loading' });
+    const resp = await updatePassword(body);
+    if (resp.type === 'UPDATE_USER_ERROR') {
+      this.setState({ buttonStatus: 'error' });
+    } else {
+      this.setState({ buttonStatus: 'success' });
+    }
   }
 
   render() {
-    const { open, resp } = this.state;
-
-    const closeAction = [
-      <FlatButton
-        label="Close"
-        backgroundColor={'#2196f3'}
-        hoverColor={'#1565c0'}
-        style={{
-          color: 'white',
-        }}
-        primary
-        onTouchTap={::this.closeDialog}
-      />,
-    ];
-
-    if (resp && (resp.type === 'UPDATE_PASSWORD_ERROR')) {
-      return (
-        <Dialog
-          title="Reset your password"
-          actions={closeAction}
-          modal={false}
-          open={open}
-          onTouchTap={::this.closeDialog}
-        >
-          <br />
-          Your password hasn't been reset. An error has occured. Plase contact us.
-      </Dialog>);
-    }
-
-    if (resp && (resp.type === 'UPDATE_PASSWORD_SUCCESS')) {
-      return (
-        <Dialog
-          title="Reset your password"
-          actions={closeAction}
-          modal={false}
-          open={open}
-          onTouchTap={::this.closeDialog}
-        >
-          <br />
-          Your password has been successfully reset. You can Sign in with your new password.
-      </Dialog>);
-    }
+    const { hasChanged, buttonStatus, resetIsValid } = this.state;
+    const { muiTheme: { rawTheme: { palette } } } = this.context;
 
     return (
       <Paper
@@ -220,6 +198,22 @@ export default class PasswordReset extends Component {
           }}
         />
         {this.state.rulesValidator}
+        {
+          hasChanged ?
+          [<br />,
+          <LoadingButton
+            status={buttonStatus}
+            style={{
+              color: palette.alternateTextColor,
+              opacity: resetIsValid ? 1 : 0.5,
+            }}
+            disabled={!resetIsValid}
+            backgroundColor={palette.accent1Color}
+            hoverColor={palette.accent2Color}
+            label="Save"
+            onTouchTap={::this.updatePassword}
+          />] : null
+        }
       </Paper>
     );
   }
