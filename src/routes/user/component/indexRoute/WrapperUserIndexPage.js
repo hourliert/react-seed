@@ -8,7 +8,6 @@ import CardsList from 'components/CardsList';
 import WelcomeCard from 'components/WelcomeCard';
 
 import styles from './styles';
-import logo192 from 'images/logo/logo-192x192.png';
 
 @pureRender
 export default class WrapperUserIndexPage extends Component {
@@ -26,7 +25,6 @@ export default class WrapperUserIndexPage extends Component {
         <WelcomeCard
           container={<Card style={styles.welcomeCard} />}
           title="Welcome on RetaxSeed"
-          logo={logo192}
         >
           <div>
             Enjoy.

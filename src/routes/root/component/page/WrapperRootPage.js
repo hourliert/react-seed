@@ -81,6 +81,10 @@ export default class WrapperRootPage extends Component {
 
     const { muiTheme: { rawTheme: { palette } } } = this.context;
 
+    const signinContainer = {
+      background: palette.primary4Color,
+    };
+
     return (
       <div className="flex layout vertical">
         <Helmet
@@ -126,7 +130,12 @@ export default class WrapperRootPage extends Component {
         className="flex layout vertical"
         style={(isMobile || isSignin) ? styles.mobileContainer : styles.desktopContainer}
       >
-          {children}
+        <div
+          className="flex layout vertical"
+          style={isSignin ? signinContainer : {}}
+        >
+            {children}
+        </div>
         </div>
         <WindowResizeListener onResize={::this.getScreenCategory} />
       </div>

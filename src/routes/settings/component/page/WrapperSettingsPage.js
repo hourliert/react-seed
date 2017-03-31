@@ -62,13 +62,13 @@ export default class WrapperSettingsPage extends Component {
               style={stepIndex === 0 ? styles.menuItemSelected : styles.menuItem}
               onClick={() => { this.setState({ stepIndex: 0 }); }}
             >
-              My Info
+              Info
             </div>
             <div
               style={stepIndex === 1 ? styles.menuItemSelected : styles.menuItem}
               onClick={() => { this.setState({ stepIndex: 1 }); }}
             >
-              My Session
+              Session
             </div>
           </ToolbarGroup>
         </Toolbar>

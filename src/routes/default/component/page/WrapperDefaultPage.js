@@ -16,8 +16,8 @@ export default class WrapperDefaultPage extends Component {
       >
         <div style={{ textAlign: 'center', color: '#333333' }}>
           <img src={Image404} width="250" />
-          <h1>Sorry, this page flew to the deep space!</h1>
-          <p>If you don't want to be aspirate by a black hole, go back on earth</p>
+          <h1>Sorry, this page flew in the deep space!</h1>
+          <p>If you don't want to be aspirate by a black hole, go back on earth.</p>
           <FlatButton
             labelColor="white"
             label={ 'Go Home' }

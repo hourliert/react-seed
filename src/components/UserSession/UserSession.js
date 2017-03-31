@@ -82,7 +82,7 @@ export default class UserSession extends Component {
       <Paper
         style={styles.container}
       >
-        <h3>Info about your Session</h3>
+        <h3>Your Session</h3>
         <div style={{ paddingTop: 8 }}>
           <p>
             <label style={styles.title}>Token: </label>

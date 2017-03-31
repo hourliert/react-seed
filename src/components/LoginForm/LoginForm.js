@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
 import { reduxForm } from 'redux-form';
-
+import WALogo from 'images/logo/logo-192x192.png';
 import pureRender from 'pure-render-decorator';
 import validate from './validationRules';
 import styles from './styles';
@@ -24,6 +24,11 @@ export default class LoginForm extends Component {
     onSubmit: PropTypes.func,
   };
 
+  static contextTypes = {
+    muiTheme: PropTypes.object.isRequired,
+    router: React.PropTypes.object,
+  };
+
   static defaultProps = {
     fields: {},
   };
@@ -32,42 +37,58 @@ export default class LoginForm extends Component {
     const { fields: { email, password } } = this.props;
     const { handleSubmit, resetForm } = this.props;
 
+    const { muiTheme: { rawTheme: { palette } } } = this.context;
+
+    console.log(palette);
+
     return (
-      <form
-        style={styles.form}
-        className="flex layout vertical around-justified"
-        onSubmit={handleSubmit}
-        onReset={resetForm}
-      >
-        <TextField
-          id="loginform-input-1"
-          type="text"
-          hintText="Username"
-          errorText={email.error}
-          {...email}
-        />
-
-        <TextField
-          id="loginform-input-2"
-          type="password"
-          hintText="Password"
-          errorText={password.error}
-          {...password}
-        />
-
-        <div className="layout horizontal around-justified">
-          <FlatButton
-            label="Cancel"
-            primary
-            type="reset"
+      <div style={{ textAlign: 'center' }}>
+        <img
+          style={{ width: '100px' }}
+          src={ WALogo }
+        /><br /><br />
+        <form
+          style={styles.form}
+          className="flex layout vertical around-justified"
+          onSubmit={handleSubmit}
+          onReset={resetForm}
+        >
+          <TextField
+            id="loginform-input-1"
+            type="text"
+            hintText="Username"
+            errorText={email.error}
+            {...email}
           />
-          <FlatButton
-            label="Submit"
-            primary
-            type="submit"
+
+          <TextField
+            id="loginform-input-2"
+            type="password"
+            hintText="Password"
+            errorText={password.error}
+            {...password}
           />
-        </div>
-      </form>
+          <br /><br />
+          <div className="layout horizontal around-justified">
+            <FlatButton
+              label="Cancel"
+              backgroundColor={palette.primary2Color}
+              hoverColor={palette.primary3Color}
+              label="Cancel"
+              primary
+              type="reset"
+            />
+            <FlatButton
+              style={{ color: palette.alternateTextColor }}
+              backgroundColor={palette.accent1Color}
+              hoverColor={palette.accent2Color}
+              label="Submit"
+              primary
+              type="submit"
+            />
+          </div>
+        </form>
+      </div>
     );
   }
 }
