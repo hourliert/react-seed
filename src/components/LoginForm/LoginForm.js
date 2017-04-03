@@ -72,6 +72,7 @@ export default class LoginForm extends Component {
               label="Cancel"
               backgroundColor={palette.primary2Color}
               hoverColor={palette.primary3Color}
+              style={{ color: palette.textColor }}
               label="Cancel"
               primary
               type="reset"

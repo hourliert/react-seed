@@ -34,6 +34,11 @@ export default class SettingsPage extends Component { //eslint-disable-line
     fetchCurrentUser: PropTypes.func,
   };
 
+  refresh() {
+    const { fetchCurrentUser } = this.props;
+    fetchCurrentUser();
+  }
+
   render() {
     const {
       user,
@@ -48,6 +53,7 @@ export default class SettingsPage extends Component { //eslint-disable-line
         updateUser={updateUser}
         session={session}
         initialRenderTime={initialRenderTime}
+        refresh={::this.refresh}
       />
     );
   }

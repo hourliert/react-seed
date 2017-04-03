@@ -13,7 +13,7 @@ export default class UserApi extends AbstractApi {
   }
 
   updateUser(body) {
-    return this.post({
+    return this.put({
       url: `${this.routes.users}`,
       body,
     });

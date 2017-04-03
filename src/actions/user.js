@@ -6,7 +6,6 @@ import {
   GET_CURRENT_USER,
   SET_SELF_ENTITY,
   UPDATE_USER,
-  UPDATE_PASSWORD,
 } from 'constants/actions';
 import ThemeActionsCreator from 'actions/theme';
 

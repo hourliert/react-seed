@@ -17,6 +17,7 @@ export default class WrapperSettingsPage extends Component {
   static propTypes = {
     user: PropTypes.object,
     updateUser: PropTypes.func,
+    refresh: PropTypes.func,
     session: PropTypes.object,
     initialRenderTime: PropTypes.number,
   };
@@ -34,6 +35,7 @@ export default class WrapperSettingsPage extends Component {
       session,
       initialRenderTime,
       user,
+      refresh,
      } = this.props;
 
     const regexRules = [
@@ -57,10 +59,12 @@ export default class WrapperSettingsPage extends Component {
           [
             <PersonalInfo
               updateUser={updateUser}
+              refresh={refresh}
               user={user}
             />,
             <PasswordReset
               updatePassword={updateUser}
+              refresh={refresh}
               regexRules={regexRules}
             />,
           ]

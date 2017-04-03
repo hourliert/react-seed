@@ -2,7 +2,6 @@ import React, { Component, PropTypes } from 'react';
 import pureRender from 'pure-render-decorator';
 
 // material-ui
-import CircularProgress from 'material-ui/CircularProgress';
 import TextField from 'material-ui/TextField';
 import Paper from 'material-ui/Paper';
 
@@ -17,6 +16,7 @@ export default class PersonalInfo extends Component {
   static propTypes = {
     user: PropTypes.object,
     updateUser: PropTypes.func,
+    refresh: PropTypes.func,
   };
 
   static contextTypes = {
@@ -40,6 +40,7 @@ export default class PersonalInfo extends Component {
   save(element, value) {
     const newState = this.state;
     newState.hasChanged = true;
+    newState.buttonStatus = 'editing';
 
     if ((element === 'email') && (!this.emailIsCorrect(value))) {
       newState.emailError = 'Email format is invalid';
@@ -74,11 +75,13 @@ export default class PersonalInfo extends Component {
   async updateUser() {
     const { firstName, lastName, email } = this.state;
 
-    const { updateUser } = this.props;
+    const { updateUser, refresh } = this.props;
     const body = {
       firstName,
       lastName,
       email,
+      password: '1234',
+      role: 'ADMIN',
     };
 
     this.setState({ buttonStatus: 'loading' });
@@ -87,6 +90,7 @@ export default class PersonalInfo extends Component {
       this.setState({ buttonStatus: 'error' });
     } else {
       this.setState({ buttonStatus: 'success' });
+      refresh();
     }
   }
 
@@ -101,51 +105,57 @@ export default class PersonalInfo extends Component {
         style={styles.container}
       >
         <h3>Personal info</h3>
-        <TextField
-          floatingLabelFixed
-          floatingLabelText="First Name"
-          hintText="Enter your First Name"
-          value={this.state.firstName}
-          onChange={
-            (e) => this.save('firstName', e.target.value)
+          <div
+            onKeyPress={(e) => {
+              if (e.key === 'Enter') {
+                ::this.updateUser();
+              }
+            }}
+          >
+            <TextField
+              floatingLabelFixed
+              floatingLabelText="First Name"
+              hintText="Enter your First Name"
+              value={this.state.firstName}
+              onChange={
+                (e) => this.save('firstName', e.target.value)
+              }
+            /> <br />
+            <TextField
+              floatingLabelFixed
+              floatingLabelText="Last Name"
+              hintText="Enter your Last Name"
+              value={this.state.lastName}
+              onChange={
+                (e) => this.save('lastName', e.target.value)
+              }
+            />
+            <br />
+            <TextField
+              floatingLabelFixed
+              floatingLabelText="Email"
+              hintText="Enter your email address"
+              value={this.state.email}
+              errorText={this.state.emailError}
+              onChange={
+                (e) => this.save('email', e.target.value)
+              }
+            /><br />
+          {
+            hasChanged ?
+            [<br />,
+            <LoadingButton
+              status={buttonStatus}
+              style={{
+                color: palette.alternateTextColor,
+                opacity: emailIsCorrect ? 1 : 0.5,
+              }}
+              disabled={!emailIsCorrect}
+              label="Save"
+              onTouchTap={::this.updateUser}
+            />] : null
           }
-        /> <br />
-        <TextField
-          floatingLabelFixed
-          floatingLabelText="Last Name"
-          hintText="Enter your Last Name"
-          value={this.state.lastName}
-          onChange={
-            (e) => this.save('lastName', e.target.value)
-          }
-        />
-        <br />
-        <TextField
-          floatingLabelFixed
-          floatingLabelText="Email"
-          hintText="Enter your email address"
-          value={this.state.email}
-          errorText={this.state.emailError}
-          onChange={
-            (e) => this.save('email', e.target.value)
-          }
-        /><br />
-      {
-        hasChanged ?
-        [<br />,
-        <LoadingButton
-          status={buttonStatus}
-          style={{
-            color: palette.alternateTextColor,
-            opacity: emailIsCorrect ? 1 : 0.5,
-          }}
-          disabled={!emailIsCorrect}
-          backgroundColor={palette.accent1Color}
-          hoverColor={palette.accent2Color}
-          label="Save"
-          onTouchTap={::this.updateUser}
-        />] : null
-      }
+        </div>
       </Paper>
     );
   }

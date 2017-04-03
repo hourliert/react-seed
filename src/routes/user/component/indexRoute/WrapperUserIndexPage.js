@@ -1,13 +1,10 @@
 import React, { PropTypes, Component } from 'react';
 import Helmet from 'react-helmet';
-import { Card } from 'material-ui/Card';
-import FlatButton from 'material-ui/FlatButton';
 
 import pureRender from 'pure-render-decorator';
 import CardsList from 'components/CardsList';
-import WelcomeCard from 'components/WelcomeCard';
-
-import styles from './styles';
+import Paper from 'material-ui/Paper';
+import logo192 from 'images/logo/logo-192x192.png';
 
 @pureRender
 export default class WrapperUserIndexPage extends Component {
@@ -16,21 +13,16 @@ export default class WrapperUserIndexPage extends Component {
   };
 
   render() {
-    const { onToggleLeftNav } = this.props;
-
     return (
       <CardsList flex>
         <Helmet title="User Home" />
 
-        <WelcomeCard
-          container={<Card style={styles.welcomeCard} />}
-          title="Welcome on RetaxSeed"
-        >
-          <div>
-            Enjoy.
-          </div>
-          <FlatButton label="Get Started" primary onTouchTap={onToggleLeftNav} />
-        </WelcomeCard>
+        <Paper style={{ padding: 25, textAlign: 'center' }}>
+          <img src={logo192} width={100} />
+          <h2>Welcome on Retax Seed.</h2>
+          <p>Use the Yo Generator to start creating pages, components, actions...</p>
+          <p>Check the documentation to create your app.</p>
+        </Paper>
       </CardsList>
     );
   }

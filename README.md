@@ -1,15 +1,21 @@
-# RetaxSeed
-[![Build Status][travis-badge]][travis-link]
-[![codecov.io][codecov-badge]][codecov-link]
+# React Seed
 
-This project is a generic react seed using retax. This project is production ready.
-All the build process is handled by [builder-react-fullstack](https://github.com/hourliert/builder-react-fullstack).
+This project is a ready to use react seed using Retax.
 
-## What does this seed include?
+## Some documentation
 
-### Libraries:
+Before starting your application, you should take a look at these links. They will help you to have a good overview of the React/Redux environment :
+
+* [React](https://facebook.github.io/react/)
+* [Redux](http://redux.js.org/)
+
+
+## Presentation
+
+### What's is in the box ?
+
 * [retax](https://github.com/hourliert/retax)
-* [React](https://facebook.github.io/react/) >15.0.0
+* [React](https://facebook.github.io/react/)
 * [Redux](http://redux.js.org/)
 * [react-router](https://github.com/reactjs/react-router)
 * [react-router-redux](https://github.com/reactjs/react-router-redux)
@@ -44,18 +50,24 @@ All the build process is handled by [builder-react-fullstack](https://github.com
 
 ## Getting started
 
+Clone the projet and enter the following commands to install all the dependencies and to launch the project.
+
 ```
 npm install
 npm start
 ```
-
 This will run the fake api backend and the frontend server.
 In development, the app includes **react-hot-reload** allowing edit in real time.
 
+## Seed overview
+
+This boilerplate includes 
+
 ## Project structure
+
 * `./src`: Source code
 * `./src/actions`: Actions creators
-* `./src/api`: Api clients
+* `./src/api`: Api clients : declare all your backend routes here.
 * `./src/components`: Presentationnal components (those don't depend on redux and are very dumb!)
 * `./src/config`: App config
 * `./src/constants`: App constants (includes Actions names)
@@ -75,25 +87,86 @@ In development, the app includes **react-hot-reload** allowing edit in real time
 * `./src/clientEntry.js`: Client entry
 * `./src/serverEntry.js`: (Front-end) Server entry
 
-## Tasks
-* `npm run api`: Start the fake back-end api server
-* `npm run frontend`: Start the front-end server
-* `npm start`: Start the back-end and front-end server and watch for file changes
-* `npm run build`: Build the app. The output is in the ./build folder. You could run this command with these options: (eg. `npm run build -- -- --release` (don't forget the `-- --`))
-  * `--release`: minify the bundle
-  * `--devtools`: include **redux-devtools**
-  * `--react-perf`: include **react addons perf**
-  * `--isomorphic`: include server rendering
-* `npm test`: Run all tests in **mocha**
-* `npm run lint`: Lint the code of the component
-* `npm run tdd`: Run all tests in watch mode
-* `npm run release -- -- semverComptaibleString`: Create a new component version. Check [here](https://github.com/hourliert/builder-react-comp/blob/master/README.md#release-the-component) to see how it works
+## Generator
 
-## Roadmap
-* Migrate the seed to **typescript** when typescript@2.0.0 is out
-* Migrate the test framework to **jest**. This will reduce the number of dependencies.
+This seed have a Yo Man generator to create all ressources you want.
 
-[travis-badge]: https://travis-ci.org/retaxJS/retax-seed.svg?branch=master
-[travis-link]: https://travis-ci.org/retaxJS/retax-seed
-[codecov-badge]: https://codecov.io/github/retaxJS/retax-seed/coverage.svg?branch=master
-[codecov-link]: https://codecov.io/github/retaxJS/retax-seed?branch=master
+### Gettings Started
+
+```
+npm install -g yo generator-retax
+```
+
+### Route
+
+#### Generator
+
+To create the new route 'settings', use the following command :
+
+```
+yo retax:route settings
+```
+
+The generator will start and ask you additionnal questions :
+
+```
+     _-----_
+    |       |    .--------------------------.
+    |--(o)--|    |  I will scaffold a route |
+   `---------´   '--------------------------'
+    ( _´U`_ )    
+    /___A___\    
+     |  ~  |     
+   __'.___.'__   
+ ´   `  |° ´ Y ` 
+
+```
+1. ? What is the url of the route ? /settings
+2. ? Should this route be asynchronous ? yes/no
+3. ? What is the required access level ? You can choose among public, user or admin. If you have more than thse roles, you can set them later in the index file : `/src/routes/settings/index.js`
+4. ? Will this route have child route ? Enter yes if you plan to have child routes like `/settings/infos`.
+5. ? Will this route have an IndexRoute ? Enter yes if you want an additional wrapper on your route. Most of the time this won't be necessary, you can choose no.
+6. ? Should the components be pure ? Is the page component [pure](https://facebook.github.io/react/docs/pure-render-mixin.html) ? Most of the time, it's the case so choose yes.
+7. ? Should the component container include redux ? Do you plan to use [Redux](http://redux.js.org/) for this page ? (access to the store, dispatch actions ... etc)
+8. Overwrite files 
+
+
+You page is almost ready to use ! The generator creates the folder `/src/routes/settings` with everything on it. But if you enter the url `/settings`, you should see a 404 error...
+It is normal, there is an additional and final step. 
+
+Locate the parent of your page. In our case, the parents is `/`. If the page had been `/user/settings`, the parent page would have been `/user/`. 
+Open the index.js of the parent page (in our case `src/routes/root/index.js`). In the function getChildRoutes, add the following line in the try statement :
+
+```
+	const getSettingsRoute = require('routes/settings');
+```
+
+and also add an entry in the routes array :
+
+```
+	getSettingsRoute(requireAuthFunctions),
+```
+
+Your try statement should be similar like this one : 
+
+```
+try {
+          const getUserRoutes = require('routes/user');
+          const getAdminRoutes = require('routes/admin');
+          const getSigninRoute = require('routes/signin');
+          const getSignoutRoute = require('routes/signout');
+          const getSettingsRoute = require('routes/settings');
+          const getDefaultRoute = require('routes/default');
+
+          routes = [
+            getSigninRoute(requireAuthFunctions),
+            getSignoutRoute(requireAuthFunctions),
+            getUserRoutes(requireAuthFunctions),
+            getAdminRoutes(requireAuthFunctions),
+            getSettingsRoute(requireAuthFunctions),
+            getDefaultRoute(requireAuthFunctions),
+          ];
+        }
+```
+
+Save all your files and naviguate to your page, you shouldn't see the 404 anymore. You can start to work on the route.

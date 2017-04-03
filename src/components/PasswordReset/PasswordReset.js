@@ -7,7 +7,6 @@ import TextField from 'material-ui/TextField';
 import Paper from 'material-ui/Paper';
 import Check from 'material-ui/svg-icons/navigation/check';
 import Close from 'material-ui/svg-icons/navigation/close';
-import CircularProgress from 'material-ui/CircularProgress';
 
 // custom components
 import LoadingButton from 'components/LoadingButton';
@@ -21,6 +20,7 @@ export default class PasswordReset extends Component {
     regexRules: PropTypes.array,
     user: PropTypes.object,
     updatePassword: PropTypes.func,
+    refresh: PropTypes.func,
   };
 
   static contextTypes = {
@@ -43,6 +43,7 @@ export default class PasswordReset extends Component {
   save(element, value) {
     this.state[element] = value;
     this.state.hasChanged = true;
+    this.state.buttonStatus = 'editing';
     this.rulesValidator();
   }
 
@@ -53,7 +54,6 @@ export default class PasswordReset extends Component {
 
   rulesValidator() {
     const { regexRules } = this.props;
-    const { muiTheme: { rawTheme: { palette } } } = this.context;
     let JSX = [];
 
     let resetIsValid = (this.state.password === this.state.passwordRetype);
@@ -147,7 +147,7 @@ export default class PasswordReset extends Component {
   async updatePassword() {
     const { password } = this.state;
 
-    const { updatePassword } = this.props;
+    const { updatePassword, refresh } = this.props;
     const body = {
       password,
     };
@@ -158,6 +158,7 @@ export default class PasswordReset extends Component {
       this.setState({ buttonStatus: 'error' });
     } else {
       this.setState({ buttonStatus: 'success' });
+      refresh();
     }
   }
 
@@ -170,50 +171,56 @@ export default class PasswordReset extends Component {
         style={styles.container}
       >
         <h3>Change your password</h3>
-        <TextField
-          floatingLabelFixed
-          floatingLabelText="New password"
-          hintText="Enter your new password"
-          value={this.state.password}
-          type={this.state.showPassword ? 'text' : 'password'}
-          onChange={
-            (e) => this.save('password', e.target.value)
-          }
-        /> <br />
-        <TextField
-          floatingLabelFixed
-          floatingLabelText="New password"
-          hintText="Retype your new password"
-          value={this.state.passwordRetype}
-          type={this.state.showPassword ? 'text' : 'password'}
-          onChange={
-            (e) => this.save('passwordRetype', e.target.value)
-          }
-        /> <br /><br />
-        <Checkbox
-          label="Show Password"
-          value={this.state.showPassword}
-          onCheck={(e, value) => {
-            this.setState({ showPassword: value });
-          }}
-        />
-        {this.state.rulesValidator}
-        {
-          hasChanged ?
-          [<br />,
-          <LoadingButton
-            status={buttonStatus}
-            style={{
-              color: palette.alternateTextColor,
-              opacity: resetIsValid ? 1 : 0.5,
+          <div
+            onKeyPress={(e) => {
+              if (e.key === 'Enter') {
+                ::this.updatePassword();
+              }
             }}
-            disabled={!resetIsValid}
-            backgroundColor={palette.accent1Color}
-            hoverColor={palette.accent2Color}
-            label="Save"
-            onTouchTap={::this.updatePassword}
-          />] : null
-        }
+          >
+          <TextField
+            floatingLabelFixed
+            floatingLabelText="New password"
+            hintText="Enter your new password"
+            value={this.state.password}
+            type={this.state.showPassword ? 'text' : 'password'}
+            onChange={
+              (e) => this.save('password', e.target.value)
+            }
+          /> <br />
+          <TextField
+            floatingLabelFixed
+            floatingLabelText="New password"
+            hintText="Retype your new password"
+            value={this.state.passwordRetype}
+            type={this.state.showPassword ? 'text' : 'password'}
+            onChange={
+              (e) => this.save('passwordRetype', e.target.value)
+            }
+          /> <br /><br />
+          <Checkbox
+            label="Show Password"
+            value={this.state.showPassword}
+            onCheck={(e, value) => {
+              this.setState({ showPassword: value });
+            }}
+          />
+          {this.state.rulesValidator}
+          {
+            hasChanged ?
+            [<br />,
+            <LoadingButton
+              status={buttonStatus}
+              style={{
+                color: palette.alternateTextColor,
+                opacity: resetIsValid ? 1 : 0.5,
+              }}
+              disabled={!resetIsValid}
+              label="Save"
+              onTouchTap={::this.updatePassword}
+            />] : null
+          }
+        </div>
       </Paper>
     );
   }
