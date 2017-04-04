@@ -15,7 +15,7 @@ import LoadingButton from 'components/LoadingButton';
 import styles from './styles';
 
 @pureRender
-export default class PasswordReset extends Component {
+export default class FormPasswordReset extends Component {
   static propTypes = {
     regexRules: PropTypes.array,
     user: PropTypes.object,

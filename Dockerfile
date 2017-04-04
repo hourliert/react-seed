@@ -1,5 +1,5 @@
-FROM node:5.8
-MAINTAINER Thomas Hourlier <hourliert@gmail.com>
+FROM node:6.10
+MAINTAINER Olivier Kastel <olivier@whitearrow.com>
 EXPOSE 5000
 
 ENV NODE_ENV production

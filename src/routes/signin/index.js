@@ -1,15 +1,10 @@
 import { SIGNIN } from 'constants/routes';
+import SigninPage from 'routes/signin/container/page';
 
 export default function getRoute(requireAuthFunctions) {
   return {
     path: SIGNIN,
     onEnter: requireAuthFunctions.anon,
-
-    getComponent(location, callback) {
-      require.ensure([], require => {
-        const container = require('routes/signin/container/page');
-        callback(null, container);
-      });
-    },
+    component: SigninPage,
   };
 }

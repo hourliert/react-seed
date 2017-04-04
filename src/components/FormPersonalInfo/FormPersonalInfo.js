@@ -7,12 +7,13 @@ import Paper from 'material-ui/Paper';
 
 // custom components
 import LoadingButton from 'components/LoadingButton';
+import form from './form'
 
 // styles
 import styles from './styles';
 
 @pureRender
-export default class PersonalInfo extends Component {
+export default class FormPersonalInfo extends Component {
   static propTypes = {
     user: PropTypes.object,
     updateUser: PropTypes.func,
@@ -26,15 +27,24 @@ export default class PersonalInfo extends Component {
 
   constructor(...args) {
     super(...args);
-    const { user } = this.props;
     this.state = {
       buttonStatus: undefined,
       hasChanged: false,
-      firstName: user.firstName,
-      lastName: user.lastName,
-      email: user.email,
-      emailError: undefined,
+      form: this.initForm(),
     };
+  }
+
+  initForm() {
+    // const { user } = this.props;
+    // const formState = {},
+    //
+    // for (var k in form) {
+    //   if (form.hasOwnProperty(k)) {
+    //     const field = form[k];
+    //     formState[field.key] = {
+    //     };
+    //   }
+    // }
   }
 
   save(element, value) {

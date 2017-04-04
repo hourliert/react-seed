@@ -6,8 +6,8 @@ import { Toolbar, ToolbarGroup } from 'material-ui/Toolbar';
 
 // custom components
 import UserSession from 'components/UserSession';
-import PasswordReset from 'components/PasswordReset';
-import PersonalInfo from 'components/PersonalInfo';
+import FormPasswordReset from 'components/FormPasswordReset';
+import FormPersonalInfo from 'components/FormPersonalInfo';
 
 // styles
 import styles from './styles';
@@ -57,12 +57,12 @@ export default class WrapperSettingsPage extends Component {
       case 0:
         return (
           [
-            <PersonalInfo
+            <FormPersonalInfo
               updateUser={updateUser}
               refresh={refresh}
               user={user}
             />,
-            <PasswordReset
+            <FormPasswordReset
               updatePassword={updateUser}
               refresh={refresh}
               regexRules={regexRules}

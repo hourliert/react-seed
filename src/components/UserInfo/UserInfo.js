@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import pureRender from 'pure-render-decorator';
 
 // custom components
-import PasswordReset from 'components/PasswordReset';
-import PersonalInfo from 'components/PersonalInfo';
+import FormPasswordReset from 'components/FormPasswordReset';
+import FormPersonalInfo from 'components/FormPersonalInfo';
 
 @pureRender
 export default class UserInfo extends Component {
@@ -29,8 +29,8 @@ export default class UserInfo extends Component {
 
     return (
       <div>
-        <PersonalInfo />
-        <PasswordReset
+        <FormPersonalInfo />
+        <FormPasswordReset
           regexRules={regexRules}
         />
       </div>
