@@ -2,6 +2,7 @@ export default [
   {
     key: 'firstName',
     name: 'First Name',
+    type: 'input',
     placeHolder: 'Enter your first name',
     validationRules: [
       {
@@ -13,6 +14,7 @@ export default [
   {
     key: 'lastName',
     name: 'Last Name',
+    type: 'input',
     placeHolder: 'Enter your last name',
     validationRules: [
       {
@@ -24,6 +26,7 @@ export default [
   {
     key: 'email',
     name: 'Email',
+    type: 'input',
     placeHolder: 'Enter your email',
     validationRules: [
       {

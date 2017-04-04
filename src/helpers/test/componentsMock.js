@@ -2,7 +2,6 @@ import createMock from './createMock';
 
 export const UserMindset = createMock('UserMindset');
 export const SimpleActionCard = createMock('SimpleActionCard');
-export const UserInfo = createMock('UserInfo');
 export const SessionInfo = createMock('SessionInfo');
 export const SurveyForm = createMock('SurveyForm');
 export const WelcomeCard = createMock('WelcomeCard');

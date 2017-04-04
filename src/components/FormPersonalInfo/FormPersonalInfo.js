@@ -7,7 +7,6 @@ import Paper from 'material-ui/Paper';
 
 // custom components
 import LoadingButton from 'components/LoadingButton';
-import form from './form'
 
 // styles
 import styles from './styles';
@@ -27,24 +26,15 @@ export default class FormPersonalInfo extends Component {
 
   constructor(...args) {
     super(...args);
+    const { user } = this.props;
     this.state = {
       buttonStatus: undefined,
       hasChanged: false,
-      form: this.initForm(),
+      firstName: user.firstName,
+      lastName: user.lastName,
+      email: user.email,
+      emailError: undefined,
     };
-  }
-
-  initForm() {
-    // const { user } = this.props;
-    // const formState = {},
-    //
-    // for (var k in form) {
-    //   if (form.hasOwnProperty(k)) {
-    //     const field = form[k];
-    //     formState[field.key] = {
-    //     };
-    //   }
-    // }
   }
 
   save(element, value) {
