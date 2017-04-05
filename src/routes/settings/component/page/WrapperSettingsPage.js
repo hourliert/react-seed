@@ -6,7 +6,7 @@ import { Toolbar, ToolbarGroup } from 'material-ui/Toolbar';
 
 // custom components
 import UserSession from 'components/UserSession';
-import FormPasswordReset from 'components/FormPasswordReset';
+import FormPassword from 'components/FormPassword';
 import FormPersonalInfo from 'components/FormPersonalInfo';
 
 // styles
@@ -38,21 +38,6 @@ export default class WrapperSettingsPage extends Component {
       refresh,
      } = this.props;
 
-    const regexRules = [
-      {
-        regex: '(?=.{8,})',
-        description: 'At least 8 characters',
-      },
-      {
-        regex: '(?=.*[0-9])',
-        description: 'At least 1 numerical character',
-      },
-      {
-        regex: '(?=.*[a-z])|(?=.*[A-Z])',
-        description: 'At least 1 alphabetical character',
-      },
-    ];
-
     switch (stepIndex) {
       case 0:
         return (
@@ -62,10 +47,10 @@ export default class WrapperSettingsPage extends Component {
               refresh={refresh}
               user={user}
             />,
-            <FormPasswordReset
+            <FormPassword
               updatePassword={updateUser}
               refresh={refresh}
-              regexRules={regexRules}
+              user={user}
             />,
           ]
       );

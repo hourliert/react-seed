@@ -38,8 +38,9 @@ export default class FormPersonalInfo extends Component {
     const { user } = this.props;
     const form = {
       firstName: {
-        type: 'TextField',
+        component: 'TextField',
         key: `firstName_${user._key}`,
+        type: 'text',
         labelText: 'First Name',
         hintText: 'Enter your First Name',
         value: user.firstName,
@@ -48,8 +49,9 @@ export default class FormPersonalInfo extends Component {
         error: undefined,
       },
       lastName: {
-        type: 'TextField',
+        component: 'TextField',
         key: `lastName_${user._key}`,
+        type: 'text',
         labelText: 'Last Name',
         hintText: 'Enter your Last Name',
         value: user.lastName,
@@ -58,8 +60,9 @@ export default class FormPersonalInfo extends Component {
         error: undefined,
       },
       email: {
-        type: 'TextField',
+        component: 'TextField',
         key: `email_${user._key}`,
+        type: 'text',
         labelText: 'Email',
         hintText: 'Enter your email',
         value: user.email,
@@ -90,6 +93,7 @@ export default class FormPersonalInfo extends Component {
         }}
       >
         <Form
+          title = {'Personnal Info'}
           form = {form}
           save= {::this.save}
         />
@@ -160,7 +164,6 @@ export default class FormPersonalInfo extends Component {
       <Paper
         style={styles.container}
       >
-        <h3>Personal info</h3>
         {this.form()}
       </Paper>
     );
