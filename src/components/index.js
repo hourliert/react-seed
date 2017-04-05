@@ -13,3 +13,4 @@ export { default as UserSession } from './UserSession';
 export { default as FormPasswordReset } from './FormPasswordReset';
 export { default as FormPersonalInfo } from './FormPersonalInfo';
 export { default as LoadingButton } from './LoadingButton';
+export { default as Form } from './Form';

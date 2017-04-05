@@ -2,11 +2,20 @@ import React, { Component, PropTypes } from 'react';
 import pureRender from 'pure-render-decorator';
 
 // material-ui
-import TextField from 'material-ui/TextField';
 import Paper from 'material-ui/Paper';
 
 // custom components
 import LoadingButton from 'components/LoadingButton';
+import Form from 'components/Form';
+
+// helpers
+import { formIsValid } from 'helpers/form';
+
+// constant
+import {
+  NOT_NULL,
+  EMAIL,
+} from 'constants/regex';
 
 // styles
 import styles from './styles';
@@ -27,49 +36,101 @@ export default class FormPersonalInfo extends Component {
   constructor(...args) {
     super(...args);
     const { user } = this.props;
-    this.state = {
-      buttonStatus: undefined,
-      hasChanged: false,
-      firstName: user.firstName,
-      lastName: user.lastName,
-      email: user.email,
-      emailError: undefined,
+    const form = {
+      firstName: {
+        type: 'TextField',
+        key: `firstName_${user._key}`,
+        labelText: 'First Name',
+        hintText: 'Enter your First Name',
+        value: user.firstName,
+        regex: NOT_NULL,
+        regexError: 'Required',
+        error: undefined,
+      },
+      lastName: {
+        type: 'TextField',
+        key: `lastName_${user._key}`,
+        labelText: 'Last Name',
+        hintText: 'Enter your Last Name',
+        value: user.lastName,
+        regex: NOT_NULL,
+        regexError: 'Required',
+        error: undefined,
+      },
+      email: {
+        type: 'TextField',
+        key: `email_${user._key}`,
+        labelText: 'Email',
+        hintText: 'Enter your email',
+        value: user.email,
+        regex: EMAIL,
+        regexError: 'Incorrect Email',
+        error: undefined,
+      },
     };
+
+    this.state = {
+      buttonStatus: 'editing',
+      hasChanged: false,
+      isValid: true,
+      form,
+    };
+  }
+
+  form() {
+    const { form, hasChanged, isValid, buttonStatus } = this.state;
+    const { muiTheme: { rawTheme: { palette } } } = this.context;
+
+    return (
+      <div
+        onKeyPress={(e) => {
+          if (e.key === 'Enter') {
+            ::this.updateUser();
+          }
+        }}
+      >
+        <Form
+          form = {form}
+          save= {::this.save}
+        />
+        {
+          hasChanged ?
+          [<br />,
+          <LoadingButton
+            status={buttonStatus}
+            style={{
+              color: palette.alternateTextColor,
+              opacity: isValid ? 1 : 0.5,
+            }}
+            disabled={!isValid}
+            label="Save"
+            onTouchTap={::this.updateUser}
+          />] : null
+        }
+      </div>
+    );
   }
 
   save(element, value) {
     const newState = this.state;
     newState.hasChanged = true;
-    newState.buttonStatus = 'editing';
 
-    if ((element === 'email') && (!this.emailIsCorrect(value))) {
-      newState.emailError = 'Email format is invalid';
+    // We save the value
+    newState.form[element].value = value;
+    // Regex validation
+    if (newState.form[element].regex) {
+      const valueIsValid = newState.form[element].regex.test(value);
+      if (!valueIsValid) {
+        newState.form[element].error = newState.form[element].regexError;
+        newState.isValid = false;
+      } else {
+        newState.form[element].error = undefined;
+        newState.isValid = formIsValid(newState.form);
+      }
     }
-    if ((element === 'email') && (this.emailIsCorrect(value))) {
-      newState.emailError = undefined;
-    }
 
-    newState[element] = value;
-
+    // we set the new state
     this.setState({ newState });
-  }
-
-  closeDialog() {
-    this.setState({ open: false });
-  }
-
-  openDialog() {
-    this.setState({ open: true });
-  }
-
-  testRegex(regexString, string) {
-    const regex = new RegExp(regexString);
-    return regex.test(string);
-  }
-
-  emailIsCorrect(email) {
-    const check = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;;
-    return check.test(email);
   }
 
   async updateUser() {
@@ -95,67 +156,12 @@ export default class FormPersonalInfo extends Component {
   }
 
   render() {
-    const { hasChanged, email, buttonStatus } = this.state;
-    const { muiTheme: { rawTheme: { palette } } } = this.context;
-
-    const emailIsCorrect = this.emailIsCorrect(email);
-
     return (
       <Paper
         style={styles.container}
       >
         <h3>Personal info</h3>
-          <div
-            onKeyPress={(e) => {
-              if (e.key === 'Enter') {
-                ::this.updateUser();
-              }
-            }}
-          >
-            <TextField
-              floatingLabelFixed
-              floatingLabelText="First Name"
-              hintText="Enter your First Name"
-              value={this.state.firstName}
-              onChange={
-                (e) => this.save('firstName', e.target.value)
-              }
-            /> <br />
-            <TextField
-              floatingLabelFixed
-              floatingLabelText="Last Name"
-              hintText="Enter your Last Name"
-              value={this.state.lastName}
-              onChange={
-                (e) => this.save('lastName', e.target.value)
-              }
-            />
-            <br />
-            <TextField
-              floatingLabelFixed
-              floatingLabelText="Email"
-              hintText="Enter your email address"
-              value={this.state.email}
-              errorText={this.state.emailError}
-              onChange={
-                (e) => this.save('email', e.target.value)
-              }
-            /><br />
-          {
-            hasChanged ?
-            [<br />,
-            <LoadingButton
-              status={buttonStatus}
-              style={{
-                color: palette.alternateTextColor,
-                opacity: emailIsCorrect ? 1 : 0.5,
-              }}
-              disabled={!emailIsCorrect}
-              label="Save"
-              onTouchTap={::this.updateUser}
-            />] : null
-          }
-        </div>
+        {this.form()}
       </Paper>
     );
   }
