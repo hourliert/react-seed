@@ -165,11 +165,11 @@ export default class FormPassword extends Component {
   }
 
   async updatePassword() {
-    const { password } = this.state;
+    const { form } = this.state;
 
     const { updatePassword, refresh } = this.props;
     const body = {
-      password,
+      password: form.password.value,
     };
 
     this.setState({ buttonStatus: 'loading' });

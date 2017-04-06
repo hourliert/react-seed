@@ -138,13 +138,13 @@ export default class FormPersonalInfo extends Component {
   }
 
   async updateUser() {
-    const { firstName, lastName, email } = this.state;
+    const { form } = this.state;
 
     const { updateUser, refresh } = this.props;
     const body = {
-      firstName,
-      lastName,
-      email,
+      firstName: form.firstName.value,
+      lastName: form.lastName.value,
+      email: form.email.value,
       password: '1234',
       role: 'ADMIN',
     };
