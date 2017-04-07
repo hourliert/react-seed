@@ -87,7 +87,7 @@ export default class FormPersonalInfo extends Component {
     return (
       <div
         onKeyPress={(e) => {
-          if (e.key === 'Enter') {
+          if ((e.key === 'Enter') && isValid) {
             ::this.updateUser();
           }
         }}
@@ -118,6 +118,7 @@ export default class FormPersonalInfo extends Component {
   save(element, value) {
     const newState = this.state;
     newState.hasChanged = true;
+    newState.buttonStatus = 'editing';
 
     // We save the value
     newState.form[element].value = value;

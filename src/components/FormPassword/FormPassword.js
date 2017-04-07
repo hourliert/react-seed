@@ -95,7 +95,7 @@ export default class FormPassword extends Component {
     return (
       <div
         onKeyPress={(e) => {
-          if (e.key === 'Enter') {
+          if ((e.key === 'Enter') && isValid) {
             ::this.updatePassword();
           }
         }}
@@ -139,6 +139,7 @@ export default class FormPassword extends Component {
   save(element, value) {
     let newState = this.state;
     newState.hasChanged = true;
+    newState.buttonStatus = 'editing';
 
     // handle custom events
     if (element === 'showPassword') {

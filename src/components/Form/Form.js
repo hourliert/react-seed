@@ -17,46 +17,48 @@ export default class Form extends Component {
     for (const k in form) {
       if (form.hasOwnProperty(k)) {
         const field = form[k];
+        if (field.display !== false) {
+          switch (field.component) {
+            case 'TextField':
+              JSX.push(
+                <TextField
+                  disabled = { field.disabled }
+                  key = { field.key }
+                  type = { field.type }
+                  floatingLabelFixed
+                  floatingLabelText = { field.labelText }
+                  hintText = { field.hintText }
+                  value = { field.value }
+                  onChange={
+                    (e) => save(k, e.target.value)
+                  }
+                  errorText = { field.error }
+                />
+              );
+              JSX.push(
+                <br />
+              );
+              break;
+            case 'Checkbox':
+              JSX.push(
+                <br />
+              );
+              JSX.push(
+                <Checkbox
+                  label={ field.labelText }
+                  value={ field.value }
+                  onCheck={(e, value) => {
+                    save(k, value);
+                  }}
+                />
+              );
+              JSX.push(
+                <br />
+              );
+              break;
+            default:
 
-        switch (field.component) {
-          case 'TextField':
-            JSX.push(
-              <TextField
-                key = { field.key }
-                type = { field.type }
-                floatingLabelFixed
-                floatingLabelText = { field.labelText }
-                hintText = { field.hintText }
-                value = { field.value }
-                onChange={
-                  (e) => save(k, e.target.value)
-                }
-                errorText = { field.error }
-              />
-            );
-            JSX.push(
-              <br />
-            );
-            break;
-          case 'Checkbox':
-            JSX.push(
-              <br />
-            );
-            JSX.push(
-              <Checkbox
-                label={ field.labelText }
-                value={ field.value }
-                onCheck={(e, value) => {
-                  save(k, value);
-                }}
-              />
-            );
-            JSX.push(
-              <br />
-            );
-            break;
-          default:
-
+          }
         }
       }
     }

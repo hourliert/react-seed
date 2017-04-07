@@ -74,7 +74,7 @@ export default class WrapperSettingsPage extends Component {
     return (
       <div className="flex layout vertical">
         <Toolbar style={{ background: 'white', borderBottom: '1px solid #aaaaaa' }}>
-          <ToolbarGroup firstChild style={{ marginLeft: '5px' }}>
+          <ToolbarGroup firstChild style={{ marginLeft: '5px', overflow: 'scroll' }}>
             <div
               style={stepIndex === 0 ? styles.menuItemSelected : styles.menuItem}
               onClick={() => { this.setState({ stepIndex: 0 }); }}

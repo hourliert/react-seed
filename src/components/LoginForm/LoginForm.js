@@ -5,6 +5,7 @@ import { reduxForm } from 'redux-form';
 import WALogo from 'images/logo/logo-192x192.png';
 import pureRender from 'pure-render-decorator';
 import validate from './validationRules';
+import * as Colors from 'material-ui/styles/colors';
 import styles from './styles';
 
 const fields = ['email', 'password'];
@@ -70,8 +71,8 @@ export default class LoginForm extends Component {
           <div className="layout horizontal around-justified">
             <FlatButton
               label="Cancel"
-              backgroundColor={palette.primary2Color}
-              hoverColor={palette.primary3Color}
+              backgroundColor={Colors.grey300}
+              hoverColor={Colors.grey400}
               style={{ color: palette.textColor }}
               label="Cancel"
               primary

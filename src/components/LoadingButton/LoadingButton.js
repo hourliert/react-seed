@@ -37,8 +37,8 @@ export default class LoadingButton extends Component {
       return (
         <FlatButton
           style= {newStyle}
-          backgroundColor={palette.accent1Color}
-          hoverColor={palette.accent2Color}
+          backgroundColor={palette.primary1Color}
+          hoverColor={palette.primaryC2olor}
           icon = {
               <CircularProgress
                 size={0.3}
@@ -80,8 +80,8 @@ export default class LoadingButton extends Component {
 
     return (
       <FlatButton
-        backgroundColor={palette.accent1Color}
-        hoverColor={palette.accent2Color}
+        backgroundColor={palette.primary1Color}
+        hoverColor={palette.primary2Color}
         {...this.props}
       />
     );
