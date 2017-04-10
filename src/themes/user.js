@@ -10,7 +10,7 @@ export default {
     primary2Color: '#2E67CE',
     primary3Color: Colors.grey400,
     accent1Color: Colors.blue500,
-    accent2Color: Colors.blue700,
+    accent2Color: Colors.blue50,
     accent3Color: Colors.grey500,
     textColor: Colors.darkBlack,
     alternateTextColor: Colors.white,

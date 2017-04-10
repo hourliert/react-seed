@@ -46,14 +46,14 @@ export default class FilterArrow extends Component {
           color={palette.primary1Color}
           onClick={() => {
             this.setState({ filter: undefined });
-            onFilter(colKey, undefined);
+            onFilter(colKey, 'Down');
           }}
         />
       );
     }
 
     return (
-      <Filter
+      <Down
         style={styles.arrow}
         onClick={() => {
           this.setState({ filter: 'Down' });

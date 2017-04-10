@@ -1,33 +1,31 @@
-export function filterUp(a, b, colKey) {
-  if (a[colKey] > b[colKey]) {
+export function filterDown(a, b, colKey) {
+  const nameA = a[colKey] ? String(a[colKey]).toLowerCase() : 'z';
+  const nameB = b[colKey] ? String(b[colKey]).toLowerCase() : 'z';
+
+  if (nameA > nameB) {
     return 1;
   }
 
-  if (a[colKey] < b[colKey]) {
+  if (nameA < nameB) {
     return -1;
   }
 
-  if (a[colKey] === b[colKey]) {
-    return 0;
-  }
-
-  return -1;
+  return 0;
 }
 
-export function filterDown(a, b, colKey) {
-  if (a[colKey] > b[colKey]) {
-    return -1;
-  }
+export function filterUp(a, b, colKey) {
+  const nameA = a[colKey] ? String(a[colKey]).toLowerCase() : 'z';
+  const nameB = b[colKey] ? String(b[colKey]).toLowerCase() : 'z';
 
-  if (a[colKey] < b[colKey]) {
+  if (nameA < nameB) {
     return 1;
   }
 
-  if (a[colKey] === b[colKey]) {
-    return 0;
+  if (nameA > nameB) {
+    return -1;
   }
 
-  return -1;
+  return 0;
 }
 
 export function getValue(js, path) {
@@ -50,7 +48,6 @@ export function getValue(js, path) {
 
   return val;
 }
-
 
 export function getStructuredData(data, tableMeta) {
   const { cols } = tableMeta;
