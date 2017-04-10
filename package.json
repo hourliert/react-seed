@@ -53,7 +53,7 @@
     "react-addons-perf": "^15.0.0",
     "react-addons-shallow-compare": "^15.0.0",
     "react-dom": "^15.0.0",
-    "react-helmet": "^3.0.1",
+    "react-helmet": "^5.0.3",
     "react-redux": "^4.4.5",
     "react-router": "^2.2.4",
     "react-router-redux": "^4.0.2",
