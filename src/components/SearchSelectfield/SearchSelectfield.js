@@ -17,10 +17,12 @@ import styles from './styles';
 export default class SearchSelectfield extends Component {
   static propTypes = {
     hintText: PropTypes.string,
-    filterState: PropTypes.string,
+    sortState: PropTypes.string,
     dataSource: PropTypes.array,
     colKey: PropTypes.string,
     onFilter: PropTypes.func,
+    searchState: PropTypes.string,
+    onSearch: PropTypes.func,
   };
 
   static contextTypes = {
@@ -28,13 +30,9 @@ export default class SearchSelectfield extends Component {
     router: React.PropTypes.object,
   };
 
-  state = {
-    content: '',
-  }
-
   getSelectField() {
     const { muiTheme: { rawTheme: { palette } } } = this.context;
-    const { dataSource, hintText } = this.props;
+    const { hintText, searchState, dataSource } = this.props;
     const JSX = [];
 
     const text = {
@@ -59,8 +57,8 @@ export default class SearchSelectfield extends Component {
       <SelectField
         hintText={hintText}
         underlineShow={false}
-        value={this.state.content}
-        onChange={(event, index, value) => this.setState({ content: value })}
+        value={searchState}
+        onChange={(event, index, value) => this.search(value)}
         style={styles.selectField}
         labelStyle={text}
         hintStyle={styles.text}
@@ -71,9 +69,19 @@ export default class SearchSelectfield extends Component {
     );
   }
 
+  search(searchContent) {
+    const { colKey, onSearch } = this.props;
+    onSearch(colKey, searchContent, false);
+  }
+
+  clear() {
+    const { colKey, onSearch } = this.props;
+    onSearch(colKey, undefined);
+  }
+
   render() {
     const { muiTheme: { rawTheme: { palette } } } = this.context;
-    const { content } = this.state;
+    const { searchState } = this.props;
 
     return (
       <div
@@ -84,18 +92,19 @@ export default class SearchSelectfield extends Component {
       >
         <div>
           <FilterArrow
-            filterState={this.props.filterState}
+            sortState={this.props.sortState}
             onFilter={this.props.onFilter}
             colKey={this.props.colKey}
           />
         </div>
         {this.getSelectField()}
-      { content !== '' ?
+      { (searchState !== '') && (searchState !== undefined) ?
         <div
-          onClick={() => this.setState({ content: '' })}
+          onClick={::this.clear}
         >
           <Close
-            color={ (content !== '') ? palette.primary1Color : undefined }
+            color={ (searchState !== '') && (searchState !== undefined) ?
+              palette.primary1Color : undefined }
             style={styles.close}
           />
       </div> : null

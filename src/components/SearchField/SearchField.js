@@ -16,9 +16,11 @@ import styles from './styles';
 export default class SearchField extends Component {
   static propTypes = {
     hintText: PropTypes.string,
-    filterState: PropTypes.string,
+    sortState: PropTypes.string,
     colKey: PropTypes.string,
     onFilter: PropTypes.func,
+    searchState: PropTypes.string,
+    onSearch: PropTypes.func,
   };
 
   static contextTypes = {
@@ -27,13 +29,32 @@ export default class SearchField extends Component {
   };
 
   state = {
-    content: '',
+    lastSearchContent: '',
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.searchState === undefined) {
+      this.state.lastSearchContent = '';
+    }
+  }
+
+  search(searchContent) {
+    const { lastSearchContent } = this.state;
+    const { colKey, onSearch } = this.props;
+    const charIsAdded = searchContent.length > lastSearchContent.length;
+    onSearch(colKey, searchContent, charIsAdded);
+    this.state.lastSearchContent = searchContent;
+  }
+
+  clear() {
+    const { colKey, onSearch } = this.props;
+    this.setState({ content: '' });
+    onSearch(colKey, undefined);
   }
 
   render() {
     const { muiTheme: { rawTheme: { palette } } } = this.context;
-    const { hintText } = this.props;
-    const { content } = this.state;
+    const { hintText, searchState } = this.props;
 
     return (
       <div
@@ -44,7 +65,7 @@ export default class SearchField extends Component {
       >
         <div>
           <FilterArrow
-            filterState={this.props.filterState}
+            sortState={this.props.sortState}
             onFilter={this.props.onFilter}
             colKey={this.props.colKey}
           />
@@ -52,22 +73,23 @@ export default class SearchField extends Component {
         <TextField
           inputStyle=
           {{
-            color: (content !== '') ? palette.primary1Color : undefined,
+            color: (searchState !== '') ? palette.primary1Color : undefined,
           }}
-          value={content}
+          value={ searchState || '' }
           onChange={
-            (e) => this.setState({ content: e.target.value })
+            (e) => this.search(e.target.value)
           }
           style={styles.text}
           underlineShow={false}
           hintText={hintText}
         />
-      { content !== '' ?
+      { (searchState !== '') && (searchState !== undefined) ?
         <div
-          onClick={() => this.setState({ content: '' })}
+          onClick={::this.clear}
         >
           <Close
-            color={ (content !== '') ? palette.primary1Color : undefined }
+            color={ (searchState !== '') && (searchState !== undefined) ?
+              palette.primary1Color : undefined }
             style={styles.close}
           />
       </div> : null

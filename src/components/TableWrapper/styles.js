@@ -16,4 +16,13 @@ export default {
     paddingLeft: 15,
     height: 25,
   },
+  iconMenu: {
+    float: 'left',
+    position: 'absolute',
+    right: 0,
+    marginTop: -15,
+  },
+  tableMeta: {
+    float: 'left',
+  },
 };

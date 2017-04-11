@@ -16,10 +16,12 @@ import styles from './styles';
 export default class SearchAutoComplete extends Component {
   static propTypes = {
     hintText: PropTypes.string,
-    filterState: PropTypes.string,
-    dataSource: PropTypes.array,
+    sortState: PropTypes.string,
     colKey: PropTypes.string,
     onFilter: PropTypes.func,
+    searchState: PropTypes.string,
+    onSearch: PropTypes.func,
+    dataSource: PropTypes.array,
   };
 
   static contextTypes = {
@@ -28,13 +30,32 @@ export default class SearchAutoComplete extends Component {
   };
 
   state = {
-    content: '',
+    lastSearchContent: '',
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.searchState === undefined) {
+      this.state.lastSearchContent = '';
+    }
+  }
+
+  search(searchContent) {
+    const { lastSearchContent } = this.state;
+    const { colKey, onSearch } = this.props;
+    const charIsAdded = searchContent.length > lastSearchContent.length;
+    onSearch(colKey, searchContent, charIsAdded);
+    this.state.lastSearchContent = searchContent;
+  }
+
+  clear() {
+    const { colKey, onSearch } = this.props;
+    this.setState({ content: '' });
+    onSearch(colKey, undefined);
   }
 
   render() {
     const { muiTheme: { rawTheme: { palette } } } = this.context;
-    const { hintText, dataSource } = this.props;
-    const { content } = this.state;
+    const { hintText, searchState, dataSource } = this.props;
 
     return (
       <div
@@ -45,7 +66,7 @@ export default class SearchAutoComplete extends Component {
       >
         <div>
           <FilterArrow
-            filterState={this.props.filterState}
+            sortState={this.props.sortState}
             onFilter={this.props.onFilter}
             colKey={this.props.colKey}
           />
@@ -53,11 +74,11 @@ export default class SearchAutoComplete extends Component {
         <AutoComplete
           inputStyle=
           {{
-            color: (content !== '') ? palette.primary1Color : undefined,
+            color: (searchState !== '') ? palette.primary1Color : undefined,
           }}
-          searchText={content}
+          searchText={ searchState || '' }
           onNewRequest={
-            (string) => this.setState({ content: string })
+            (string) => this.search(string)
           }
           textFieldStyle={styles.textFieldStyle}
           underlineShow={false}
@@ -66,12 +87,13 @@ export default class SearchAutoComplete extends Component {
           filter={AutoComplete.caseInsensitiveFilter}
           dataSource={dataSource}
         />
-      { content !== '' ?
+      { (searchState !== '') && (searchState !== undefined) ?
         <div
-          onClick={() => this.setState({ content: '' })}
+          onClick={::this.clear}
         >
           <Close
-            color={ (content !== '') ? palette.primary1Color : undefined }
+            color={ (searchState !== '') && (searchState !== undefined) ?
+              palette.primary1Color : undefined }
             style={styles.close}
           />
       </div> : null

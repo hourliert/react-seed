@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import pureRender from 'pure-render-decorator';
+import dateformat from 'dateformat';
 
 // material-ui
 import DatePicker from 'material-ui/DatePicker';
@@ -16,9 +17,11 @@ import styles from './styles';
 export default class SearchDate extends Component {
   static propTypes = {
     hintText: PropTypes.string,
-    filterState: PropTypes.string,
+    sortState: PropTypes.string,
     colKey: PropTypes.string,
     onFilter: PropTypes.func,
+    searchState: PropTypes.string,
+    onSearch: PropTypes.func,
   };
 
   static contextTypes = {
@@ -26,14 +29,21 @@ export default class SearchDate extends Component {
     router: React.PropTypes.object,
   };
 
-  state = {
-    content: undefined,
+  search(searchContent) {
+    const date = new Date(searchContent);
+    const dateString = dateformat(date, 'yyyy-mm-dd');
+    const { colKey, onSearch } = this.props;
+    onSearch(colKey, dateString, false);
+  }
+
+  clear() {
+    const { colKey, onSearch } = this.props;
+    onSearch(colKey, undefined);
   }
 
   render() {
     const { muiTheme: { rawTheme: { palette } } } = this.context;
-    const { hintText } = this.props;
-    const { content } = this.state;
+    const { hintText, searchState } = this.props;
 
     return (
       <div
@@ -44,7 +54,7 @@ export default class SearchDate extends Component {
       >
         <div>
           <FilterArrow
-            filterState={this.props.filterState}
+            sortState={this.props.sortState}
             onFilter={this.props.onFilter}
             colKey={this.props.colKey}
           />
@@ -52,25 +62,26 @@ export default class SearchDate extends Component {
         <DatePicker
           inputStyle=
           {{
-            color: (content !== undefined) ? palette.primary1Color : undefined,
+            color: (searchState !== '') ? palette.primary1Color : undefined,
           }}
-          value={content}
+          value={searchState ? new Date(searchState) : undefined}
           onChange={
-            (e, date) => this.setState({ content: date })
+            (e, date) => this.search(date)
           }
           textFieldStyle={styles.text}
           underlineShow={false}
           hintText={hintText}
           container="inline"
         />
-      { content !== undefined ?
+      { (searchState !== '') && (searchState !== undefined) ?
         <div
-          onClick={() => this.setState({ content: undefined })}
+          onClick={::this.clear}
         >
-          <Close
-            color={ (content !== undefined) ? palette.primary1Color : undefined }
-            style={styles.close}
-          />
+        <Close
+          color={ (searchState !== '') && (searchState !== undefined) ?
+            palette.primary1Color : undefined }
+          style={styles.close}
+        />
       </div> : null
       }
       </div>

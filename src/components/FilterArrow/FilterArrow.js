@@ -12,7 +12,7 @@ import styles from './styles';
 @pureRender
 export default class FilterArrow extends Component {
   static propTypes = {
-    filterState: PropTypes.string,
+    sortState: PropTypes.string,
     colKey: PropTypes.string,
     onFilter: PropTypes.func,
   };
@@ -23,10 +23,10 @@ export default class FilterArrow extends Component {
   };
 
   render() {
-    const { onFilter, colKey, filterState } = this.props;
+    const { onFilter, colKey, sortState } = this.props;
     const { muiTheme: { rawTheme: { palette } } } = this.context;
 
-    if (filterState === 'Down') {
+    if (sortState === 'Down') {
       return (
         <Down
           style={styles.arrow}
@@ -39,7 +39,7 @@ export default class FilterArrow extends Component {
       );
     }
 
-    if (filterState === 'Up') {
+    if (sortState === 'Up') {
       return (
         <Up
           style={styles.arrow}

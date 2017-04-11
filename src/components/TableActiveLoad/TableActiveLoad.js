@@ -3,6 +3,7 @@ import pureRender from 'pure-render-decorator';
 
 // custom components
 import TableWrapper from 'components/TableWrapper';
+import Tag from 'components/Tag';
 
 // data
 import data from './data.json';
@@ -14,15 +15,23 @@ export default class TableActiveLoad extends Component {
   };
 
   render() {
-    const colors = [
-      'Red',
-      'Orange',
-      'Yellow',
-      'Green',
-      'Blue',
-      'Purple',
-      'Black',
-      'White',
+    const loads = [
+      '719184',
+      '719390',
+      '719506',
+      '719507',
+      '719606',
+      '719626',
+      '719635',
+      '719636',
+    ];
+
+    const status = [
+      'En Route',
+      'Pick Up',
+      'Processing',
+      'Delivered',
+      'Ready',
     ];
 
     const tableMeta = {
@@ -37,6 +46,9 @@ export default class TableActiveLoad extends Component {
         deselectOnClickaway: true,
         stripedRows: false,
         showRowHover: false,
+        tableRowStyle: {
+          borderLeft: 'solid 3px #4CAF50',
+        },
       },
       mutlipleProperties: {
         showCheckboxes: false,
@@ -45,22 +57,23 @@ export default class TableActiveLoad extends Component {
         {
           headerTitle: 'Controlled',
           filterable: true,
-          filterState: undefined,
+          sortState: undefined,
           searchable: 'AUTOCOMPLETE',
           dataPath: 'id',
           colKey: 'id',
           autocomplete: {
             type: 'suggest',
-            dataSource: colors,
+            dataSource: loads,
             maxSearchResults: 5,
           },
+          component: Tag,
         },
         {
           headerTitle: 'String',
           searchable: 'STRING',
           tooltip: 'Load reference',
           filterable: true,
-          filterState: undefined,
+          sortState: undefined,
           dataPath: 'refNumber',
           colKey: 'refNumber',
         },
@@ -69,7 +82,7 @@ export default class TableActiveLoad extends Component {
           tooltip: 'Date',
           searchable: 'DATE',
           filterable: true,
-          filterState: undefined,
+          sortState: undefined,
           dataPath: 'stops[0].date',
           colKey: 'date',
         },
@@ -78,12 +91,12 @@ export default class TableActiveLoad extends Component {
           tooltip: 'Load Status',
           searchable: 'AUTOCOMPLETE',
           filterable: true,
-          filterState: undefined,
+          sortState: undefined,
           dataPath: 'status',
           colKey: 'status',
           autocomplete: {
             type: 'static',
-            dataSource: colors,
+            dataSource: status,
           },
         },
         {
@@ -91,7 +104,7 @@ export default class TableActiveLoad extends Component {
           tooltip: 'Last location',
           searchable: 'STRING',
           filterable: true,
-          filterState: undefined,
+          sortState: undefined,
           dataPath: 'lastLocation.city',
           colKey: 'city',
         },
@@ -102,9 +115,7 @@ export default class TableActiveLoad extends Component {
       <TableWrapper
         data={data}
         tableMeta={tableMeta}
-      >
-        Yay
-      </TableWrapper>
+      />
     );
   }
 

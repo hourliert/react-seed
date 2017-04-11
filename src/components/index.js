@@ -19,4 +19,4 @@ export { default as TableActiveLoad } from './TableActiveLoad';
 export { default as TableHeaderSearch } from './TableHeaderSearch';
 export { default as SearchField } from './SearchField';
 export { default as SearchDate } from './SearchDate';
-export { default as SearchAutoComplete } from './SearchAutoComplete';export { default as SearchSelectfield } from './SearchSelectfield';export { default as FilterArrow } from './FilterArrow';
+export { default as SearchAutoComplete } from './SearchAutoComplete';export { default as SearchSelectfield } from './SearchSelectfield';export { default as FilterArrow } from './FilterArrow';export { default as tag } from './tag';

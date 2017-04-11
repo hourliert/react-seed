@@ -12,6 +12,10 @@ import {
 } from 'material-ui/Table';
 import ReactDOM from 'react-dom';
 import { WindowResizeListener } from 'react-window-resize-listener';
+import IconMenu from 'material-ui/IconMenu';
+import MenuItem from 'material-ui/MenuItem';
+import IconButton from 'material-ui/IconButton';
+import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 
 // custom elements
 import SearchField from 'components/SearchField';
@@ -21,8 +25,10 @@ import SearchSelectfield from 'components/SearchSelectfield';
 
 // helpers
 import {
-  filterUp,
-  filterDown,
+  sortUp,
+  sortDown,
+  filterData,
+  getInitialStructuredData,
   getStructuredData,
 } from 'helpers/table';
 
@@ -45,8 +51,9 @@ export default class TableWrapper extends Component {
       initialTableMeta: tableMeta,
       tableMeta,
       data,
-      structuredData: getStructuredData(data, tableMeta),
+      structuredData: getInitialStructuredData(data, tableMeta),
       height: 1200,
+      lastColKey: undefined,
     };
   }
 
@@ -60,7 +67,7 @@ export default class TableWrapper extends Component {
     });
   }
 
-  setFilterStatesForCol(colKey, mode) {
+  setSortStatesForCol(colKey, mode) {
     const { tableMeta } = this.state;
     const newTableMeta = tableMeta;
 
@@ -68,9 +75,9 @@ export default class TableWrapper extends Component {
     for (const k in newTableMeta.cols) {
       if (newTableMeta.cols.hasOwnProperty(k)) {
         if (newTableMeta.cols[k].colKey === colKey) {
-          newTableMeta.cols[k].filterState = mode;
+          newTableMeta.cols[k].sortState = mode;
         } else {
-          newTableMeta.cols[k].filterState = undefined;
+          newTableMeta.cols[k].sortState = undefined;
         }
       }
     }
@@ -79,22 +86,72 @@ export default class TableWrapper extends Component {
     this.forceUpdate();
   }
 
-  filterRequest(colKey, mode) {
+  setSearchStateForCol(colKey, searchContent) {
+    const { tableMeta } = this.state;
+    const newTableMeta = tableMeta;
+
+    for (const k in newTableMeta.cols) {
+      if (newTableMeta.cols.hasOwnProperty(k)) {
+        if (newTableMeta.cols[k].colKey === colKey) {
+          newTableMeta.cols[k].searchContent = searchContent;
+        }
+      }
+    }
+    this.state.tableMeta = newTableMeta;
+    this.forceUpdate();
+  }
+
+  resetSearchStates() {
+    const { tableMeta } = this.state;
+    const newTableMeta = tableMeta;
+
+    for (const k in newTableMeta.cols) {
+      if (newTableMeta.cols.hasOwnProperty(k)) {
+        newTableMeta.cols[k].searchContent = undefined;
+      }
+    }
+    this.state.tableMeta = newTableMeta;
+    this.forceUpdate();
+  }
+
+  sortRequest(colKey, mode) {
     const { data, tableMeta } = this.props;
     const { structuredData } = this.state;
     if (mode === 'Up') {
-      structuredData.sort((a, b) => filterUp(a, b, colKey));
-      this.setFilterStatesForCol(colKey, mode);
+      structuredData.sort((a, b) => sortUp(a, b, colKey));
+      this.setSortStatesForCol(colKey, mode);
     }
     if (mode === 'Down') {
-      structuredData.sort((a, b) => filterDown(a, b, colKey));
-      this.setFilterStatesForCol(colKey, mode);
+      structuredData.sort((a, b) => sortDown(a, b, colKey));
+      this.setSortStatesForCol(colKey, mode);
     }
 
     if (mode === undefined) {
-      this.state.structuredData = getStructuredData(data, tableMeta);
-      this.setFilterStatesForCol(colKey, undefined);
+      this.state.structuredData = getInitialStructuredData(data, tableMeta);
+      this.setSortStatesForCol(colKey, undefined);
     }
+  }
+
+  searchRequest(colKey, searchContent, charIsAdded) {
+    const { data, tableMeta } = this.props;
+    const { structuredData } = this.state;
+
+    this.setSearchStateForCol(colKey, searchContent);
+
+    if (searchContent === undefined) {
+      this.state.structuredData = getStructuredData(data, tableMeta);
+    } else {
+      if (charIsAdded) {
+        this.state.structuredData = structuredData.filter(
+          (a) => filterData(a, colKey, searchContent.toLowerCase())
+        );
+      } else {
+        this.state.structuredData = getStructuredData(data, tableMeta).filter(
+          (a) => filterData(a, colKey, searchContent.toLowerCase())
+        );
+      }
+    }
+    this.forceUpdate();
   }
 
   table() {
@@ -115,6 +172,18 @@ export default class TableWrapper extends Component {
     );
   }
 
+  handleIconMenu(e, v) {
+    const { data, tableMeta } = this.props;
+    switch (v) {
+      case 'clear':
+        this.state.structuredData = getStructuredData(data, tableMeta);
+        this.resetSearchStates();
+        break;
+      default:
+
+    }
+  }
+
   tableHeader() {
     const { tableMeta } = this.state;
     const { cols, tableProperties, mutlipleProperties } = tableMeta;
@@ -127,9 +196,20 @@ export default class TableWrapper extends Component {
         >
           <TableHeaderColumn
             colSpan={cols.length}
-            style={{ textAlign: 'center' }}
           >
-            {tableMeta.superHeader}
+            <div style={styles.tableMeta}>
+              {tableMeta.superHeader}
+            </div>
+            <div style={styles.iconMenu}>
+              <IconMenu
+                iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
+                anchorOrigin={{ horizontal: 'left', vertical: 'top' }}
+                targetOrigin={{ horizontal: 'left', vertical: 'top' }}
+                onChange={::this.handleIconMenu}
+              >
+                <MenuItem value="clear" primaryText="Clear filters" />
+              </IconMenu>
+            </div>
           </TableHeaderColumn>
         </TableRow>
       );
@@ -145,8 +225,10 @@ export default class TableWrapper extends Component {
           search = (
               <SearchField
                 colKey = {col.colKey}
-                filterState = {col.filterState}
-                onFilter= {::this.filterRequest}
+                sortState = {col.sortState}
+                searchState = {col.searchContent}
+                onFilter= {::this.sortRequest}
+                onSearch= {::this.searchRequest}
                 hintText={col.headerTitle}
               />
           );
@@ -156,8 +238,10 @@ export default class TableWrapper extends Component {
           search = (
               <SearchDate
                 colKey = {col.colKey}
-                filterState = {col.filterState}
-                onFilter= {::this.filterRequest}
+                sortState = {col.sortState}
+                searchState = {col.searchContent}
+                onFilter= {::this.sortRequest}
+                onSearch= {::this.searchRequest}
                 hintText={col.headerTitle}
               />
           );
@@ -168,8 +252,10 @@ export default class TableWrapper extends Component {
             search = (
                 <SearchAutoComplete
                   colKey = {col.colKey}
-                  filterState = {col.filterState}
-                  onFilter= {::this.filterRequest}
+                  sortState = {col.sortState}
+                  searchState = {col.searchContent}
+                  onFilter= {::this.sortRequest}
+                  onSearch= {::this.searchRequest}
                   dataSource = {col.autocomplete.dataSource}
                   hintText={col.headerTitle}
                 />
@@ -180,8 +266,10 @@ export default class TableWrapper extends Component {
             search = (
                 <SearchSelectfield
                   colKey = {col.colKey}
-                  filterState = {col.filterState}
-                  onFilter= {::this.filterRequest}
+                  sortState = {col.sortState}
+                  searchState = {col.searchContent}
+                  onFilter= {::this.sortRequest}
+                  onSearch= {::this.searchRequest}
                   dataSource = {col.autocomplete.dataSource}
                   hintText={col.headerTitle}
                 />
@@ -232,14 +320,26 @@ export default class TableWrapper extends Component {
         for (const k in cols) {
           if (cols.hasOwnProperty(k)) {
             const col = cols[k];
-            tableRowColumns.push(
-              <TableRowColumn
-                style={styles.tableRow}
-                key={`${col.colKey}_${datum.id}`}
-              >
-                { datum[col.colKey] }
-              </TableRowColumn>
-            );
+            if (col.component) {
+              const WarpperComponent = col.component;
+              tableRowColumns.push(
+                <TableRowColumn
+                  style={styles.tableRow}
+                  key={`${col.colKey}_${datum.id}`}
+                >
+                  <WarpperComponent datum={datum}/>
+                </TableRowColumn>
+              );
+            } else {
+              tableRowColumns.push(
+                <TableRowColumn
+                  style={styles.tableRow}
+                  key={`${col.colKey}_${datum.id}`}
+                >
+                  { datum[col.colKey] }
+                </TableRowColumn>
+              );
+            }
           }
         }
 

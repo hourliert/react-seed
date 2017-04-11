@@ -122,6 +122,7 @@ export default class FormPersonalInfo extends Component {
 
     // We save the value
     newState.form[element].value = value;
+
     // Regex validation
     if (newState.form[element].regex) {
       const valueIsValid = newState.form[element].regex.test(value);
