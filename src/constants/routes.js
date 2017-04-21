@@ -5,3 +5,4 @@ export const SIGNIN = '/signin';
 export const SIGNOUT = '/signout';
 export const DEFAULT = '*';
 export const SETTINGS = '/settings';
+export const DOCUMENTATION = '/documentation';

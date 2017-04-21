@@ -33,7 +33,7 @@ export default class WrapperUserIndexPage extends Component {
     switch (stepIndex) {
       case 0:
         return (
-          <TableActiveLoad />
+          <div>Welcome to Retax seed</div>
       );
       default:
         return 'You\'re a long way from home sonny jim!';
@@ -47,13 +47,13 @@ export default class WrapperUserIndexPage extends Component {
 
     return (
       <div className="flex layout vertical">
-        <Toolbar style={{ background: 'white', borderBottom: '1px solid #aaaaaa' }}>
+        <Toolbar style={{ background: 'white', borderBottom: '1px solid #aaaaaa', height: 48 }}>
           <ToolbarGroup firstChild style={{ marginLeft: '5px', overflow: 'scroll' }}>
             <div
               style={stepIndex === 0 ? styles.menuItemSelected : styles.menuItem}
               onClick={() => { this.setState({ stepIndex: 0 }); }}
             >
-              Info
+              Home
             </div>
           </ToolbarGroup>
         </Toolbar>

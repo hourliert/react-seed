@@ -19,7 +19,7 @@ export default {
   container: {
     background: '#ececec',
     width: 'calc(100% - 50px)',
-    minHeight: 'calc(100vh - 162px)',
+    height: 'calc(100vh - 153px)',
     padding: 25,
     overflow: 'scroll',
   },

@@ -25,4 +25,19 @@ export default {
   tableMeta: {
     float: 'left',
   },
+  tableHeader: {
+    display: 'inherit',
+    borderBottom: 'none',
+    width: '100%',
+    position: 'relative',
+  },
+  fullWidth: {
+    width: '100%',
+  },
+  progressRow: {
+    height: 100,
+    textAlign: 'center',
+    padding: 25,
+    width: '100%',
+  },
 };

@@ -16,12 +16,13 @@ import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
 import IconButton from 'material-ui/IconButton';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
+import CircularProgress from 'material-ui/CircularProgress';
 
 // custom elements
-import SearchField from 'components/SearchField';
-import SearchDate from 'components/SearchDate';
-import SearchAutoComplete from 'components/SearchAutoComplete';
-import SearchSelectfield from 'components/SearchSelectfield';
+import SearchField from './coreComponents/SearchField';
+import SearchDate from './coreComponents/SearchDate';
+import SearchAutoComplete from './coreComponents/SearchAutoComplete';
+import SearchSelectfield from './coreComponents/SearchSelectfield';
 
 // helpers
 import {
@@ -30,7 +31,8 @@ import {
   filterData,
   getInitialStructuredData,
   getStructuredData,
-} from 'helpers/table';
+  capitalize,
+} from './helpers';
 
 // styles
 import styles from './styles';
@@ -41,6 +43,7 @@ export default class TableWrapper extends Component {
   static propTypes = {
     tableMeta: PropTypes.object,
     data: PropTypes.array,
+    onCellClick: PropTypes.func,
   };
 
   constructor(...args) {
@@ -53,18 +56,39 @@ export default class TableWrapper extends Component {
       data,
       structuredData: getInitialStructuredData(data, tableMeta),
       height: 1200,
+      colWidth: 300,
+      visibleEntries: 30,
       lastColKey: undefined,
     };
   }
 
   componentDidMount() {
-    this.setHeight();
+    this.setDimension();
+    this.calcColWidth();
+
+    this.viewport.addEventListener('scroll', (e) => {
+      const clientHeight = e.srcElement.clientHeight;
+      const scrollHeight = e.srcElement.scrollHeight;
+      const scrollTop = e.srcElement.scrollTop;
+      const ratio = (scrollTop / (scrollHeight - clientHeight)) * 100;
+
+      if (ratio === 100) {
+        this.displayMoreEntries(50);
+      }
+    });
   }
 
-  setHeight() {
-    this.setState({
-      height: ReactDOM.findDOMNode(this.refs.wrapper).clientHeight - 115,
-    });
+  componentWillReceiveProps(nextProps) {
+    if (this.props.data !== nextProps.data) {
+      this.state.data = nextProps.data;
+      this.state.structuredData = getStructuredData(nextProps.data, this.state.tableMeta);
+      this.forceUpdate();
+    }
+  }
+
+  setDimension() {
+    this.state.height = ReactDOM.findDOMNode(this.refs.wrapper).clientHeight - 123;
+    this.state.width = ReactDOM.findDOMNode(this.refs.wrapper).clientWidth;
   }
 
   setSortStatesForCol(colKey, mode) {
@@ -101,6 +125,31 @@ export default class TableWrapper extends Component {
     this.forceUpdate();
   }
 
+  displayMoreEntries(nb) {
+    this.state.visibleEntries += nb;
+    this.forceUpdate();
+  }
+
+  calcColWidth() {
+    const { tableMeta, width } = this.state;
+    const newTableMeta = tableMeta;
+
+    let colCount = newTableMeta.cols.length;
+    let totWidth = width;
+
+    for (const k in newTableMeta.cols) {
+      if (newTableMeta.cols.hasOwnProperty(k)) {
+        const col = newTableMeta.cols[k];
+        if (col.style && col.style.width) {
+          totWidth = totWidth - (col.style.width + 30);
+          colCount -= 1;
+        }
+      }
+    }
+    this.state.colWidth = (totWidth / colCount);
+    this.forceUpdate();
+  }
+
   resetSearchStates() {
     const { tableMeta } = this.state;
     const newTableMeta = tableMeta;
@@ -114,15 +163,15 @@ export default class TableWrapper extends Component {
     this.forceUpdate();
   }
 
-  sortRequest(colKey, mode) {
+  sortRequest(colKey, mode, type) {
     const { data, tableMeta } = this.props;
     const { structuredData } = this.state;
     if (mode === 'Up') {
-      structuredData.sort((a, b) => sortUp(a, b, colKey));
+      structuredData.sort((a, b) => sortUp(a, b, colKey, type));
       this.setSortStatesForCol(colKey, mode);
     }
     if (mode === 'Down') {
-      structuredData.sort((a, b) => sortDown(a, b, colKey));
+      structuredData.sort((a, b) => sortDown(a, b, colKey, type));
       this.setSortStatesForCol(colKey, mode);
     }
 
@@ -158,13 +207,19 @@ export default class TableWrapper extends Component {
     const { tableMeta } = this.state;
     const { height } = this.state;
     const { tableProperties } = tableMeta;
+    const { fullHeight } = tableProperties;
 
     return (
       <Table
+        onCellClick = {(row) => {
+          const datum = this.state.structuredData[row]._datum;
+          this.props.onCellClick(datum);
+        }}
+        style= {{ cursor: 'pointer ' }}
         fixedHeader={tableProperties.fixedHeader}
         selectable={tableProperties.selectable}
         multiSelectable={tableProperties.multiSelectable}
-        height={String(height)}
+        height={fullHeight ? String(height) : undefined}
       >
         {this.tableHeader()}
         {this.tableBody()}
@@ -176,8 +231,15 @@ export default class TableWrapper extends Component {
     const { data, tableMeta } = this.props;
     switch (v) {
       case 'clear':
-        this.state.structuredData = getStructuredData(data, tableMeta);
         this.resetSearchStates();
+        this.state.structuredData = getStructuredData(data, tableMeta);
+        this.state.visibleEntries = 30;
+        this.forceUpdate();
+        break;
+      case 'stripes':
+        this.state.tableMeta.tableBodyProperties.stripedRows =
+        !this.state.tableMeta.tableBodyProperties.stripedRows;
+        this.forceUpdate();
         break;
       default:
 
@@ -193,6 +255,7 @@ export default class TableWrapper extends Component {
       JSX.push(
         <TableRow
           key={'TableHeaderColumn'}
+          style={styles.fullWidth}
         >
           <TableHeaderColumn
             colSpan={cols.length}
@@ -208,6 +271,7 @@ export default class TableWrapper extends Component {
                 onChange={::this.handleIconMenu}
               >
                 <MenuItem value="clear" primaryText="Clear filters" />
+                <MenuItem value="stripes" primaryText="Striped Rows" />
               </IconMenu>
             </div>
           </TableHeaderColumn>
@@ -220,11 +284,21 @@ export default class TableWrapper extends Component {
     for (const k in cols) {
       if (cols.hasOwnProperty(k)) {
         const col = cols[k];
-        let search = undefined;
+        let search = (
+          <div
+            style={{
+              width: col.style && col.style.width ? col.style.width : '100%',
+              overflow: 'hidden',
+            }}
+          >
+            {col.headerTitle}
+          </div>
+        );
         if (col.searchable === 'STRING') {
           search = (
               <SearchField
                 colKey = {col.colKey}
+                type = {col.type}
                 sortState = {col.sortState}
                 searchState = {col.searchContent}
                 onFilter= {::this.sortRequest}
@@ -238,6 +312,7 @@ export default class TableWrapper extends Component {
           search = (
               <SearchDate
                 colKey = {col.colKey}
+                type = {col.type}
                 sortState = {col.sortState}
                 searchState = {col.searchContent}
                 onFilter= {::this.sortRequest}
@@ -252,6 +327,7 @@ export default class TableWrapper extends Component {
             search = (
                 <SearchAutoComplete
                   colKey = {col.colKey}
+                  type = {col.type}
                   sortState = {col.sortState}
                   searchState = {col.searchContent}
                   onFilter= {::this.sortRequest}
@@ -266,12 +342,14 @@ export default class TableWrapper extends Component {
             search = (
                 <SearchSelectfield
                   colKey = {col.colKey}
+                  type = {col.type}
                   sortState = {col.sortState}
                   searchState = {col.searchContent}
                   onFilter= {::this.sortRequest}
                   onSearch= {::this.searchRequest}
                   dataSource = {col.autocomplete.dataSource}
                   hintText={col.headerTitle}
+                  width={this.state.width}
                 />
             );
           }
@@ -281,6 +359,20 @@ export default class TableWrapper extends Component {
           <TableHeaderColumn
             key={`TableHeaderColumn_${col.colKey}`}
             tooltip={col.tooltip}
+            style={
+            col.style && col.style.width ?
+            Object.assign(
+              {},
+              col.style,
+              styles.tableRow)
+            : Object.assign(
+              {},
+              {
+                width: this.state.colWidth - 30,
+              },
+              col.style,
+              styles.tableRow)
+            }
           >
             {search}
           </TableHeaderColumn>
@@ -291,23 +383,26 @@ export default class TableWrapper extends Component {
     JSX.push(
       <TableRow
         key={'TableHeaderColumn_TableRow'}
+        style={styles.fullWidth}
       >
         {tableHeaderColumns}
       </TableRow>
     );
 
     return (
-      <TableHeader
-        displaySelectAll={mutlipleProperties.showCheckboxes}
-        adjustForCheckbox={mutlipleProperties.showCheckboxes}
-        enableSelectAll={tableProperties.enableSelectAll}
-      >
-        {JSX}
-      </TableHeader>);
+        <TableHeader
+          displaySelectAll={mutlipleProperties.showCheckboxes}
+          adjustForCheckbox={mutlipleProperties.showCheckboxes}
+          enableSelectAll={tableProperties.enableSelectAll}
+          style={styles.tableHeader}
+        >
+          {JSX}
+        </TableHeader>
+    );
   }
 
   tableBody() {
-    const { tableMeta, structuredData } = this.state;
+    const { tableMeta, structuredData, visibleEntries } = this.state;
     const { mutlipleProperties, tableBodyProperties, cols } = tableMeta;
 
     const JSX = [];
@@ -324,19 +419,25 @@ export default class TableWrapper extends Component {
               const WarpperComponent = col.component;
               tableRowColumns.push(
                 <TableRowColumn
-                  style={styles.tableRow}
+                  style={Object.assign({}, col.style, styles.tableRow)}
                   key={`${col.colKey}_${datum.id}`}
                 >
-                  <WarpperComponent datum={datum}/>
+                  <WarpperComponent
+                    key={`${col.colKey}_${datum.id}`}
+                    datum={datum._datum}
+                    value={datum[col.colKey]}
+                  />
                 </TableRowColumn>
               );
             } else {
               tableRowColumns.push(
                 <TableRowColumn
-                  style={styles.tableRow}
+                  style={Object.assign({}, col.style, styles.tableRow)}
                   key={`${col.colKey}_${datum.id}`}
                 >
-                  { datum[col.colKey] }
+                  {tableBodyProperties.capitalize ?
+                    capitalize(String(datum[col.colKey]))
+                  : datum[col.colKey] }
                 </TableRowColumn>
               );
             }
@@ -354,30 +455,51 @@ export default class TableWrapper extends Component {
       }
     }
 
+    const slicedJSX = JSX.slice(0, visibleEntries);
+
     return (
-      <TableBody
-        displayRowCheckbox={mutlipleProperties.showCheckboxes}
-        deselectOnClickaway={tableBodyProperties.deselectOnClickaway}
-        showRowHover={tableBodyProperties.showRowHover}
-        stripedRows={tableBodyProperties.stripedRows}
-      >
-        {JSX}
-      </TableBody>
+        <TableBody
+          ref={(ref) => {
+            if (!this.viewport) {
+              this.viewport = ReactDOM.findDOMNode(ref).parentNode.parentNode;
+            }
+          } }
+          displayRowCheckbox={mutlipleProperties.showCheckboxes}
+          deselectOnClickaway={tableBodyProperties.deselectOnClickaway}
+          showRowHover={tableBodyProperties.showRowHover}
+          stripedRows={tableBodyProperties.stripedRows}
+        >
+          {slicedJSX}
+          {slicedJSX.length < JSX.length ?
+            <div
+              style={{ textAlign: 'center', width: '110vh', padding: 20, paddingBottom: 30 }}
+            >
+              <CircularProgress />
+            </div> : null
+          }
+        </TableBody>
     );
   }
 
   render() {
-    return (
+    const { fullHeight } = this.props.tableMeta.tableProperties;
+    const JSX = (
       <div
         ref="wrapper"
-        style={{
-          height: 'calc(100vh - 162px)',
+        style={fullHeight ? {
+          height: 'calc(100vh - 168px)',
           overflow: 'hidden',
-        }}
+        } : undefined }
       >
         { this.table() }
-        <WindowResizeListener onResize={::this.setHeight} />
+        <WindowResizeListener onResize={() => {
+          this.setDimension();
+          this.calcColWidth();
+        }}
+        />
       </div>
     );
+
+    return (JSX);
   }
 }

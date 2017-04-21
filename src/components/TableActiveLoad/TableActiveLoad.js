@@ -59,7 +59,7 @@ export default class TableActiveLoad extends Component {
           filterable: true,
           sortState: undefined,
           searchable: 'AUTOCOMPLETE',
-          dataPath: 'id',
+          dataPath: ['id'],
           colKey: 'id',
           autocomplete: {
             type: 'suggest',
@@ -74,7 +74,7 @@ export default class TableActiveLoad extends Component {
           tooltip: 'Load reference',
           filterable: true,
           sortState: undefined,
-          dataPath: 'refNumber',
+          dataPath: ['refNumber'],
           colKey: 'refNumber',
         },
         {
@@ -83,7 +83,7 @@ export default class TableActiveLoad extends Component {
           searchable: 'DATE',
           filterable: true,
           sortState: undefined,
-          dataPath: 'stops[0].date',
+          dataPath: ['stops[0].date'],
           colKey: 'date',
         },
         {
@@ -92,7 +92,7 @@ export default class TableActiveLoad extends Component {
           searchable: 'AUTOCOMPLETE',
           filterable: true,
           sortState: undefined,
-          dataPath: 'status',
+          dataPath: ['status'],
           colKey: 'status',
           autocomplete: {
             type: 'static',
@@ -105,7 +105,7 @@ export default class TableActiveLoad extends Component {
           searchable: 'STRING',
           filterable: true,
           sortState: undefined,
-          dataPath: 'lastLocation.city',
+          dataPath: ['lastLocation.city'],
           colKey: 'city',
         },
       ],

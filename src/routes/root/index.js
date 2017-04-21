@@ -28,6 +28,7 @@ export default function getRoute({ getState }, userAgent) {
       require.ensure([], require => {
         let routes = [];
         try {
+          const getDocRoutes = require('routes/documentation');
           const getUserRoutes = require('routes/user');
           const getAdminRoutes = require('routes/admin');
           const getSigninRoute = require('routes/signin');
@@ -36,6 +37,7 @@ export default function getRoute({ getState }, userAgent) {
           const getDefaultRoute = require('routes/default');
 
           routes = [
+            getDocRoutes(requireAuthFunctions),
             getSigninRoute(requireAuthFunctions),
             getSignoutRoute(requireAuthFunctions),
             getUserRoutes(requireAuthFunctions),

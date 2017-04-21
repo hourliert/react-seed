@@ -31,6 +31,7 @@ export default class TabDialog extends Component {
     children: PropTypes.any,
     refresh: PropTypes.func,
     title: PropTypes.string,
+    width: PropTypes.any,
   };
 
   constructor(props) {
@@ -39,8 +40,10 @@ export default class TabDialog extends Component {
       confirmDeleteOpen: false,
       hasChanged: false,
       slideIndex: 0,
-      childCount: 0,
+      childCount: this.props.children.length || 1,
       callbackReceived: 0,
+      actionIsDisabled: false,
+      actionIsHidden: false,
     };
   }
 
@@ -55,6 +58,7 @@ export default class TabDialog extends Component {
           const child = childs[k];
           JSX.push(
             <Tab
+              key={k}
               label={child.props.label}
               value={i}
             />
@@ -67,6 +71,7 @@ export default class TabDialog extends Component {
     } else {
       JSX.push(
         <Tab
+          key={1}
           label={childs.props.label}
           value={i}
         />
@@ -97,6 +102,9 @@ export default class TabDialog extends Component {
       const childWithProps = React.cloneElement(childs, {
         ref: 'component1',
         callback: ::this.callback,
+        setActionIsDisabled: ::this.setActionIsDisabled,
+        setActionIsHidden: ::this.setActionIsHidden,
+        close: this.props.close,
       });
       JSX.push(childWithProps);
     }
@@ -152,16 +160,30 @@ export default class TabDialog extends Component {
 
   action() {
     const { action, close } = this.props;
+    const { childCount } = this.state;
+
     for (const k in this.refs) {
       if (this.refs.hasOwnProperty(k)) {
         const child = this.refs[k];
-        if (child.userDidCancel) {
+        if (child.userDidAction) {
           child.userDidAction();
         }
       }
     }
-    close();
+
+    if (childCount > 1) {
+      close();
+    }
+
     action();
+  }
+
+  setActionIsDisabled(val) {
+    this.setState({ actionIsDisabled: val });
+  }
+
+  setActionIsHidden(val) {
+    this.setState({ actionIsHidden: val });
   }
 
   render() {
@@ -176,8 +198,9 @@ export default class TabDialog extends Component {
       title,
       action,
       actionLabel,
+      width,
     } = this.props;
-    const { confirmDeleteOpen, childCount } = this.state;
+    const { confirmDeleteOpen, childCount, actionIsDisabled, actionIsHidden } = this.state;
 
     const actions = [];
 
@@ -200,7 +223,7 @@ export default class TabDialog extends Component {
         label={ (closeLabel !== undefined) ? closeLabel : 'Close'}
         hoverColor="#90A4AE"
         backgroundColor="#CFD8DC"
-        style={{ marginRight: '15px' }}
+        style={{ marginRight: '15px', color: '#424242' }}
         onTouchTap={::this.close}
         icon={ (closeIcon !== undefined) ? closeIcon : <Close />}
         primary
@@ -212,7 +235,12 @@ export default class TabDialog extends Component {
         <FlatButton
           labelColor="white"
           label={ (actionLabel !== undefined) ? actionLabel : 'Create'}
-          style={{ color: 'white' }}
+          style={{
+            color: 'white',
+            opacity: actionIsDisabled ? 0.5 : 1,
+            display: actionIsHidden ? 'none' : undefined,
+          }}
+          disabled={actionIsDisabled}
           backgroundColor="#2196f3"
           hoverColor="#1976d2"
           icon={ (actionIcon !== undefined) ? actionIcon : <Action />}
@@ -229,8 +257,8 @@ export default class TabDialog extends Component {
           modal={false}
           open={open}
           onRequestClose={::this.close}
-          contentStyle = {{ width: '70%', maxWidth: 'none', minWidth: 600 }}
-          titleStyle={{ color: 'white', background: '#2196f3' }}
+          contentStyle = {{ width: width || '70%', maxWidth: 'none', minWidth: width || 600 }}
+          titleStyle={{ color: 'white', background: '#3775E6' }}
           bodyStyle={{ padding: 0 }}
           title={title}
         >
@@ -252,17 +280,16 @@ export default class TabDialog extends Component {
             : <div>
             <Tabs
               inkBarStyle = {{ background: 'white' }}
-              tabItemContainerStyle = {{ background: '#42a5f5' }}
+              tabItemContainerStyle = {{ background: '#2E67CE' }}
               onChange={(value) => { this.setState({ slideIndex: value });}}
               value={this.state.slideIndex}
             >
                 {this.getTabs()}
             </Tabs>
               <div
-                style={{ padding: 15, minHeight: 600 }}
+                style={{ padding: 15 }}
               >
                 <SwipeableViews
-                  style={{ height: '100%' }}
                   index={this.state.slideIndex}
                   onChange={(value) => {this.setState({ slideIndex: value });}}
                 >
@@ -273,7 +300,6 @@ export default class TabDialog extends Component {
             }
           </div>
         </Dialog>
-
         <Dialog
           actions={[
             <FlatButton

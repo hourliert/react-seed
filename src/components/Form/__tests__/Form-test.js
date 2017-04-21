@@ -6,7 +6,7 @@ import { shallow } from 'enzyme';
 
 import React from 'react';
 
-describe('Form', () => {
+describe.skip('Form', () => {
   it('should exists', () => {
     const Form = require('../Form');
 

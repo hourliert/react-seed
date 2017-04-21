@@ -1,7 +1,15 @@
 import React, { Component, PropTypes } from 'react';
+import pureRender from 'pure-render-decorator';
+
+// material-ui
 import TextField from 'material-ui/TextField';
 import Checkbox from 'material-ui/Checkbox';
-import pureRender from 'pure-render-decorator';
+import SelectField from 'material-ui/SelectField';
+import MenuItem from 'material-ui/MenuItem';
+import Toggle from 'material-ui/Toggle';
+
+// styles
+import styles from './styles';
 
 @pureRender
 export default class Form extends Component {
@@ -10,6 +18,35 @@ export default class Form extends Component {
     form: PropTypes.object,
     save: PropTypes.func,
   };
+
+  getSelectField(k, item) {
+    const { save } = this.props;
+    const JSX = [];
+
+    for (const q in item.dataSource) {
+      if (item.dataSource.hasOwnProperty(q)) {
+        const datum = item.dataSource[q];
+        JSX.push(
+          <MenuItem
+            key={datum}
+            value={datum}
+            primaryText={datum}
+          />
+        );
+      }
+    }
+
+    return (
+      <SelectField
+        key={item._key}
+        value={item.value}
+        onChange={(event, index, value) => { save(k, value); }}
+        floatingLabelText={item.labelText}
+      >
+        {JSX}
+      </SelectField>
+    );
+  }
 
   generateFormFields() {
     const { form, save } = this.props;
@@ -39,12 +76,18 @@ export default class Form extends Component {
                 <br />
               );
               break;
+            case 'SelectField' :
+              JSX.push(
+                this.getSelectField(k, field)
+              );
+              break;
             case 'Checkbox':
               JSX.push(
                 <br />
               );
               JSX.push(
                 <Checkbox
+                  style={{ width: '100%' }}
                   label={ field.labelText }
                   value={ field.value }
                   onCheck={(e, value) => {
@@ -52,12 +95,23 @@ export default class Form extends Component {
                   }}
                 />
               );
+              break;
+            case 'Toggle':
               JSX.push(
                 <br />
               );
+              JSX.push(
+                <Toggle
+                  label={ field.labelText }
+                  disabled={ field.disabled }
+                  labelPosition="right"
+                  value={ field.value }
+                  style={styles.toggle}
+                  onToggle={(event, value) => { save(k, value); }}
+                />
+              );
               break;
             default:
-
           }
         }
       }
@@ -70,7 +124,7 @@ export default class Form extends Component {
     const { title } = this.props;
     return (
       <div>
-        <h3>{title}</h3>
+        {title ? <h3>{title}</h3> : null}
         {this.generateFormFields()}
       </div>
     );
