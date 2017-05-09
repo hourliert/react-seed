@@ -223,7 +223,7 @@ export default class TabDialog extends Component {
         label={ (closeLabel !== undefined) ? closeLabel : 'Close'}
         hoverColor="#90A4AE"
         backgroundColor="#CFD8DC"
-        style={{ marginRight: '15px', color: '#424242' }}
+        style={{ marginRight: '15px' }}
         onTouchTap={::this.close}
         icon={ (closeIcon !== undefined) ? closeIcon : <Close />}
         primary
@@ -258,7 +258,7 @@ export default class TabDialog extends Component {
           open={open}
           onRequestClose={::this.close}
           contentStyle = {{ width: width || '70%', maxWidth: 'none', minWidth: width || 600 }}
-          titleStyle={{ color: 'white', background: '#3775E6' }}
+          titleStyle={{ color: 'white', background: '#2196f3' }}
           bodyStyle={{ padding: 0 }}
           title={title}
         >
@@ -280,16 +280,17 @@ export default class TabDialog extends Component {
             : <div>
             <Tabs
               inkBarStyle = {{ background: 'white' }}
-              tabItemContainerStyle = {{ background: '#2E67CE' }}
+              tabItemContainerStyle = {{ background: '#333333' }}
               onChange={(value) => { this.setState({ slideIndex: value });}}
               value={this.state.slideIndex}
             >
                 {this.getTabs()}
             </Tabs>
               <div
-                style={{ padding: 15 }}
+                style={{ padding: 15, minHeight: 600 }}
               >
                 <SwipeableViews
+                  style={{ height: '100%' }}
                   index={this.state.slideIndex}
                   onChange={(value) => {this.setState({ slideIndex: value });}}
                 >

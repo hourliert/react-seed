@@ -1,15 +1,24 @@
 import React, { PropTypes, Component } from 'react';
-import AppBar from 'material-ui/AppBar';
 import Helmet from 'react-helmet';
-
 import pureRender from 'pure-render-decorator';
-import LeftMenuDrawer from 'components/LeftMenuDrawer';
-import ErrorManager from 'components/ErrorManager';
+
+// open source components
 import { WindowResizeListener } from 'react-window-resize-listener';
 
+// material-ui
+import AppBar from 'material-ui/AppBar';
+
+// custom components
+import LeftMenuDrawer from 'components/LeftMenuDrawer';
+import ErrorManager from 'components/ErrorManager';
+import AppBarMyAccount from 'components/AppBarMyAccount';
+import AppBarBoard from 'components/AppBarBoard';
+
+// images
 import favicon from 'images/favicon/favicon.ico';
 import logo192 from 'images/logo/logo-192x192.png';
 
+// styles
 import styles from './styles';
 
 @pureRender
@@ -28,6 +37,8 @@ export default class WrapperRootPage extends Component {
     closeLeftNav: PropTypes.func.isRequired,
     toggleLeftNav: PropTypes.func.isRequired,
     goToLink: PropTypes.func.isRequired,
+
+    user: PropTypes.object,
   };
 
   static contextTypes = {
@@ -61,6 +72,7 @@ export default class WrapperRootPage extends Component {
   render() {
     const {
       children,
+      user,
       errors,
       markErrorsAsViewed,
       clearErrors,
@@ -110,6 +122,16 @@ export default class WrapperRootPage extends Component {
         <AppBar
           title={'RetaxSeed'}
           onLeftIconButtonTouchTap={toggleLeftNav}
+          iconElementRight={
+            <div style={{ overflow: 'auto' }}>
+              <div style={{ float: 'left', padding: 10, marginRight: 5 }}>
+                <AppBarBoard />
+              </div>
+              <div style={{ float: 'left', padding: 7 }}>
+                <AppBarMyAccount user={user} />
+              </div>
+            </div>
+          }
           zDepth={appBarDepth}
         />
         <LeftMenuDrawer

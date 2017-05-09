@@ -128,3 +128,79 @@ export const EXAMPLE4 = `autocomplete: {
     dataSource: status,
     maxSearchResults: 5,
   }`;
+
+  export const EXAMPLE5 = `
+import React from 'react';
+import TableWrapper from 'components/TableWrapper';
+import StatusIndicator from 'components/StatusIndicator';
+
+import styles fron './styles';
+
+export default class SimpleExample extends Component {
+  static propTypes: {
+    user: PropTypes.object,
+    fetchCurrentUser: PropTypes.func,
+  }
+
+  state = {
+    tabDialogIsOpen: false,
+    greetingStatus: '',
+  }
+
+  openTabDialog() {
+    this.setState({ tabDialogIsOpen: true });
+  }
+
+  closeTabDialog() {
+    this.setState({ tabDialogIsOpen: false, greetingStatus: '' });
+  }
+
+  refresh() {
+    const { fetchCurrentUser } = this.props;
+    fetchCurrentUser();
+    this.setState({ greetingStatus: 'Greetings have been updated' });
+  }
+
+  render() {
+    const { user, fetchCurrentUser } = this.props;
+    const { greetingStatus } = this.state;
+
+    return(
+      <div>
+        <div style={styles.greetings}>greetingStatus</div>
+
+        Welcome ! You are <b>{user.firstName} {user.lastName}</b> and
+        your email address is <b>{user.email}</b>
+
+        <FlatButton
+          label="Edit my info"
+          backgroundColor="#2196f3"
+          hoverColor="#1976d2"
+          style={styles.flatButton}
+          onClick={this.openTabDialog}
+        />
+
+        <TabDialog
+          open = {tabDialogIsOpen}
+          close = {::this.closeTabDialog}
+          closeLabel={'Cancel'}
+          refresh={::this.refresh}
+          action={() => { console.log('action') }}
+          actionLabel={'save'}
+          title={'Edit my info'}
+        >
+          <ExamplePersonalInfo
+            label={'Personal Info'}
+            user={user}
+            updateUser={updateUser}
+          />
+          <ExamplePersonalEmail label={'Email'}
+            label={'Email'}
+            user={user}
+            updateUser={updateUser}
+          />
+        </TabDialog>
+      </div>
+    );
+  }
+  `;
