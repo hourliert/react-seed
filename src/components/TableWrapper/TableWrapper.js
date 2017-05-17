@@ -72,7 +72,7 @@ export default class TableWrapper extends Component {
       const scrollTop = e.srcElement.scrollTop;
       const ratio = (scrollTop / (scrollHeight - clientHeight)) * 100;
 
-      if (ratio === 100) {
+      if (ratio >= 100) {
         this.displayMoreEntries(50);
       }
     });
