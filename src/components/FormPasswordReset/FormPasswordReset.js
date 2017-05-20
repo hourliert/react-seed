@@ -9,7 +9,7 @@ import Check from 'material-ui/svg-icons/navigation/check';
 import Close from 'material-ui/svg-icons/navigation/close';
 
 // custom components
-import LoadingButton from 'components/LoadingButton';
+import LoadingButton from 'quiver-loading-button';
 
 // styles
 import styles from './styles';

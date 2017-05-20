@@ -5,7 +5,7 @@ import pureRender from 'pure-render-decorator';
 import Paper from 'material-ui/Paper';
 
 // custom components
-import LoadingButton from 'components/LoadingButton';
+import LoadingButton from 'quiver-loading-button';
 import Form from 'components/Form';
 
 // helpers

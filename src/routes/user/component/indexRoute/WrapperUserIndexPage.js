@@ -33,7 +33,7 @@ export default class WrapperUserIndexPage extends Component {
     switch (stepIndex) {
       case 0:
         return (
-          <div>Welcome to Retax seed</div>
+          <div>Welcome to Retax seeds<br /></div>
       );
       default:
         return 'You\'re a long way from home sonny jim!';
