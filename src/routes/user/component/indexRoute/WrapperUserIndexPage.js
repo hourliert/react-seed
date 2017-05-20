@@ -1,39 +1,66 @@
 import React, { PropTypes, Component } from 'react';
-import Helmet from 'react-helmet';
-import { Card } from 'material-ui/Card';
-import FlatButton from 'material-ui/FlatButton';
-
 import pureRender from 'pure-render-decorator';
-import CardsList from 'components/CardsList';
-import WelcomeCard from 'components/WelcomeCard';
+import Helmet from 'react-helmet';
 
+// material-ui
+import { Toolbar, ToolbarGroup } from 'material-ui/Toolbar';
+import Paper from 'material-ui/Paper';
+
+// custom components
+import CardsList from 'components/CardsList';
+import TableActiveLoad from 'components/TableActiveLoad';
+
+// styles
 import styles from './styles';
+
+// images
 import logo192 from 'images/logo/logo-192x192.png';
 
 @pureRender
 export default class WrapperUserIndexPage extends Component {
   static propTypes = {
-    onToggleLeftNav: PropTypes.func,
+
   };
 
+  constructor(...args) {
+    super(...args);
+    this.state = {
+      stepIndex: 0,
+    };
+  }
+
+  getStepContent(stepIndex) {
+    switch (stepIndex) {
+      case 0:
+        return (
+          <div>Welcome to Retax seeds<br /></div>
+      );
+      default:
+        return 'You\'re a long way from home sonny jim!';
+    }
+  }
+
   render() {
-    const { onToggleLeftNav } = this.props;
+    const {
+      stepIndex,
+    } = this.state;
 
     return (
-      <CardsList flex>
-        <Helmet title="User Home" />
-
-        <WelcomeCard
-          container={<Card style={styles.welcomeCard} />}
-          title="Welcome on RetaxSeed"
-          logo={logo192}
-        >
-          <div>
-            Enjoy.
-          </div>
-          <FlatButton label="Get Started" primary onTouchTap={onToggleLeftNav} />
-        </WelcomeCard>
-      </CardsList>
+      <div className="flex layout vertical">
+        <Toolbar style={{ background: 'white', borderBottom: '1px solid #aaaaaa', height: 48 }}>
+          <ToolbarGroup firstChild style={{ marginLeft: '5px', overflow: 'scroll' }}>
+            <div
+              style={stepIndex === 0 ? styles.menuItemSelected : styles.menuItem}
+              onClick={() => { this.setState({ stepIndex: 0 }); }}
+            >
+              Home
+            </div>
+          </ToolbarGroup>
+        </Toolbar>
+        <div style={styles.container}>
+            {this.getStepContent(this.state.stepIndex)}
+        </div>
+      </div>
     );
   }
 }

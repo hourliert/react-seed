@@ -9,6 +9,7 @@ import LinksList from 'components/LinksList';
 export default class LeftMenuDrawer extends Component {
   static propTypes = {
     open: PropTypes.bool,
+    isMobile: PropTypes.bool,
     menuItems: PropTypes.array.isRequired,
     onClose: PropTypes.func.isRequired,
     onLinkTouch: PropTypes.func.isRequired,
@@ -41,22 +42,29 @@ export default class LeftMenuDrawer extends Component {
   }
 
   render() {
-    const { open, menuItems } = this.props;
+    const { open, menuItems, isMobile } = this.props;
     const { currentAccessLevel } = this.context;
 
     return (
-      <Drawer
-        open={open}
-        docked={false}
-        onRequestChange={this._onRequestChange}
-      >
-        <AppBar title="RetaxSeed" showMenuIconButton={false} />
-        <LinksList
-          links={menuItems}
-          onLinkTouch={this._onLinkTouch}
-          currentAccessLevel={currentAccessLevel}
-        />
-      </Drawer>
+        <Drawer
+          open={open}
+          docked={!isMobile}
+          onRequestChange={this._onRequestChange}
+        >
+          <div
+            style={{
+              background: '#FAFAFA',
+              minHeight: '100%',
+            }}
+          >
+            <AppBar title="RetaxSeed" showMenuIconButton={false} />
+            <LinksList
+              links={menuItems}
+              onLinkTouch={this._onLinkTouch}
+              currentAccessLevel={currentAccessLevel}
+            />
+          </div>
+        </Drawer>
     );
   }
 }

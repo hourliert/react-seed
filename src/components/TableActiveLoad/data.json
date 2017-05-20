@@ -1,0 +1,2131 @@
+[
+  {
+    "id": 719184,
+    "refNumber": "228572545",
+    "status": "En Route",
+    "stops": [
+      {
+        "name": "Diversified Entities",
+        "stopNumber": 1,
+        "type": "pickup",
+        "date": "2017-03-29",
+        "timeFrom": "13:00:00",
+        "timeTo": "13:00:00",
+        "city": "MELROSE PARK",
+        "state": "IL",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -87.8949,
+        "latitude": 41.8928
+      },
+      {
+        "name": "Safeway 65-CPS WCPS",
+        "stopNumber": 2,
+        "type": "delivery",
+        "date": "2017-04-07",
+        "timeFrom": "16:00:00",
+        "timeTo": "16:00:00",
+        "city": "TRACY",
+        "state": "CA",
+        "hasEta": true,
+        "eta": {},
+        "longitude": -118.153,
+        "latitude": 34.0033
+      }
+    ],
+    "lastLocation": {
+      "dateUtc": "2017-04-07T18:17:20Z",
+      "dateLocal": "2017-04-07T11:17:20Z",
+      "city": "STOCKTON WEST",
+      "state": "CA",
+      "longitude": -121.276,
+      "latitude": 37.9278,
+      "temps": {}
+    },
+    "files": [
+      {
+        "id": 403832,
+        "token": "LsKFg95t",
+        "description": "PickUp Document"
+      }
+    ],
+    "serviceLevel": "premium",
+    "reefer": false
+  },
+  {
+    "id": 719390,
+    "refNumber": "228814047",
+    "status": "En Route",
+    "stops": [
+      {
+        "name": "Berry Plastics.",
+        "stopNumber": 1,
+        "type": "pickup",
+        "date": "2017-04-03",
+        "timeFrom": "08:00:00",
+        "timeTo": "15:00:00",
+        "city": "Cranbury",
+        "state": "NJ",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -74.4987,
+        "latitude": 40.3187
+      },
+      {
+        "name": "Natural Alternatives",
+        "stopNumber": 2,
+        "type": "delivery",
+        "date": "2017-04-10",
+        "timeFrom": "07:00:00",
+        "timeTo": "15:00:00",
+        "city": "Vista",
+        "state": "CA",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -117.236,
+        "latitude": 33.1409
+      }
+    ],
+    "lastLocation": {
+      "temps": {}
+    },
+    "serviceLevel": "premium",
+    "reefer": false
+  },
+  {
+    "id": 719425,
+    "refNumber": "228720926",
+    "status": "En Route",
+    "stops": [
+      {
+        "name": "INTERPARFUMS USA LLC  JPF DISTRIBUTION CENTER",
+        "stopNumber": 1,
+        "type": "pickup",
+        "date": "2017-03-31",
+        "timeFrom": "09:00:00",
+        "timeTo": "12:00:00",
+        "city": "Dayton",
+        "state": "NJ",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -74.0757,
+        "latitude": 40.767
+      },
+      {
+        "name": "Berks Whse",
+        "stopNumber": 2,
+        "type": "pickup",
+        "date": "2017-03-31",
+        "timeFrom": "09:00:00",
+        "timeTo": "16:30:00",
+        "city": "Sayreville",
+        "state": "NJ",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -74.3437,
+        "latitude": 40.4342
+      },
+      {
+        "name": "Hollar",
+        "stopNumber": 3,
+        "type": "delivery",
+        "date": "2017-04-10",
+        "timeFrom": "07:00:00",
+        "timeTo": "07:00:00",
+        "city": "COMMERCE",
+        "state": "CA",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -118.138,
+        "latitude": 33.9937
+      }
+    ],
+    "lastLocation": {
+      "dateUtc": "2017-04-07T18:25:19Z",
+      "dateLocal": "2017-04-07T11:25:19Z",
+      "city": "LOS ANGELES",
+      "state": "CA",
+      "longitude": -118.195,
+      "latitude": 34.0008,
+      "temps": {}
+    },
+    "files": [
+      {
+        "id": 405682,
+        "token": "h47xzLyY",
+        "description": "PickUp Document"
+      },
+      {
+        "id": 405784,
+        "token": "zrsBxXS8",
+        "description": "PickUp Document"
+      }
+    ],
+    "serviceLevel": "premium",
+    "reefer": false
+  },
+  {
+    "id": 719501,
+    "refNumber": "228940797",
+    "status": "En Route",
+    "stops": [
+      {
+        "name": "Annex Warehouse DooLittle",
+        "stopNumber": 1,
+        "type": "pickup",
+        "date": "2017-04-03",
+        "timeFrom": "13:00:00",
+        "timeTo": "15:00:00",
+        "city": "San Leandro",
+        "state": "CA",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -122.188,
+        "latitude": 37.7148
+      },
+      {
+        "name": "Continental terminals C/O Sriwijaya Coffee",
+        "stopNumber": 2,
+        "type": "delivery",
+        "date": "2017-04-10",
+        "timeFrom": "10:00:00",
+        "timeTo": "10:00:00",
+        "city": "Carteret",
+        "state": "NJ",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -74.2174,
+        "latitude": 40.5713
+      }
+    ],
+    "lastLocation": {
+      "dateUtc": "2017-04-07T18:14:48Z",
+      "dateLocal": "2017-04-07T13:14:48Z",
+      "city": "ALVA",
+      "state": "OK",
+      "longitude": -98.6968,
+      "latitude": 36.8123,
+      "temps": {}
+    },
+    "serviceLevel": "premium",
+    "reefer": false
+  },
+  {
+    "id": 719506,
+    "refNumber": "228948561",
+    "status": "En Route",
+    "stops": [
+      {
+        "name": "Exel Logistics / International Paper",
+        "stopNumber": 1,
+        "type": "pickup",
+        "date": "2017-03-30",
+        "timeFrom": "10:30:00",
+        "timeTo": "15:00:00",
+        "city": "HAMMOND",
+        "state": "IN",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -87.4698,
+        "latitude": 41.5964
+      },
+      {
+        "name": "DLA Defense Dist Depot",
+        "stopNumber": 2,
+        "type": "delivery",
+        "date": "2017-04-12",
+        "timeFrom": "09:30:00",
+        "timeTo": "09:30:00",
+        "city": "TRACY",
+        "state": "CA",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -121.397,
+        "latitude": 37.7221
+      }
+    ],
+    "lastLocation": {
+      "dateUtc": "2017-04-06T16:32:00Z",
+      "dateLocal": "2017-04-06T09:32:00Z",
+      "city": "Lathrop",
+      "state": "CA",
+      "longitude": -121.277,
+      "latitude": 37.8227,
+      "temps": {}
+    },
+    "serviceLevel": "premium",
+    "reefer": false
+  },
+  {
+    "id": 719507,
+    "refNumber": "228945923",
+    "status": "En Route",
+    "stops": [
+      {
+        "name": "TOMS RETURNS",
+        "stopNumber": 1,
+        "type": "pickup",
+        "date": "2017-03-31",
+        "timeFrom": "11:00:00",
+        "timeTo": "15:00:00",
+        "city": "Mira Loma",
+        "state": "CA",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -117.545,
+        "latitude": 33.9988
+      },
+      {
+        "name": "Shoe Buy.com",
+        "stopNumber": 2,
+        "type": "delivery",
+        "date": "2017-04-10",
+        "timeFrom": "08:00:00",
+        "timeTo": "15:00:00",
+        "city": "Woburn",
+        "state": "MA",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -71.1384,
+        "latitude": 42.5113
+      }
+    ],
+    "lastLocation": {
+      "dateUtc": "2017-04-07T18:18:40Z",
+      "dateLocal": "2017-04-07T14:18:40Z",
+      "city": "SPRINGFIELD SOUTH",
+      "state": "MA",
+      "longitude": -72.6206,
+      "latitude": 42.1006,
+      "temps": {}
+    },
+    "serviceLevel": "premium",
+    "reefer": false
+  },
+  {
+    "id": 719528,
+    "refNumber": "228960996",
+    "status": "En Route",
+    "stops": [
+      {
+        "name": "Fulfillment World",
+        "stopNumber": 1,
+        "type": "pickup",
+        "date": "2017-04-03",
+        "timeFrom": "13:00:00",
+        "timeTo": "15:30:00",
+        "city": "PICO RIVERA",
+        "state": "CA",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -118.112,
+        "latitude": 33.9786
+      },
+      {
+        "name": "Assemblers",
+        "stopNumber": 2,
+        "type": "delivery",
+        "date": "2017-04-10",
+        "timeFrom": "08:00:00",
+        "timeTo": "12:00:00",
+        "city": "Chicago",
+        "state": "IL",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -87.6947,
+        "latitude": 41.7544
+      }
+    ],
+    "lastLocation": {
+      "dateUtc": "2017-04-07T16:00:00Z",
+      "dateLocal": "2017-04-07T11:00:00Z",
+      "city": "Forest View",
+      "state": "IL",
+      "longitude": -87.7604,
+      "latitude": 41.8101,
+      "temps": {}
+    },
+    "serviceLevel": "premium",
+    "reefer": false
+  },
+  {
+    "id": 719540,
+    "refNumber": "228985221",
+    "status": "En Route",
+    "stops": [
+      {
+        "name": "Manning Distribution Service",
+        "stopNumber": 1,
+        "type": "pickup",
+        "date": "2017-03-31",
+        "timeFrom": "07:30:00",
+        "timeTo": "16:00:00",
+        "city": "South San Francisco",
+        "state": "CA",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -122.391,
+        "latitude": 37.6608
+      },
+      {
+        "name": "New York Mutual",
+        "stopNumber": 2,
+        "type": "delivery",
+        "date": "2017-04-10",
+        "timeFrom": "00:00:00",
+        "timeTo": "00:00:00",
+        "city": "Secaucus",
+        "state": "NJ",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -74.0712,
+        "latitude": 40.77
+      }
+    ],
+    "lastLocation": {
+      "dateUtc": "2017-04-07T17:36:21Z",
+      "dateLocal": "2017-04-07T13:36:21Z",
+      "city": "TRENTON EAST",
+      "state": "NJ",
+      "longitude": -74.7034,
+      "latitude": 40.1514,
+      "temps": {}
+    },
+    "files": [
+      {
+        "id": 410242,
+        "token": "gHGIhCij",
+        "description": "PickUp Document"
+      }
+    ],
+    "serviceLevel": "premium",
+    "reefer": false
+  },
+  {
+    "id": 719549,
+    "refNumber": "228995563",
+    "status": "En Route",
+    "stops": [
+      {
+        "name": "Gilbert West/Tri Coastal Design",
+        "stopNumber": 1,
+        "type": "pickup",
+        "date": "2017-04-03",
+        "timeFrom": "08:00:00",
+        "timeTo": "17:00:00",
+        "city": "Chino",
+        "state": "CA",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -117.656,
+        "latitude": 33.9641
+      },
+      {
+        "name": "Shoe Buy.com",
+        "stopNumber": 2,
+        "type": "delivery",
+        "date": "2017-04-11",
+        "timeFrom": "00:00:00",
+        "timeTo": "00:00:00",
+        "city": "Woburn",
+        "state": "MA",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -71.1384,
+        "latitude": 42.5113
+      }
+    ],
+    "lastLocation": {
+      "dateUtc": "2017-04-07T16:24:00Z",
+      "dateLocal": "2017-04-07T11:24:00Z",
+      "city": "Bedford Park",
+      "state": "IL",
+      "longitude": -87.8317,
+      "latitude": 41.7689,
+      "temps": {}
+    },
+    "serviceLevel": "premium",
+    "reefer": false
+  },
+  {
+    "id": 719589,
+    "refNumber": "229047890",
+    "status": "En Route",
+    "stops": [
+      {
+        "name": "Toll Global ( West)",
+        "stopNumber": 1,
+        "type": "pickup",
+        "date": "2017-04-03",
+        "timeFrom": "13:30:00",
+        "timeTo": "13:30:00",
+        "city": "San Pedro",
+        "state": "CA",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -118.284,
+        "latitude": 33.7645
+      },
+      {
+        "name": "Costco - Morris Depot",
+        "stopNumber": 2,
+        "type": "delivery",
+        "date": "2017-04-10",
+        "timeFrom": "07:00:00",
+        "timeTo": "07:00:00",
+        "city": "Morris",
+        "state": "IL",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -88.4239,
+        "latitude": 41.3959
+      }
+    ],
+    "lastLocation": {
+      "dateUtc": "2017-04-07T16:00:00Z",
+      "dateLocal": "2017-04-07T11:00:00Z",
+      "city": "Forest View",
+      "state": "IL",
+      "longitude": -87.7604,
+      "latitude": 41.8101,
+      "temps": {}
+    },
+    "serviceLevel": "premium",
+    "reefer": false
+  },
+  {
+    "id": 719606,
+    "refNumber": "228959177",
+    "status": "En Route",
+    "stops": [
+      {
+        "name": "Materne North America C/O Kane Warehousing DC #158",
+        "stopNumber": 1,
+        "type": "pickup",
+        "date": "2017-04-03",
+        "timeFrom": "15:30:00",
+        "timeTo": "15:30:00",
+        "city": "BOLINGBROOK",
+        "state": "IL",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -88.1218,
+        "latitude": 41.6786
+      },
+      {
+        "name": "Peytons ,AZ",
+        "stopNumber": 2,
+        "type": "delivery",
+        "date": "2017-04-12",
+        "timeFrom": "16:00:00",
+        "timeTo": "16:00:00",
+        "city": "Phoenix",
+        "state": "AZ",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -112.074,
+        "latitude": 33.4484
+      }
+    ],
+    "lastLocation": {
+      "dateUtc": "2017-04-07T18:25:08Z",
+      "dateLocal": "2017-04-07T13:25:08Z",
+      "city": "QUINLAN",
+      "state": "OK",
+      "longitude": -99.0341,
+      "latitude": 36.4662,
+      "temps": {}
+    },
+    "serviceLevel": "premium",
+    "reefer": false
+  },
+  {
+    "id": 719607,
+    "refNumber": "227879760",
+    "status": "En Route",
+    "stops": [
+      {
+        "name": "NATIONAL DISTRIBUTORS INC",
+        "stopNumber": 1,
+        "type": "pickup",
+        "date": "2017-04-05",
+        "timeFrom": "09:00:00",
+        "timeTo": "16:30:00",
+        "city": "SOUTH PORTLAND",
+        "state": "ME",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -70.3086,
+        "latitude": 43.6143
+      },
+      {
+        "name": "C.H Robinson ",
+        "stopNumber": 2,
+        "type": "delivery",
+        "date": "2017-04-17",
+        "timeFrom": "00:00:00",
+        "timeTo": "00:00:00",
+        "city": "Vancouver",
+        "state": "WA",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -122.637,
+        "latitude": 45.6165
+      }
+    ],
+    "lastLocation": {
+      "dateUtc": "2017-04-07T18:18:05Z",
+      "dateLocal": "2017-04-07T14:18:05Z",
+      "city": "HARTFIELD",
+      "state": "NY",
+      "longitude": -79.5069,
+      "latitude": 42.3673,
+      "temps": {}
+    },
+    "serviceLevel": "economy",
+    "reefer": false
+  },
+  {
+    "id": 719612,
+    "refNumber": "229081709",
+    "status": "En Route",
+    "stops": [
+      {
+        "name": "Thomson Industries",
+        "stopNumber": 1,
+        "type": "pickup",
+        "date": "2017-03-31",
+        "timeFrom": "08:00:00",
+        "timeTo": "17:00:00",
+        "city": "San Diego",
+        "state": "CA",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -116.934,
+        "latitude": 32.5596
+      },
+      {
+        "name": "Amazon Robotics",
+        "stopNumber": 2,
+        "type": "delivery",
+        "date": "2017-04-10",
+        "timeFrom": "07:00:00",
+        "timeTo": "16:00:00",
+        "city": "WOBURN",
+        "state": "MA",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -71.1388,
+        "latitude": 42.4971
+      }
+    ],
+    "lastLocation": {
+      "dateUtc": "2017-04-07T16:00:00Z",
+      "dateLocal": "2017-04-07T11:00:00Z",
+      "city": "Forest View",
+      "state": "IL",
+      "longitude": -87.7604,
+      "latitude": 41.8101,
+      "temps": {}
+    },
+    "serviceLevel": "premium",
+    "reefer": false
+  },
+  {
+    "id": 719626,
+    "refNumber": "229084215",
+    "status": "En Route",
+    "stops": [
+      {
+        "name": "TricorBraun",
+        "stopNumber": 1,
+        "type": "pickup",
+        "date": "2017-03-31",
+        "timeFrom": "08:00:00",
+        "timeTo": "16:00:00",
+        "city": "CERRITOS",
+        "state": "CA",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -118.036,
+        "latitude": 33.8843
+      },
+      {
+        "name": "Drews",
+        "stopNumber": 2,
+        "type": "delivery",
+        "date": "2017-04-10",
+        "timeFrom": "07:30:00",
+        "timeTo": "15:30:00",
+        "city": "CHESTER",
+        "state": "VT",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -72.5781,
+        "latitude": 43.2503
+      }
+    ],
+    "lastLocation": {
+      "dateUtc": "2017-04-07T05:58:00Z",
+      "dateLocal": "2017-04-07T01:58:00Z",
+      "city": "West Springfield",
+      "state": "MA",
+      "longitude": -72.6206,
+      "latitude": 42.1009,
+      "temps": {}
+    },
+    "serviceLevel": "premium",
+    "reefer": false
+  },
+  {
+    "id": 719632,
+    "refNumber": "229107375",
+    "status": "En Route",
+    "stops": [
+      {
+        "name": "Fuji Foods",
+        "stopNumber": 1,
+        "type": "pickup",
+        "date": "2017-04-05",
+        "timeFrom": "17:00:00",
+        "timeTo": "17:00:00",
+        "city": "Santa Fe Springs",
+        "state": "CA",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -118.063,
+        "latitude": 33.8999
+      },
+      {
+        "name": "Fuji Foods",
+        "stopNumber": 2,
+        "type": "delivery",
+        "date": "2017-04-12",
+        "timeFrom": "00:00:00",
+        "timeTo": "00:00:00",
+        "city": "Lawrence",
+        "state": "MA",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -71.1864,
+        "latitude": 42.689
+      }
+    ],
+    "lastLocation": {
+      "dateUtc": "2017-04-07T15:19:15Z",
+      "dateLocal": "2017-04-07T09:19:15Z",
+      "city": "CORREO",
+      "state": "NM",
+      "longitude": -107.128,
+      "latitude": 34.9295,
+      "temps": {}
+    },
+    "serviceLevel": "premium",
+    "reefer": true
+  },
+  {
+    "id": 719635,
+    "refNumber": "229111897",
+    "status": "En Route",
+    "stops": [
+      {
+        "name": "Sanuk",
+        "stopNumber": 1,
+        "type": "pickup",
+        "date": "2017-03-31",
+        "timeFrom": "08:00:00",
+        "timeTo": "17:00:00",
+        "city": "Moreno Valley",
+        "state": "CA",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -117.228,
+        "latitude": 33.8599
+      },
+      {
+        "name": "Shoe Buy.com",
+        "stopNumber": 2,
+        "type": "delivery",
+        "date": "2017-04-10",
+        "timeFrom": "08:00:00",
+        "timeTo": "15:00:00",
+        "city": "Woburn",
+        "state": "MA",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -71.1384,
+        "latitude": 42.5113
+      }
+    ],
+    "lastLocation": {
+      "dateUtc": "2017-04-07T16:00:00Z",
+      "dateLocal": "2017-04-07T11:00:00Z",
+      "city": "Forest View",
+      "state": "IL",
+      "longitude": -87.7604,
+      "latitude": 41.8101,
+      "temps": {}
+    },
+    "serviceLevel": "premium",
+    "reefer": false
+  },
+  {
+    "id": 719636,
+    "refNumber": "229103585",
+    "status": "En Route",
+    "stops": [
+      {
+        "name": "Van Blarcom Closures",
+        "stopNumber": 1,
+        "type": "pickup",
+        "date": "2017-04-03",
+        "timeFrom": "07:30:00",
+        "timeTo": "14:30:00",
+        "city": "Brooklyn",
+        "state": "NY",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -73.9531,
+        "latitude": 40.6939
+      },
+      {
+        "name": "TricorBraun",
+        "stopNumber": 2,
+        "type": "delivery",
+        "date": "2017-04-10",
+        "timeFrom": "11:00:00",
+        "timeTo": "11:00:00",
+        "city": "CERRITOS",
+        "state": "CA",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -118.036,
+        "latitude": 33.8843
+      }
+    ],
+    "lastLocation": {
+      "dateUtc": "2017-04-07T17:24:00Z",
+      "dateLocal": "2017-04-07T12:24:00Z",
+      "city": "Streator",
+      "state": "IL",
+      "longitude": -88.7172,
+      "latitude": 41.1468,
+      "temps": {}
+    },
+    "files": [
+      {
+        "id": 407344,
+        "token": "NyOo6SWQ",
+        "description": "PickUp Document"
+      }
+    ],
+    "serviceLevel": "premium",
+    "reefer": false
+  },
+  {
+    "id": 719641,
+    "refNumber": "229107203",
+    "status": "En Route",
+    "stops": [
+      {
+        "name": "Columbia Tech",
+        "stopNumber": 1,
+        "type": "pickup",
+        "date": "2017-04-03",
+        "timeFrom": "08:00:00",
+        "timeTo": "17:00:00",
+        "city": "WESTBOROUGH",
+        "state": "MA",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -71.645,
+        "latitude": 42.2759
+      },
+      {
+        "name": "BAI C/O Ballard Power Systems",
+        "stopNumber": 2,
+        "type": "delivery",
+        "date": "2017-04-10",
+        "timeFrom": "08:00:00",
+        "timeTo": "13:00:00",
+        "city": "SAN DIEGO",
+        "state": "CA",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -116.992,
+        "latitude": 32.5677
+      }
+    ],
+    "lastLocation": {
+      "temps": {}
+    },
+    "serviceLevel": "premium",
+    "reefer": false
+  },
+  {
+    "id": 719681,
+    "refNumber": "229183963",
+    "status": "En Route",
+    "stops": [
+      {
+        "name": "Melissa  Doug, LLC",
+        "stopNumber": 1,
+        "type": "pickup",
+        "date": "2017-04-03",
+        "timeFrom": "12:30:00",
+        "timeTo": "15:30:00",
+        "city": "CRANBURY",
+        "state": "NJ",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -74.4846,
+        "latitude": 40.3426
+      },
+      {
+        "name": "Hollar",
+        "stopNumber": 2,
+        "type": "delivery",
+        "date": "2017-04-11",
+        "timeFrom": "07:00:00",
+        "timeTo": "07:00:00",
+        "city": "COMMERCE",
+        "state": "CA",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -118.138,
+        "latitude": 33.9937
+      }
+    ],
+    "lastLocation": {
+      "dateUtc": "2017-04-07T17:06:48Z",
+      "dateLocal": "2017-04-07T12:06:48Z",
+      "city": "FARGO SW",
+      "state": "OK",
+      "longitude": -99.6731,
+      "latitude": 36.3563,
+      "temps": {}
+    },
+    "files": [
+      {
+        "id": 406783,
+        "token": "XKpz8tsD",
+        "description": "PickUp Document"
+      }
+    ],
+    "serviceLevel": "premium",
+    "reefer": false
+  },
+  {
+    "id": 719687,
+    "refNumber": "229183103",
+    "status": "En Route",
+    "stops": [
+      {
+        "name": "Mountain View Seeds",
+        "stopNumber": 1,
+        "type": "pickup",
+        "date": "2017-04-03",
+        "timeFrom": "10:00:00",
+        "timeTo": "16:00:00",
+        "city": "SALEM",
+        "state": "OR",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -122.877,
+        "latitude": 44.9598
+      },
+      {
+        "name": "Fosdick Fulfillment",
+        "stopNumber": 2,
+        "type": "delivery",
+        "date": "2017-04-10",
+        "timeFrom": "08:00:00",
+        "timeTo": "17:30:00",
+        "city": "Berlin",
+        "state": "CT ",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -72.728,
+        "latitude": 41.6388
+      }
+    ],
+    "lastLocation": {
+      "dateUtc": "2017-04-07T17:14:00Z",
+      "dateLocal": "2017-04-07T12:14:00Z",
+      "city": "Onalaska",
+      "state": "WI",
+      "longitude": -91.2303,
+      "latitude": 43.8657,
+      "temps": {}
+    },
+    "serviceLevel": "premium",
+    "reefer": false
+  },
+  {
+    "id": 719720,
+    "refNumber": "229233532",
+    "status": "En Route",
+    "stops": [
+      {
+        "name": "Wagner Woodworking",
+        "stopNumber": 1,
+        "type": "pickup",
+        "date": "2017-04-04",
+        "timeFrom": "09:00:00",
+        "timeTo": "15:00:00",
+        "city": "Broadalbin",
+        "state": "NY",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -74.1967,
+        "latitude": 43.0723
+      },
+      {
+        "name": "SCHMETZERS TOCA NW - REDMOND",
+        "stopNumber": 2,
+        "type": "delivery",
+        "date": "2017-04-12",
+        "timeFrom": "00:00:00",
+        "timeTo": "00:00:00",
+        "city": "Redmond",
+        "state": "WA",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -122.143,
+        "latitude": 47.6862
+      }
+    ],
+    "lastLocation": {
+      "dateUtc": "2017-04-07T16:42:20Z",
+      "dateLocal": "2017-04-07T11:42:20Z",
+      "city": "BERWYN",
+      "state": "IL",
+      "longitude": -87.7531,
+      "latitude": 41.8422,
+      "temps": {}
+    },
+    "files": [
+      {
+        "id": 408277,
+        "token": "4CwvLYny",
+        "description": "PickUp Document"
+      }
+    ],
+    "serviceLevel": "premium",
+    "reefer": false
+  },
+  {
+    "id": 719729,
+    "refNumber": "229248927",
+    "status": "En Route",
+    "stops": [
+      {
+        "name": "Thomson Industries",
+        "stopNumber": 1,
+        "type": "pickup",
+        "date": "2017-04-04",
+        "timeFrom": "08:00:00",
+        "timeTo": "11:00:00",
+        "city": "San Diego",
+        "state": "CA",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -116.934,
+        "latitude": 32.5597
+      },
+      {
+        "name": "Amazon Robotics",
+        "stopNumber": 2,
+        "type": "delivery",
+        "date": "2017-04-11",
+        "timeFrom": "09:00:00",
+        "timeTo": "09:00:00",
+        "city": "WOBURN",
+        "state": "MA",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -71.1388,
+        "latitude": 42.4971
+      }
+    ],
+    "lastLocation": {
+      "dateUtc": "2017-04-07T12:22:00Z",
+      "dateLocal": "2017-04-07T06:22:00Z",
+      "city": "Gallup",
+      "state": "NM",
+      "longitude": -108.831,
+      "latitude": 35.5084,
+      "temps": {}
+    },
+    "serviceLevel": "premium",
+    "reefer": false
+  },
+  {
+    "id": 719731,
+    "refNumber": "229248241",
+    "status": "En Route",
+    "stops": [
+      {
+        "name": "Airlite Plastics",
+        "stopNumber": 1,
+        "type": "pickup",
+        "date": "2017-04-04",
+        "timeFrom": "09:00:00",
+        "timeTo": "15:00:00",
+        "city": "Nazareth",
+        "state": "PA",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -75.341,
+        "latitude": 40.7353
+      },
+      {
+        "name": "States Logistics",
+        "stopNumber": 2,
+        "type": "delivery",
+        "date": "2017-04-11",
+        "timeFrom": "08:00:00",
+        "timeTo": "08:00:00",
+        "city": "Ontario",
+        "state": "CA",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -117.53,
+        "latitude": 34.0408
+      }
+    ],
+    "lastLocation": {
+      "dateUtc": "2017-04-07T16:00:00Z",
+      "dateLocal": "2017-04-07T11:00:00Z",
+      "city": "Waynoka",
+      "state": "OK",
+      "longitude": -98.8754,
+      "latitude": 36.6016,
+      "temps": {}
+    },
+    "files": [
+      {
+        "id": 408069,
+        "token": "6raNKTmQ",
+        "description": "PickUp Document"
+      },
+      {
+        "id": 408482,
+        "token": "k6cxVENf",
+        "description": "PickUp Document"
+      }
+    ],
+    "serviceLevel": "premium",
+    "reefer": false
+  },
+  {
+    "id": 719761,
+    "refNumber": "229255649",
+    "status": "En Route",
+    "stops": [
+      {
+        "name": "Uncommon Carrier",
+        "stopNumber": 1,
+        "type": "pickup",
+        "date": "2017-04-04",
+        "timeFrom": "08:00:00",
+        "timeTo": "16:00:00",
+        "city": "South Kearny",
+        "state": "NJ",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -74.1058,
+        "latitude": 40.7222
+      },
+      {
+        "name": "H & H Seafood",
+        "stopNumber": 2,
+        "type": "delivery",
+        "date": "2017-04-14",
+        "timeFrom": "00:00:00",
+        "timeTo": "00:00:00",
+        "city": "Bell",
+        "state": "CA",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -118.167,
+        "latitude": 33.9939
+      }
+    ],
+    "lastLocation": {
+      "dateUtc": "2017-04-07T17:20:00Z",
+      "dateLocal": "2017-04-07T12:20:00Z",
+      "city": "Chicago",
+      "state": "IL",
+      "longitude": -87.874,
+      "latitude": 41.7484,
+      "temps": {}
+    },
+    "files": [
+      {
+        "id": 409446,
+        "token": "ejEhUgfa",
+        "description": "PickUp Document"
+      }
+    ],
+    "serviceLevel": "economy",
+    "reefer": false
+  },
+  {
+    "id": 719765,
+    "refNumber": "229189362",
+    "status": "En Route",
+    "stops": [
+      {
+        "name": "Insulectro",
+        "stopNumber": 1,
+        "type": "pickup",
+        "date": "2017-04-05",
+        "timeFrom": "18:00:00",
+        "timeTo": "18:00:00",
+        "city": "Lake Forest",
+        "state": "CA",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -117.659,
+        "latitude": 33.667
+      },
+      {
+        "name": "LCOA",
+        "stopNumber": 2,
+        "type": "pickup",
+        "date": "2017-04-05",
+        "timeFrom": "18:30:00",
+        "timeTo": "18:30:00",
+        "city": "Lake Forest",
+        "state": "CA",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -117.66,
+        "latitude": 33.6675
+      },
+      {
+        "name": "Insulectro - Bloomingdale",
+        "stopNumber": 3,
+        "type": "delivery",
+        "date": "2017-04-10",
+        "timeFrom": "07:00:00",
+        "timeTo": "16:00:00",
+        "city": "BLOOMINGDALE",
+        "state": "IL",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -88.1248,
+        "latitude": 41.9477
+      }
+    ],
+    "lastLocation": {
+      "dateUtc": "2017-04-07T12:22:00Z",
+      "dateLocal": "2017-04-07T06:22:00Z",
+      "city": "Gallup",
+      "state": "NM",
+      "longitude": -108.831,
+      "latitude": 35.5084,
+      "temps": {}
+    },
+    "serviceLevel": "premium",
+    "reefer": false
+  },
+  {
+    "id": 719773,
+    "refNumber": "229255576",
+    "status": "En Route",
+    "stops": [
+      {
+        "name": "Logistics Team COI",
+        "stopNumber": 1,
+        "type": "pickup",
+        "date": "2017-04-06",
+        "timeFrom": "10:00:00",
+        "timeTo": "10:00:00",
+        "city": "City of Industry",
+        "state": "CA",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -117.957,
+        "latitude": 34.016
+      },
+      {
+        "name": "BJ Wholesale # 800",
+        "stopNumber": 2,
+        "type": "delivery",
+        "date": "2017-04-13",
+        "timeFrom": "00:00:00",
+        "timeTo": "00:00:00",
+        "city": "Uxbridge",
+        "state": "MA",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -71.6007,
+        "latitude": 42.0183
+      }
+    ],
+    "lastLocation": {
+      "dateUtc": "2017-04-07T17:29:00Z",
+      "dateLocal": "2017-04-07T10:29:00Z",
+      "city": "Barstow",
+      "state": "CA",
+      "longitude": -117.054,
+      "latitude": 34.8993,
+      "temps": {}
+    },
+    "serviceLevel": "premium",
+    "reefer": false
+  },
+  {
+    "id": 719781,
+    "refNumber": "229303802",
+    "status": "En Route",
+    "stops": [
+      {
+        "name": "Logistics Team COI",
+        "stopNumber": 1,
+        "type": "pickup",
+        "date": "2017-04-05",
+        "timeFrom": "10:00:00",
+        "timeTo": "10:00:00",
+        "city": "City of Industry",
+        "state": "CA",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -117.957,
+        "latitude": 34.0159
+      },
+      {
+        "name": "Costco WHSE #196",
+        "stopNumber": 2,
+        "type": "delivery",
+        "date": "2017-04-12",
+        "timeFrom": "11:30:00",
+        "timeTo": "11:30:00",
+        "city": "Monroe Township",
+        "state": "NJ",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -74.4565,
+        "latitude": 40.3552
+      }
+    ],
+    "lastLocation": {
+      "dateUtc": "2017-04-07T15:07:00Z",
+      "dateLocal": "2017-04-07T09:07:00Z",
+      "city": "BELEN",
+      "state": "NM",
+      "longitude": -106.776,
+      "latitude": 34.6628,
+      "temps": {}
+    },
+    "serviceLevel": "premium",
+    "reefer": false
+  },
+  {
+    "id": 719786,
+    "refNumber": "229315438",
+    "status": "En Route",
+    "stops": [
+      {
+        "name": "US Chemical c/o JS Warehouse",
+        "stopNumber": 1,
+        "type": "pickup",
+        "date": "2017-04-05",
+        "timeFrom": "13:00:00",
+        "timeTo": "15:30:00",
+        "city": "East Brunswick",
+        "state": "NJ",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -74.4202,
+        "latitude": 40.4499
+      },
+      {
+        "name": "MILLER PAINT/OR/ALL PRO 109844",
+        "stopNumber": 2,
+        "type": "delivery",
+        "date": "2017-04-13",
+        "timeFrom": "00:00:00",
+        "timeTo": "00:00:00",
+        "city": "Portland",
+        "state": "OR",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -122.531,
+        "latitude": 45.5601
+      }
+    ],
+    "lastLocation": {
+      "dateUtc": "2017-04-07T17:20:00Z",
+      "dateLocal": "2017-04-07T12:20:00Z",
+      "city": "Englewood",
+      "state": "IL",
+      "longitude": -87.6458,
+      "latitude": 41.7797,
+      "temps": {}
+    },
+    "files": [
+      {
+        "id": 409557,
+        "token": "bDgiUZ2j",
+        "description": "PickUp Document"
+      }
+    ],
+    "serviceLevel": "premium",
+    "reefer": false
+  },
+  {
+    "id": 719792,
+    "refNumber": "229245081",
+    "status": "En Route",
+    "stops": [
+      {
+        "name": "Cels Enterprises",
+        "stopNumber": 1,
+        "type": "pickup",
+        "date": "2017-04-04",
+        "timeFrom": "15:00:00",
+        "timeTo": "17:00:00",
+        "city": "Mira Loma",
+        "state": "CA",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -117.557,
+        "latitude": 34.0049
+      },
+      {
+        "name": "Central American",
+        "stopNumber": 2,
+        "type": "delivery",
+        "date": "2017-04-11",
+        "timeFrom": "10:00:00",
+        "timeTo": "10:00:00",
+        "city": "Romeoville",
+        "state": "IL",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -88.1139,
+        "latitude": 41.6698
+      }
+    ],
+    "lastLocation": {
+      "dateUtc": "2017-04-07T14:16:00Z",
+      "dateLocal": "2017-04-07T08:16:00Z",
+      "city": "Grants",
+      "state": "NM",
+      "longitude": -107.754,
+      "latitude": 35.0981,
+      "temps": {}
+    },
+    "serviceLevel": "premium",
+    "reefer": false
+  },
+  {
+    "id": 719791,
+    "refNumber": "229243943",
+    "status": "En Route",
+    "stops": [
+      {
+        "name": "Cels Enterprises",
+        "stopNumber": 1,
+        "type": "pickup",
+        "date": "2017-04-04",
+        "timeFrom": "17:00:00",
+        "timeTo": "19:00:00",
+        "city": "Mira Loma",
+        "state": "CA",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -117.557,
+        "latitude": 34.0049
+      },
+      {
+        "name": "Amazon BOS7",
+        "stopNumber": 2,
+        "type": "delivery",
+        "date": "2017-04-11",
+        "timeFrom": "00:00:00",
+        "timeTo": "00:00:00",
+        "city": "FALL RIVER",
+        "state": "MA",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -71.0971,
+        "latitude": 41.7643
+      }
+    ],
+    "lastLocation": {
+      "dateUtc": "2017-04-07T14:16:00Z",
+      "dateLocal": "2017-04-07T08:16:00Z",
+      "city": "Grants",
+      "state": "NM",
+      "longitude": -107.754,
+      "latitude": 35.0981,
+      "temps": {}
+    },
+    "serviceLevel": "guaranteed",
+    "reefer": false
+  },
+  {
+    "id": 719807,
+    "refNumber": "229353041",
+    "status": "En Route",
+    "stops": [
+      {
+        "name": "Western Wine Services",
+        "stopNumber": 1,
+        "type": "pickup",
+        "date": "2017-04-05",
+        "timeFrom": "06:30:00",
+        "timeTo": "14:00:00",
+        "city": "American Canyon",
+        "state": "CA",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -122.273,
+        "latitude": 38.194
+      },
+      {
+        "name": "Western Carriers - 2220",
+        "stopNumber": 2,
+        "type": "delivery",
+        "date": "2017-04-13",
+        "timeFrom": "00:00:00",
+        "timeTo": "00:00:00",
+        "city": "NORTH BERGEN",
+        "state": "NJ",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -74.0146,
+        "latitude": 40.8169
+      }
+    ],
+    "lastLocation": {
+      "dateUtc": "2017-04-07T18:28:40Z",
+      "dateLocal": "2017-04-07T12:28:40Z",
+      "city": "TUCKER MESA",
+      "state": "AZ",
+      "longitude": -110.807,
+      "latitude": 35.0583,
+      "temps": {}
+    },
+    "serviceLevel": "premium",
+    "reefer": true
+  },
+  {
+    "id": 719809,
+    "refNumber": "229234523",
+    "status": "En Route",
+    "stops": [
+      {
+        "name": "Logistics Team COI",
+        "stopNumber": 1,
+        "type": "pickup",
+        "date": "2017-04-05",
+        "timeFrom": "11:00:00",
+        "timeTo": "11:00:00",
+        "city": "City of Industry",
+        "state": "CA",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -117.957,
+        "latitude": 34.0159
+      },
+      {
+        "name": "Wal-Mart #6092",
+        "stopNumber": 2,
+        "type": "delivery",
+        "date": "2017-04-12",
+        "timeFrom": "06:30:00",
+        "timeTo": "06:30:00",
+        "city": "Spring Valley",
+        "state": "IL",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -89.2216,
+        "latitude": 41.3556
+      }
+    ],
+    "lastLocation": {
+      "dateUtc": "2017-04-07T12:22:00Z",
+      "dateLocal": "2017-04-07T06:22:00Z",
+      "city": "Gallup",
+      "state": "NM",
+      "longitude": -108.831,
+      "latitude": 35.5084,
+      "temps": {}
+    },
+    "serviceLevel": "premium",
+    "reefer": false
+  },
+  {
+    "id": 719814,
+    "refNumber": "229358813",
+    "status": "En Route",
+    "stops": [
+      {
+        "name": "AMD Interiors Inc",
+        "stopNumber": 1,
+        "type": "pickup",
+        "date": "2017-04-06",
+        "timeFrom": "12:00:00",
+        "timeTo": "13:00:00",
+        "city": "Naperville",
+        "state": "IL",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -88.2302,
+        "latitude": 41.7828
+      },
+      {
+        "name": "Centurylink Technology Solutions",
+        "stopNumber": 2,
+        "type": "delivery",
+        "date": "2017-04-13",
+        "timeFrom": "00:00:00",
+        "timeTo": "00:00:00",
+        "city": "SANTA CLARA",
+        "state": "CA",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -121.98,
+        "latitude": 37.3982
+      }
+    ],
+    "lastLocation": {
+      "dateUtc": "2017-04-07T17:16:25Z",
+      "dateLocal": "2017-04-07T12:16:25Z",
+      "city": "BERWYN",
+      "state": "IL",
+      "longitude": -87.7602,
+      "latitude": 41.8103,
+      "temps": {}
+    },
+    "serviceLevel": "premium",
+    "reefer": false
+  },
+  {
+    "id": 719822,
+    "refNumber": "229326041",
+    "status": "En Route",
+    "stops": [
+      {
+        "name": "Logistics Team COI",
+        "stopNumber": 1,
+        "type": "pickup",
+        "date": "2017-04-06",
+        "timeFrom": "11:00:00",
+        "timeTo": "11:00:00",
+        "city": "City of Industry",
+        "state": "CA",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -117.957,
+        "latitude": 34.016
+      },
+      {
+        "name": "INGRAM ENTERTAINMENT",
+        "stopNumber": 2,
+        "type": "delivery",
+        "date": "2017-04-13",
+        "timeFrom": "10:30:00",
+        "timeTo": "10:30:00",
+        "city": "Carol Stream",
+        "state": "IL",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -88.1137,
+        "latitude": 41.9277
+      }
+    ],
+    "lastLocation": {
+      "dateUtc": "2017-04-07T17:29:00Z",
+      "dateLocal": "2017-04-07T10:29:00Z",
+      "city": "Barstow",
+      "state": "CA",
+      "longitude": -117.054,
+      "latitude": 34.8993,
+      "temps": {}
+    },
+    "serviceLevel": "premium",
+    "reefer": false
+  },
+  {
+    "id": 719877,
+    "refNumber": "229414404",
+    "status": "En Route",
+    "stops": [
+      {
+        "name": "Portland Wine Storage",
+        "stopNumber": 1,
+        "type": "pickup",
+        "date": "2017-04-06",
+        "timeFrom": "08:00:00",
+        "timeTo": "15:00:00",
+        "city": "Portland",
+        "state": "OR",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -122.662,
+        "latitude": 45.5213
+      },
+      {
+        "name": "Hart David Hart",
+        "stopNumber": 2,
+        "type": "delivery",
+        "date": "2017-04-11",
+        "timeFrom": "00:00:00",
+        "timeTo": "00:00:00",
+        "city": "CHICAGO",
+        "state": "IL",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -87.6636,
+        "latitude": 41.8248
+      }
+    ],
+    "lastLocation": {
+      "dateUtc": "2017-04-07T17:12:42Z",
+      "dateLocal": "2017-04-07T10:12:42Z",
+      "city": "PORTLAND",
+      "state": "OR",
+      "longitude": -122.709,
+      "latitude": 45.5649,
+      "temps": {}
+    },
+    "serviceLevel": "premium",
+    "reefer": true
+  },
+  {
+    "id": 719933,
+    "refNumber": "229487694",
+    "status": "En Route",
+    "stops": [
+      {
+        "name": "Best Logistics, Inc",
+        "stopNumber": 1,
+        "type": "pickup",
+        "date": "2017-04-06",
+        "timeFrom": "13:00:00",
+        "timeTo": "15:00:00",
+        "city": "Stockton",
+        "state": "CA",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -121.325,
+        "latitude": 37.9434
+      },
+      {
+        "name": "UNFI - York PA",
+        "stopNumber": 2,
+        "type": "delivery",
+        "date": "2017-04-13",
+        "timeFrom": "00:00:00",
+        "timeTo": "00:00:00",
+        "city": "York",
+        "state": "PA",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -76.7755,
+        "latitude": 40.0676
+      }
+    ],
+    "lastLocation": {
+      "dateUtc": "2017-04-07T18:17:00Z",
+      "dateLocal": "2017-04-07T11:17:00Z",
+      "city": "Stockton",
+      "state": "CA",
+      "longitude": -121.268,
+      "latitude": 37.9426,
+      "temps": {}
+    },
+    "serviceLevel": "premium",
+    "reefer": false
+  },
+  {
+    "id": 719929,
+    "refNumber": "229431762",
+    "status": "En Route",
+    "stops": [
+      {
+        "name": "Reflex Sales/Streamline",
+        "stopNumber": 1,
+        "type": "pickup",
+        "date": "2017-04-06",
+        "timeFrom": "13:00:00",
+        "timeTo": "15:00:00",
+        "city": "Congers",
+        "state": "NY",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -73.9372,
+        "latitude": 41.1622
+      },
+      {
+        "name": "Hollar",
+        "stopNumber": 2,
+        "type": "delivery",
+        "date": "2017-04-14",
+        "timeFrom": "00:00:00",
+        "timeTo": "00:00:00",
+        "city": "COMMERCE",
+        "state": "CA",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -118.138,
+        "latitude": 33.9938
+      }
+    ],
+    "lastLocation": {
+      "temps": {}
+    },
+    "serviceLevel": "premium",
+    "reefer": false
+  },
+  {
+    "id": 719959,
+    "refNumber": "229331551",
+    "status": "En Route",
+    "stops": [
+      {
+        "name": "Ingram Micro",
+        "stopNumber": 1,
+        "type": "pickup",
+        "date": "2017-04-06",
+        "timeFrom": "14:00:00",
+        "timeTo": "19:00:00",
+        "city": "Mira Loma",
+        "state": "CA",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -117.557,
+        "latitude": 34.0049
+      },
+      {
+        "name": "PC RICHARD AND SON",
+        "stopNumber": 2,
+        "type": "delivery",
+        "date": "2017-04-14",
+        "timeFrom": "10:00:00",
+        "timeTo": "10:00:00",
+        "city": "FARMINGDALE",
+        "state": "NY",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -73.4294,
+        "latitude": 40.7422
+      }
+    ],
+    "lastLocation": {
+      "dateUtc": "2017-04-07T16:20:00Z",
+      "dateLocal": "2017-04-07T09:20:00Z",
+      "city": "Los Angeles",
+      "state": "CA",
+      "longitude": -118.244,
+      "latitude": 34.0522,
+      "temps": {}
+    },
+    "serviceLevel": "premium",
+    "reefer": false
+  },
+  {
+    "id": 719970,
+    "refNumber": "229559190",
+    "status": "En Route",
+    "stops": [
+      {
+        "name": "New Balance Athletics",
+        "stopNumber": 1,
+        "type": "pickup",
+        "date": "2017-04-06",
+        "timeFrom": "10:00:00",
+        "timeTo": "16:00:00",
+        "city": "Ontario",
+        "state": "CA",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -117.535,
+        "latitude": 34.0757
+      },
+      {
+        "name": "Shoe Buy.com",
+        "stopNumber": 2,
+        "type": "delivery",
+        "date": "2017-04-14",
+        "timeFrom": "09:00:00",
+        "timeTo": "17:00:00",
+        "city": "Woburn",
+        "state": "MA",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -71.1384,
+        "latitude": 42.5115
+      }
+    ],
+    "lastLocation": {
+      "dateUtc": "2017-04-07T17:29:00Z",
+      "dateLocal": "2017-04-07T10:29:00Z",
+      "city": "Barstow",
+      "state": "CA",
+      "longitude": -117.054,
+      "latitude": 34.8993,
+      "temps": {}
+    },
+    "serviceLevel": "premium",
+    "reefer": false
+  },
+  {
+    "id": 719975,
+    "refNumber": "229563719",
+    "status": "Ready",
+    "stops": [
+      {
+        "name": "Vans Inc.",
+        "stopNumber": 1,
+        "type": "pickup",
+        "date": "2017-04-07",
+        "timeFrom": "11:00:00",
+        "timeTo": "14:00:00",
+        "city": "Santa Fe Springs",
+        "state": "CA",
+        "hasEta": true,
+        "eta": {},
+        "longitude": -118.055,
+        "latitude": 33.8889
+      },
+      {
+        "name": "Shoe Buy.com",
+        "stopNumber": 2,
+        "type": "delivery",
+        "date": "2017-04-17",
+        "timeFrom": "00:00:00",
+        "timeTo": "00:00:00",
+        "city": "Woburn",
+        "state": "MA",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -71.1384,
+        "latitude": 42.5115
+      }
+    ],
+    "lastLocation": {
+      "temps": {}
+    },
+    "serviceLevel": "premium",
+    "reefer": false
+  },
+  {
+    "id": 720018,
+    "refNumber": "229605245",
+    "status": "En Route",
+    "stops": [
+      {
+        "name": "4 C Logistics",
+        "stopNumber": 1,
+        "type": "pickup",
+        "date": "2017-04-07",
+        "timeFrom": "09:00:00",
+        "timeTo": "11:00:00",
+        "city": "Itasca",
+        "state": "IL",
+        "hasEta": true,
+        "eta": {},
+        "longitude": -88.0266,
+        "latitude": 41.9809
+      },
+      {
+        "name": "Hollar",
+        "stopNumber": 2,
+        "type": "delivery",
+        "date": "2017-04-14",
+        "timeFrom": "00:00:00",
+        "timeTo": "00:00:00",
+        "city": "COMMERCE",
+        "state": "CA",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -118.138,
+        "latitude": 33.9938
+      }
+    ],
+    "lastLocation": {
+      "dateUtc": "2017-04-07T17:59:07Z",
+      "dateLocal": "2017-04-07T13:59:07Z",
+      "city": "HIGHLAND",
+      "state": "IN",
+      "longitude": -87.4324,
+      "latitude": 41.5242,
+      "temps": {}
+    },
+    "serviceLevel": "premium",
+    "reefer": false
+  },
+  {
+    "id": 720023,
+    "refNumber": "229593043",
+    "status": "En Route",
+    "stops": [
+      {
+        "name": "The Orb Factory Ltd",
+        "stopNumber": 1,
+        "type": "pickup",
+        "date": "2017-04-07",
+        "timeFrom": "08:30:00",
+        "timeTo": "16:30:00",
+        "city": "Millersburg",
+        "state": "PA",
+        "hasEta": true,
+        "eta": {},
+        "longitude": -76.9487,
+        "latitude": 40.5377
+      },
+      {
+        "name": "Hollar",
+        "stopNumber": 2,
+        "type": "delivery",
+        "date": "2017-04-17",
+        "timeFrom": "00:00:00",
+        "timeTo": "00:00:00",
+        "city": "COMMERCE",
+        "state": "CA",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -118.138,
+        "latitude": 33.9941
+      }
+    ],
+    "lastLocation": {
+      "dateUtc": "2017-04-07T18:06:36Z",
+      "dateLocal": "2017-04-07T14:06:36Z",
+      "city": "HARRISBURG EAST",
+      "state": "PA",
+      "longitude": -76.7814,
+      "latitude": 40.2619,
+      "temps": {}
+    },
+    "serviceLevel": "premium",
+    "reefer": false
+  },
+  {
+    "id": 720039,
+    "refNumber": "229596680",
+    "status": "En Route",
+    "stops": [
+      {
+        "name": "Bai Brands LLC",
+        "stopNumber": 1,
+        "type": "pickup",
+        "date": "2017-04-07",
+        "timeFrom": "13:00:00",
+        "timeTo": "17:00:00",
+        "city": "BORDENTOWN",
+        "state": "NJ",
+        "hasEta": true,
+        "eta": {},
+        "longitude": -74.7041,
+        "latitude": 40.1513
+      },
+      {
+        "name": "Bai Samples",
+        "stopNumber": 2,
+        "type": "delivery",
+        "date": "2017-04-13",
+        "timeFrom": "00:00:00",
+        "timeTo": "00:00:00",
+        "city": "La Quinta",
+        "state": "CA",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -116.278,
+        "latitude": 33.6291
+      }
+    ],
+    "lastLocation": {
+      "temps": {}
+    },
+    "serviceLevel": "guaranteed",
+    "reefer": false
+  },
+  {
+    "id": 720104,
+    "refNumber": "229689356",
+    "status": "En Route",
+    "stops": [
+      {
+        "name": "Minimus Products",
+        "stopNumber": 1,
+        "type": "pickup",
+        "date": "2017-04-07",
+        "timeFrom": "08:00:00",
+        "timeTo": "15:00:00",
+        "city": "Newbury Park",
+        "state": "CA",
+        "hasEta": true,
+        "eta": {},
+        "longitude": -118.921,
+        "latitude": 34.1972
+      },
+      {
+        "name": "National Fulfillment Serv c/o Athletic Green",
+        "stopNumber": 2,
+        "type": "delivery",
+        "date": "2017-04-17",
+        "timeFrom": "00:00:00",
+        "timeTo": "00:00:00",
+        "city": "ASTON",
+        "state": "PA",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -75.4067,
+        "latitude": 39.8472
+      }
+    ],
+    "lastLocation": {
+      "temps": {}
+    },
+    "serviceLevel": "premium",
+    "reefer": false
+  },
+  {
+    "id": 720106,
+    "refNumber": "229669254",
+    "status": "En Route",
+    "stops": [
+      {
+        "name": "MR Nature",
+        "stopNumber": 1,
+        "type": "pickup",
+        "date": "2017-04-07",
+        "timeFrom": "14:00:00",
+        "timeTo": "16:00:00",
+        "city": "Los Angeles",
+        "state": "CA",
+        "hasEta": true,
+        "eta": {},
+        "longitude": -118.229,
+        "latitude": 34.0502
+      },
+      {
+        "name": "Sultana Super Vend",
+        "stopNumber": 2,
+        "type": "delivery",
+        "date": "2017-04-17",
+        "timeFrom": "00:00:00",
+        "timeTo": "00:00:00",
+        "city": "Bronx",
+        "state": "NY",
+        "hasEta": false,
+        "eta": {},
+        "longitude": -73.871,
+        "latitude": 40.8029
+      }
+    ],
+    "lastLocation": {
+      "temps": {}
+    },
+    "serviceLevel": "premium",
+    "reefer": false
+  }
+]

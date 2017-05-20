@@ -5,6 +5,7 @@ import UserApi from 'api/UserApi';
 import {
   GET_CURRENT_USER,
   SET_SELF_ENTITY,
+  UPDATE_USER,
 } from 'constants/actions';
 import ThemeActionsCreator from 'actions/theme';
 
@@ -24,6 +25,14 @@ export default class UserActionsCreator extends AbstractActionsCreator {
     () => ({
       asyncAwait: this.apis.userApi.getCurrent(),
       onResolve: ::this.fetchCurrentUserResolve,
+    })
+  );
+
+  @annotator.action()
+  updateUser = actionsCreatorFactory(
+    UPDATE_USER.value,
+    (body) => ({
+      asyncAwait: this.apis.userApi.updateUser(body),
     })
   );
 

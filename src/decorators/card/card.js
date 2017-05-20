@@ -11,7 +11,6 @@ export default function card(ComposedComponent) {
 
     static propTypes = {
       cardToolbar: PropTypes.node,
-
       container: PropTypes.element,
     };
 

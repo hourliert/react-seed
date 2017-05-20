@@ -7,15 +7,17 @@ import { annotator } from 'retax-components';
 import pureRender from 'pure-render-decorator';
 import WrapperRootPage from 'routes/root/component/page';
 import RootPageSelector from 'routes/root/selector/page';
+import UserActionsCreator from 'actions/user';
 import AppActionsCreator from 'actions/app';
 import ErrorsActionsCreator from 'actions/errors';
 
 import { CURRENT_VERSION } from 'config/frontEndServer';
 
 function mapDispatchToProps(dispatch, props) {
-  const { appActions, errorsActions } = props;
+  const { appActions, errorsActions, userActions } = props;
 
   return bindActionCreators({
+    ...userActions.export(),
     ...appActions.export(),
     ...errorsActions.export(),
     goToLink: push,
@@ -26,6 +28,7 @@ function mapDispatchToProps(dispatch, props) {
 @annotator.RetaxComponent({
   actionsCreators: {
     appActions: AppActionsCreator,
+    userActions: UserActionsCreator,
     errorsActions: ErrorsActionsCreator,
   },
 })
@@ -45,6 +48,9 @@ export default class RootPage extends Component {
     markAllErrorsAsViewed: PropTypes.func,
     clearErrors: PropTypes.func,
     goToLink: PropTypes.func,
+
+    fetchCurrentUser: PropTypes.func,
+    user: PropTypes.object,
   };
 
   static childContextTypes = {
@@ -57,7 +63,7 @@ export default class RootPage extends Component {
   }
 
   render() {
-    const { children } = this.props;
+    const { children, user } = this.props;
     const { errors, markAllErrorsAsViewed, clearErrors } = this.props;
     const { leftNavOpen, closeLeftNav, toggleLeftNav, goToLink } = this.props;
     const { menus } = this.props;
@@ -68,6 +74,7 @@ export default class RootPage extends Component {
         version={CURRENT_VERSION}
         appBarDepth={appBarDepth}
         menus={menus}
+        user={user}
         errors={errors}
         markErrorsAsViewed={markAllErrorsAsViewed}
         clearErrors={clearErrors}

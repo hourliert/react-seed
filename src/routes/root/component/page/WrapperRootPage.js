@@ -1,13 +1,25 @@
 import React, { PropTypes, Component } from 'react';
-import AppBar from 'material-ui/AppBar';
 import Helmet from 'react-helmet';
-
 import pureRender from 'pure-render-decorator';
+
+// open source components
+import { WindowResizeListener } from 'react-window-resize-listener';
+
+// material-ui
+import AppBar from 'material-ui/AppBar';
+
+// custom components
 import LeftMenuDrawer from 'components/LeftMenuDrawer';
 import ErrorManager from 'components/ErrorManager';
+import AppBarMyAccount from 'components/AppBarMyAccount';
+import AppBarBoard from 'components/AppBarBoard';
 
+// images
 import favicon from 'images/favicon/favicon.ico';
 import logo192 from 'images/logo/logo-192x192.png';
+
+// styles
+import styles from './styles';
 
 @pureRender
 export default class WrapperRootPage extends Component {
@@ -25,23 +37,65 @@ export default class WrapperRootPage extends Component {
     closeLeftNav: PropTypes.func.isRequired,
     toggleLeftNav: PropTypes.func.isRequired,
     goToLink: PropTypes.func.isRequired,
+
+    user: PropTypes.object,
   };
 
   static contextTypes = {
     muiTheme: PropTypes.object.isRequired,
+    router: React.PropTypes.object,
   };
 
   static defaultProps = {
     version: '',
   };
 
+  state = {
+    screenWidth: 'md',
+    isSignin: this.context.router.isActive('/signin'),
+  }
+
+  getScreenCategory() {
+    const screenWidth = window.innerWidth;
+
+    if (screenWidth < 768) {
+      this.setState({ screenWidth: 'xs' });
+    } else if ((screenWidth >= 768) && (screenWidth < 992)) {
+      this.setState({ screenWidth: 'sm' });
+    } else if ((screenWidth >= 992) && (screenWidth < 1200)) {
+      this.setState({ screenWidth: 'md' });
+    } else if (screenWidth >= 1200) {
+      this.setState({ screenWidth: 'lg' });
+    }
+  }
+
   render() {
-    const { children } = this.props;
-    const { errors, markErrorsAsViewed, clearErrors } = this.props;
-    const { leftNavOpen, closeLeftNav, toggleLeftNav, goToLink } = this.props;
-    const { menus } = this.props;
-    const { appBarDepth } = this.props;
+    const {
+      children,
+      user,
+      errors,
+      markErrorsAsViewed,
+      clearErrors,
+      leftNavOpen,
+      closeLeftNav,
+      toggleLeftNav,
+      goToLink,
+      menus,
+      appBarDepth,
+    } = this.props;
+
+    const {
+      screenWidth,
+      isSignin,
+    } = this.state;
+
+    const isMobile = ((screenWidth === 'sm') || (screenWidth === 'xs'));
+
     const { muiTheme: { rawTheme: { palette } } } = this.context;
+
+    const signinContainer = {
+      background: palette.primary4Color,
+    };
 
     return (
       <div className="flex layout vertical">
@@ -66,15 +120,26 @@ export default class WrapperRootPage extends Component {
           ]}
         />
         <AppBar
-          title={`RetaxSeed - ${this.props.version}`}
+          title={'RetaxSeed'}
           onLeftIconButtonTouchTap={toggleLeftNav}
+          iconElementRight={
+            <div style={{ overflow: 'auto' }}>
+              <div style={{ float: 'left', padding: 10, marginRight: 5 }}>
+                <AppBarBoard />
+              </div>
+              <div style={{ float: 'left', padding: 7 }}>
+                <AppBarMyAccount user={user} />
+              </div>
+            </div>
+          }
           zDepth={appBarDepth}
         />
         <LeftMenuDrawer
-          open={leftNavOpen}
+          open={((leftNavOpen) || (!isMobile)) && !isSignin}
           onClose={closeLeftNav}
           onLinkTouch={goToLink}
           menuItems={menus}
+          isMobile={isMobile}
         />
 
         <ErrorManager
@@ -83,9 +148,18 @@ export default class WrapperRootPage extends Component {
           clearErrors={clearErrors}
         />
 
-        <div className="flex layout vertical">
-          {children}
+      <div
+        className="flex layout vertical"
+        style={(isMobile || isSignin) ? styles.mobileContainer : styles.desktopContainer}
+      >
+        <div
+          className="flex layout vertical"
+          style={isSignin ? signinContainer : {}}
+        >
+            {children}
         </div>
+        </div>
+        <WindowResizeListener onResize={::this.getScreenCategory} />
       </div>
     );
   }

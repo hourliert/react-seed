@@ -2,10 +2,8 @@ import { reducerFactory } from 'retax';
 
 import {
   SIGNIN,
-  SIGNOUT,
-  INFO,
   USER,
-  ADMIN,
+  DOCUMENTATION,
 } from 'constants/routes';
 import { accessLevels } from 'config/access';
 
@@ -25,24 +23,11 @@ export default reducerFactory(
       withDivider: true,
     },
     {
-      icon: 'home',
-      label: 'Admin Home',
-      url: ADMIN,
-      accessLevel: accessLevels.admin,
+      icon: 'book',
+      label: 'Documentation',
+      url: DOCUMENTATION,
+      accessLevel: accessLevels.user,
       withDivider: true,
-    },
-    {
-      icon: 'info',
-      label: 'Info',
-      url: INFO,
-      accessLevel: accessLevels.authentified,
-      withDivider: true,
-    },
-    {
-      icon: 'power_settings_new',
-      label: 'Sign Out',
-      url: SIGNOUT,
-      accessLevel: accessLevels.authentified,
     },
   ],
   {}
